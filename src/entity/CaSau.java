@@ -220,7 +220,6 @@ public class CaSau extends Entity {
             } else if (!attack) g2.drawImage(Move, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
             if (attack) g2.drawImage(Attack, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
         }
-        g2.drawString("drawX: "+drawX+" drawY: "+drawY+" screenX: "+screenX+" screenY: "+screenY, 10, 100);
     }
 
     @Override
