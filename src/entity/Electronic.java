@@ -1,6 +1,7 @@
 package entity;
 
 import main.GamePanel;
+import projectile.ShockBall;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -8,10 +9,11 @@ import java.awt.image.BufferedImage;
 
 public class Electronic extends Entity {
     GamePanel gp;
+    ShockBall shockBall;
     BufferedImage[] elecMoveR, elecAttackR, elecMoveL, elecAttackL;
     BufferedImage Move, Attack;
-    boolean attack=false;
-    int mCounter,mNum,aCounter,aNum;
+    boolean isAttack =false;
+    int mCounter,mNum,aCounter,aNum,coolDown=0;
     public Electronic(GamePanel gp) {
         super(gp);
         this.gp = gp;
@@ -76,6 +78,29 @@ public class Electronic extends Entity {
             mNum++;
             if (mNum >= 3) mNum = 0;
         }
+        coolDown++;
+        if(coolDown>=120){
+            coolDown=0;
+            isAttack =true;
+        }
+        if(isAttack) attack();
+    }
+
+    public void attack(){
+        move=false;
+        aCounter++;
+        if(aCounter>=10){
+            aCounter=0;
+            aNum++;
+            if(aNum>=5){
+                aNum=0;
+                isAttack=false;
+                dx = distanceX / distance;
+                dy = distanceY / distance;
+                shockBall = new ShockBall(gp,centerX,centerY,dx,dy);
+            }
+        }
+        if(shockBall!=null)shockBall.update();
     }
 
     public void draw(Graphics2D g2){
@@ -91,7 +116,10 @@ public class Electronic extends Entity {
                 Move = elecMoveR[mNum];
                 break;
         }
-             g2.drawImage(Move, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
-            if (attack) g2.drawImage(Attack, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
+             if(!isAttack)g2.drawImage(Move, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
+            if (isAttack) {
+                g2.drawImage(Attack, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
+            }
+        if(shockBall!=null)shockBall.draw(g2,shockBall.shockBallNum);
     }
 }
