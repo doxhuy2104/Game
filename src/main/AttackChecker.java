@@ -11,7 +11,7 @@ public class AttackChecker {
     }
 
     public void attackChecker(Entity entity) {
-        if(gp.player.isAttack){
+        if(gp.player.isAttack&&gp.player.attackCounter==1){
             //vùng tấn công phía trên
             int atkU = gp.player.attackAreaU.y;
             int atkUR = gp.player.attackAreaU.x + gp.player.attackAreaU.width;

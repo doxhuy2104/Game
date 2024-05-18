@@ -1,9 +1,6 @@
 package main;
 
-import entity.CaSau;
-import entity.Entity;
-import entity.Player;
-import entity.Slime;
+import entity.*;
 import object.superObject;
 import tile.TileManager;
 import ui.Menu;
@@ -46,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public Slime[] slime = new Slime[20];
     public CaSau[] caSau = new CaSau[20];
+    public Electronic[] electronic = new Electronic[20];
     Pause pauseS = new Pause(this, mouseClick);
     GameOver gameOver = new GameOver(this, mouseClick);
     Hud hud = new Hud(this);
@@ -124,6 +122,9 @@ public class GamePanel extends JPanel implements Runnable {
                         if (caSau[i] != null) {
                             caSau[i].updateE();
                         }
+                        if (electronic[i] != null) {
+                            electronic[i].updateE();
+                        }
                     }
                     for (int i = 0; i < npc.length; i++) {
                         if (npc[i] != null) {
@@ -160,6 +161,9 @@ public class GamePanel extends JPanel implements Runnable {
                 }
                 if (npc[i] != null) {
                     entities.add(npc[i]);
+                }
+                if (electronic[i] != null) {
+                    entities.add(electronic[i]);
                 }
             }
             entities.sort(Comparator.comparingInt(e -> e.y));
