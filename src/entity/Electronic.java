@@ -20,7 +20,7 @@ public class Electronic extends Entity {
         getElecImage();
         hp=5;
         alive=true;
-        eSpeed=1;
+        eSpeed=0.5;
     }
 
     public void getElecImage() {
@@ -69,7 +69,7 @@ public class Electronic extends Entity {
         distanceX = centerScreenX - centerX;
         distanceY = centerScreenY - centerY;
         distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        if (distance < 500){
+        if (distance < 300){
             saw = true;
         }
         if(saw) {
@@ -79,12 +79,6 @@ public class Electronic extends Entity {
         if (move && alive && !hurt&&!isAttack) {
             saw = false;
             super.move();
-            mCounter++;
-            if (mCounter >= 10) {
-                mCounter = 0;
-                mNum++;
-                if (mNum >= 4) mNum = 0;
-            }
         }
         mCounter++;
         if (mCounter >= 15) {

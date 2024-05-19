@@ -30,7 +30,6 @@ public class Projectile {
         }
         drawX=-gp.player.x+gp.player.screenX+x;
         drawY=-gp.player.y+gp.player.screenY+y;
-        System.out.println(drawX+" "+drawY);
         xMove = dx * pjSpeed;
         yMove = dy * pjSpeed;
         x += xMove;

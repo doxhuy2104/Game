@@ -242,7 +242,6 @@ public class Slime extends Entity {
         if (alive) {
             g2.drawImage(shadow, x + 7, y + 48, gp.scale * shadow.getWidth(), gp.scale * shadow.getHeight(), null);
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transparency));
-            if (chamThan) g2.drawImage(exclamation, drawX + 33 - cX, drawY - cY, sawW, sawH, null);
             if (move) {
                 switch (eD) {
                     case "L":
