@@ -12,6 +12,8 @@ public class Projectile {
     public double dx, dy;
     public double xMove, yMove;
     public Rectangle area;
+    public boolean attacking = false;
+    public int drawX, drawY;
     public Projectile(GamePanel gp) {
         this.gp=gp;
         pjSpeed = 6;
@@ -26,6 +28,9 @@ public class Projectile {
                 pjNum=0;
             }
         }
+        drawX=-gp.player.x+gp.player.screenX+x;
+        drawY=-gp.player.y+gp.player.screenY+y;
+        System.out.println(drawX+" "+drawY);
         xMove = dx * pjSpeed;
         yMove = dy * pjSpeed;
         x += xMove;

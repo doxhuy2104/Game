@@ -68,7 +68,7 @@ public class Entity {
     private float transparency = 1.0f;
     private final float TRANSPARENCY_STEP = 0.5f;
     public double xMove = 0, yMove = 0, distance, dx, dy;
-    public int eSpeed;
+    public double eSpeed;
     //public BufferedImage shadow;
     public Rectangle bodyAreaA, bodyAreaC;
     public int sx, sy;

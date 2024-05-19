@@ -48,7 +48,7 @@ public class AssetSetter {
         gp.caSau[0].sx = 54 * gp.tileSize;
         gp.caSau[0].sy = 22 * gp.tileSize;
         gp.electronic[0] = new Electronic(gp);
-        gp.electronic[0].sx = 3 * gp.tileSize;
+        gp.electronic[0].sx = 4 * gp.tileSize;
         gp.electronic[0].sy = 4 * gp.tileSize;
     }
     public void setNpc(){

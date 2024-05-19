@@ -20,6 +20,7 @@ public class Electronic extends Entity {
         getElecImage();
         hp=5;
         alive=true;
+        eSpeed=1;
     }
 
     public void getElecImage() {
@@ -71,7 +72,20 @@ public class Electronic extends Entity {
         if (distance < 500){
             saw = true;
         }
+        if(saw) {
+            super.saw();
+        }
         super.updateE();
+        if (move && alive && !hurt&&!isAttack) {
+            saw = false;
+            super.move();
+            mCounter++;
+            if (mCounter >= 10) {
+                mCounter = 0;
+                mNum++;
+                if (mNum >= 4) mNum = 0;
+            }
+        }
         mCounter++;
         if (mCounter >= 15) {
             mCounter = 0;
@@ -79,11 +93,12 @@ public class Electronic extends Entity {
             if (mNum >= 3) mNum = 0;
         }
         coolDown++;
-        if(coolDown>=120){
+        if(coolDown>=300){
             coolDown=0;
             isAttack =true;
         }
         if(isAttack) attack();
+        if(shockBall!=null)shockBall.update();
     }
 
     public void attack(){
@@ -92,15 +107,18 @@ public class Electronic extends Entity {
         if(aCounter>=10){
             aCounter=0;
             aNum++;
+            if(aNum==4) {
+                dx = distanceX / distance;
+                dy = distanceY / distance;
+                shockBall = new ShockBall(gp, bodyAreaC.x+44, bodyAreaC.y+ 36, dx,dy,true);
+
+            }
             if(aNum>=5){
                 aNum=0;
                 isAttack=false;
-                dx = distanceX / distance;
-                dy = distanceY / distance;
-                shockBall = new ShockBall(gp,centerX,centerY,dx,dy);
+                move=true;
             }
         }
-        if(shockBall!=null)shockBall.update();
     }
 
     public void draw(Graphics2D g2){
@@ -120,6 +138,6 @@ public class Electronic extends Entity {
             if (isAttack) {
                 g2.drawImage(Attack, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
             }
-        if(shockBall!=null)shockBall.draw(g2,shockBall.shockBallNum);
+        if(shockBall!=null)shockBall.draw(g2,shockBall.pjNum);
     }
 }

@@ -13,7 +13,7 @@ public class ShockBall extends Projectile {
     BufferedImage[] shockBall;
     public int shockBallCounter = 0, shockBallSpeed = 4, shockBallNum = 0;
 
-    public ShockBall(GamePanel gp,int x,int y, double dx, double dy) {
+    public ShockBall(GamePanel gp,int x,int y, double dx, double dy,boolean isAttack) {
         super(gp);
         this.gp = gp;
         GetImage();
@@ -22,6 +22,7 @@ public class ShockBall extends Projectile {
         this.y = y;
         this.dx = dx;
         this.dy = dy;
+        this.attacking = isAttack;
     }
 
     public void GetImage() {
@@ -38,9 +39,10 @@ public class ShockBall extends Projectile {
     }
 
     public void update() {
+        super.update();
     }
 
     public void draw(Graphics2D g2, int i) {
-        g2.drawImage(shockBall[i], x-32, y-32, 64, 64, null);
+        g2.drawImage(shockBall[i], drawX-32, drawY-32, 64, 64, null);
     }
 }
