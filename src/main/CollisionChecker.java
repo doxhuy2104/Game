@@ -1,6 +1,8 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
+import projectile.Projectile;
 
 public class CollisionChecker {
     GamePanel gp;
@@ -602,6 +604,21 @@ public class CollisionChecker {
 
                 break;
         }
+    }
+
+    public void pjCheck( Projectile pj){
+        int playerTop = gp.player.screenY + 32;
+        int playerBot = playerTop + gp.player.solidArea.height;
+        int playerLeft = gp.player.screenX + 8;
+        int playerRight = playerLeft + gp.player.solidArea.width;
+
+        int top = pj.drawY;
+        int bot = top + pj.area.height;
+        int left = pj.drawX;
+        int right=left+pj.area.width;
+        System.out.println(top+" "+playerTop);
+        gp.player.isHurt= top < playerBot && bot > playerTop && left < playerRight && right > playerLeft;
+
     }
 }
 

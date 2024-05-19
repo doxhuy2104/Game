@@ -2,6 +2,7 @@ package main;
 
 import entity.*;
 import object.superObject;
+import projectile.Projectile;
 import projectile.ShockBall;
 import tile.TileManager;
 import ui.Menu;
@@ -50,7 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     Hud hud = new Hud(this);
     ArrayList<Entity> entities = new ArrayList<>();
 
-    public ShockBall shockBall;
+    public Projectile projectile=new Projectile(this);
 
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public AttackChecker attackChecker = new AttackChecker(this);

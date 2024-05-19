@@ -20,6 +20,7 @@ public class Player extends Entity {
     public boolean canSprint;
     int hasKey = 0;
     public boolean boost;
+    public boolean isHurt;
 
     public static int abs(int x) {
         return x >= 0 ? x : -x;
@@ -370,10 +371,11 @@ public class Player extends Entity {
         pToECL = false;
         pToECR = false;
         if (!invisible) {//check va cham voi quai vat
-            gp.collisionChecker.pToECo(this);
+            //gp.collisionChecker.pToECo(this);
         }
 
-        if (pToECD || pToECL || pToECR || pToECU) {
+
+        if (pToECD || pToECL || pToECR || pToECU||isHurt) {
             if (iT < 3) iT++;
         }
         if (iT == 1) {

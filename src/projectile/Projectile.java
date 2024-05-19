@@ -28,15 +28,18 @@ public class Projectile {
                 pjNum=0;
             }
         }
-        drawX=-gp.player.x+gp.player.screenX+x;
-        drawY=-gp.player.y+gp.player.screenY+y;
+        drawX=-gp.player.x+gp.player.screenX+x-32;
+        drawY=-gp.player.y+gp.player.screenY+y-32;
+        area = new Rectangle(drawX, drawY, 64, 64);
         xMove = dx * pjSpeed;
         yMove = dy * pjSpeed;
         x += xMove;
         y += yMove;
         xMove-=(int)xMove;
         yMove-=(int)yMove;
+        gp.collisionChecker.pjCheck(this);
     }
+
 
     public void draw() {}
 }

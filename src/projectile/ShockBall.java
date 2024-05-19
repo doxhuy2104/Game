@@ -43,6 +43,6 @@ public class ShockBall extends Projectile {
     }
 
     public void draw(Graphics2D g2, int i) {
-        g2.drawImage(shockBall[i], drawX-32, drawY-32, 64, 64, null);
+        g2.drawImage(shockBall[i], drawX, drawY, 64, 64, null);
     }
 }

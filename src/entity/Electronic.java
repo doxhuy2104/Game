@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Electronic extends Entity {
     GamePanel gp;
-    ShockBall shockBall;
+    public ShockBall shockBall;
     BufferedImage[] elecMoveR, elecAttackR, elecMoveL, elecAttackL;
     BufferedImage Move, Attack;
     boolean isAttack =false;
@@ -128,9 +128,9 @@ public class Electronic extends Entity {
                 Move = elecMoveR[mNum];
                 break;
         }
-             if(!isAttack)g2.drawImage(Move, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
+             if(!isAttack)g2.drawImage(Move, drawX, drawY, Move.getWidth() * gp.scale, Move.getHeight() * gp.scale, null);
             if (isAttack) {
-                g2.drawImage(Attack, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
+                g2.drawImage(Attack, drawX, drawY, Attack.getWidth() * gp.scale, Attack.getHeight() * gp.scale, null);
             }
         if(shockBall!=null)shockBall.draw(g2,shockBall.pjNum);
     }
