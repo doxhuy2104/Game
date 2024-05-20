@@ -135,6 +135,7 @@ public class Electronic extends Entity {
         if(shockBall!=null) {
             if(shockBall.exist)shockBall.draw(g2,shockBall.pjNum);
             else shockBall.draw(g2,shockBall.hitNum);
+            //
         }
     }
 }
