@@ -77,6 +77,7 @@ public class Entity {
     public int eCounter = 0, eNum = 0, dlNum = 0, dlS = 6, sawCounter = 0, sawW = 0, sawH = 0, cX = 0, cY = 0;
     public int hp;
     public int atkCounter;
+    //
     BufferedImage[] spark;
     public int sparkCounter = 0, sparkNum = 0;
     public String eD = "L", mD = "L";
