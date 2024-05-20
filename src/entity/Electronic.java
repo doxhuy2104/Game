@@ -87,7 +87,7 @@ public class Electronic extends Entity {
             if (mNum >= 3) mNum = 0;
         }
         coolDown++;
-        if(coolDown>=300){
+        if(coolDown>=30){
             coolDown=0;
             isAttack =true;
         }
@@ -104,7 +104,7 @@ public class Electronic extends Entity {
             if(aNum==4) {
                 dx = distanceX / distance;
                 dy = distanceY / distance;
-                shockBall = new ShockBall(gp, bodyAreaC.x+44, bodyAreaC.y+ 36, dx,dy,true);
+                shockBall = new ShockBall(gp, bodyAreaC.x+44, bodyAreaC.y+ 36, dx,dy,false,false,true);
 
             }
             if(aNum>=5){
@@ -132,6 +132,9 @@ public class Electronic extends Entity {
             if (isAttack) {
                 g2.drawImage(Attack, drawX, drawY, Attack.getWidth() * gp.scale, Attack.getHeight() * gp.scale, null);
             }
-        if(shockBall!=null)shockBall.draw(g2,shockBall.pjNum);
+        if(shockBall!=null) {
+            if(shockBall.exist)shockBall.draw(g2,shockBall.pjNum);
+            else shockBall.draw(g2,shockBall.hitNum);
+        }
     }
 }

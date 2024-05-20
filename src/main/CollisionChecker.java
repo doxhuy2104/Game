@@ -616,10 +616,85 @@ public class CollisionChecker {
         int bot = top + pj.area.height;
         int left = pj.drawX;
         int right=left+pj.area.width;
-        System.out.println(top+" "+playerTop);
-        gp.player.isHurt= top < playerBot && bot > playerTop && left < playerRight && right > playerLeft;
+        pj.hitPlayer=gp.player.isHurt= top < playerBot && bot > playerTop && left < playerRight && right > playerLeft;
 
     }
-}
+
+    public void pjCo(Projectile pj) {
+        int left = pj.x;
+        int right = left + pj.area.width;
+        int top = pj.y;
+        int bot = top + pj.area.height;
+
+        int leftCol = left / gp.tileSize;
+        int rightCol = right / gp.tileSize;
+        int topRow = top / gp.tileSize;
+        int botRow = bot / gp.tileSize;
+
+        int tileNum1, tileNum2, tileNum3;
+
+        switch (pj.direction) {
+            case "UR":
+                tileNum1 = gp.tileManager.mapTileNum[leftCol][topRow];
+                tileNum2 = gp.tileManager.mapTileNum[rightCol][topRow];
+                tileNum3 = gp.tileManager.mapTileNum[rightCol][botRow];
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision) {
+                    if (gp.tileManager.tile[tileNum3].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                if (gp.tileManager.tile[tileNum2].collision || gp.tileManager.tile[tileNum3].collision) {
+                    if (gp.tileManager.tile[tileNum1].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                break;
+            case "UL":
+                tileNum1 = gp.tileManager.mapTileNum[leftCol][topRow];
+                tileNum2 = gp.tileManager.mapTileNum[rightCol][topRow];
+                tileNum3 = gp.tileManager.mapTileNum[leftCol][botRow];
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision) {
+                    if (gp.tileManager.tile[tileNum3].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum3].collision) {
+                    if (gp.tileManager.tile[tileNum2].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                break;
+            case "DR":
+                tileNum1 = gp.tileManager.mapTileNum[leftCol][botRow];
+                tileNum2 = gp.tileManager.mapTileNum[rightCol][botRow];
+                tileNum3 = gp.tileManager.mapTileNum[rightCol][topRow];
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision) {
+                    if (gp.tileManager.tile[tileNum3].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                if (gp.tileManager.tile[tileNum2].collision || gp.tileManager.tile[tileNum3].collision) {
+                    if (gp.tileManager.tile[tileNum1].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                break;
+            case "DL":
+                tileNum1 = gp.tileManager.mapTileNum[leftCol][botRow];
+                tileNum2 = gp.tileManager.mapTileNum[rightCol][botRow];
+                tileNum3 = gp.tileManager.mapTileNum[leftCol][topRow];
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum2].collision) {
+                    if (gp.tileManager.tile[tileNum3].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum3].collision) {
+                    if (gp.tileManager.tile[tileNum2].collision) {
+                        pj.hitWall=true;
+                    }
+                }
+                break;
+        }
+    }}
 
 
