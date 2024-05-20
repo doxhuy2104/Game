@@ -172,9 +172,9 @@ public class GamePanel extends JPanel implements Runnable {
             }
             entities.sort(Comparator.comparingInt(e -> e.y));
 
-            for (object.superObject superObject : obj) {
-                if (superObject != null) {
-                    superObject.draw(g2, this);
+            for (int i=0;i< obj.length;i++) {
+                if (obj[i] != null) {
+                    obj[i].draw(g2, this);
                 }
             }
             if (player.pAlive) for (int i = 0; i < entities.size(); i++) {

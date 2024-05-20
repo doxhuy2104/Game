@@ -225,7 +225,13 @@ public class Player extends Entity {
                     gp.playSoundEffect(5);
                     hasKey++;
                     gp.obj[i] = null;
+                    System.out.println("Key: "+hasKey);
                     break;
+                case "Door":
+                    if(hasKey>0){
+                        gp.obj[i]=null;
+                        hasKey--;
+                    }
                 case "chest":
                     if (hasKey == 4) gp.obj[i] = null;
                     break;
@@ -410,6 +416,7 @@ public class Player extends Entity {
         collisionR = false;
         collisionU = false;
         gp.collisionChecker.checkTile(this);
+
 
         //huong tan cong khi nhan chuot trai
         if (mouseClick.isLeftClick() && !isRolling && canAttack&&mana>=25) {
