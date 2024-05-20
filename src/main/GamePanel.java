@@ -1,6 +1,7 @@
 package main;
 
 import entity.*;
+import environment.LightingManager;
 import object.superObject;
 import projectile.Projectile;
 import projectile.ShockBall;
@@ -38,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
 
+    //Sương mù
+    public LightingManager lightingManager;
     //In game
     public Player player = new Player(this, keyH, mouseClick);
     TileManager tileManager = new TileManager(this);
@@ -75,6 +78,9 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
         this.addMouseListener(mouseClick);
         player.getPlayerImage();
+
+        // Tạo đối tượng LightingManager
+        lightingManager = new LightingManager(this, 100); // Bán kính vùng sáng là 100 pixel
     }
 
     public void setUpGame() {
@@ -113,6 +119,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (uiManager.inGame) {
             FPS = 60;
+            lightingManager.setLightCenterPosition();
             if (uiManager.play) {
                 hud.update();
                 if (gameState == playState) {
@@ -153,7 +160,12 @@ public class GamePanel extends JPanel implements Runnable {
         long drawStart = System.nanoTime();
         if (uiManager.inGame) {
 
+
             tileManager.drawMap(g2);
+
+            // Vẽ lọc tối/sáng
+            lightingManager.drawLighting(g2);
+
             if (player.pAlive) player.draw(g2);
             entities.add(player);
             for (int i = 0; i < slime.length; i++) {
@@ -190,6 +202,7 @@ public class GamePanel extends JPanel implements Runnable {
             ui.draw(g2);
             //hud.draw(g2);
             //toa do nhan vat
+
             g2.drawString("Col: " + (player.x + player.solidArea.x) / tileSize, 10, 300);
             g2.drawString("Row: " + (player.y + player.solidArea.y) / tileSize, 10, 310);
         } else if (!uiManager.gameO) {
