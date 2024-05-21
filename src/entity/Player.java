@@ -281,38 +281,7 @@ public class Player extends Entity {
             }
         }
 
-        if (sM && mana > 0) {
-            sMC++;
-            if (sMC >= 3) {
-                sMC = 0;
-                if (mana > 0) mana--;
-            }
-        }
-        if (rM) {
-            rMC++;
-            if (rMC <= 50) mana--;
-            else {
-                rM = false;
-                rMC = 0;
-
-            }
-        }
-        if (aM) {
-            aMC++;
-            if (aMC <= 10) mana -= 2;
-            else {
-                aMC = 0;
-                aM = false;
-            }
-        }
-
-        if (!sM && !aM && !rM && mana < 100) {
-            mC++;
-            if (mC >= 3) {
-                mC = 0;
-                mana++;
-            }
-        }
+       manaUpdate();
 
         //toạ độ chuột
         mouseX = mouseClick.getMouseX() - gp.screenWidth / 2;
@@ -485,48 +454,7 @@ public class Player extends Entity {
 
         //trang thai lon
         if (isRolling) {
-            rM = true;
-
-            rollingCounter++;
-            if (rollingCounter % 5 == 0 && rollingNum < 6) {
-                rollingNum++;
-            }
-            if (rollingCounter == 35) {
-                isRolling = false;
-                rollingCounter = 0;
-                rollingNum = 0;
-                keyH.rolling = false;
-            }
-            switch (direction) {
-                case "up":
-                    if (!collisionOn) y -= 9;
-                    break;
-                case "down":
-                    if (!collisionOn) y += 9;
-                    break;
-                case "left":
-                    if (!collisionOn) x -= 9;
-                    break;
-                case "right":
-                    if (!collisionOn) x += 9;
-                    break;
-                case "upr":
-                    if (!collisionR) x += 6;
-                    if (!collisionU) y -= 6;
-                    break;
-                case "upl":
-                    if (!collisionL) x -= 6;
-                    if (!collisionU) y -= 6;
-                    break;
-                case "downr":
-                    if (!collisionR) x += 6;
-                    if (!collisionD) y += 6;
-                    break;
-                case "downl":
-                    if (!collisionL) x -= 6;
-                    if (!collisionD) y += 6;
-                    break;
-            }
+            rollUpdate();
         }
 
         //hieu ung di chuyen
@@ -544,82 +472,11 @@ public class Player extends Entity {
         }
 
         //nhan vat se tien ve phia tan cong mot khoang
-        if (isAttack) {
-            switch (atkDirection) {
-                case "attackUp":
-                    if (!collisionOn) y--;
-                    break;
-                case "attackDown":
-                    if (!collisionOn) y++;
-                    break;
-                case "attackL":
-                    if (!collisionOn) x--;
-                    break;
-                case "attackR":
-                    if (!collisionOn) x++;
-                    break;
-            }
-
-            //reset trang thai suy nghi
-            isThink = false;
-            thinkCounter = 0;
-            isMoving = false;
-
-            //am thanh tan khong khi bat dau tan cong
-            if (attackCounter == 0) {
-                gp.playSoundEffect(1);
-            }
-            attackCounter++;
-            sliceCounter++;
-
-
-            if (sliceCounter % 5 == 0) {
-                sliceNum++;
-            }
-            if (attackCounter % 10 == 0) {
-                attackNum = (attackNum + 1) % attackR.length;
-            }
-            if (attackCounter == 1) canAttack = false;
-            if (attackCounter >= 20) {
-                isAttack = false;
-                keyH.attack = false;
-                attackCounter = 0;
-                sliceCounter = 0;
-                sliceNum = 0;
-                attackNum = 0;
-            }
-
-        }
+        if (isAttack) attackUpdate();
 
         //suy nghi
         if (!isAttack && !isMoving) {
-            thinkCounter++;
-            if (thinkCounter >= 300) {
-                isThink = true;
-                if (thinkCounter % 5 == 0 && thinkNum < 2) {
-                    thinkNum++;
-                }
-                if (thinkCounter >= 400) {
-                    if (thinkCounter % 10 == 0 && thinkNum < 4) {
-                        thinkNum++;
-                    }
-                }
-                if (thinkCounter >= 500) {
-                    if (thinkCounter % 10 == 0 && thinkNum < 6) {
-                        thinkNum++;
-                    }
-                }
-                if (thinkCounter >= 600) {
-                    if (thinkCounter % 10 == 0 && thinkNum < 7) {
-                        thinkNum++;
-                    }
-                }
-                if (thinkCounter >= 611) {
-                    isThink = false;
-                    thinkCounter = 0;
-                    thinkNum = 0;
-                }
-            }
+            thinkUpdate();
         }
 
         //bong nhan vat
@@ -632,6 +489,163 @@ public class Player extends Entity {
                 shadowX = screenX + 2;
                 shadowY = screenY + 50;
                 break;
+        }
+    }
+
+    public void attackUpdate(){
+        switch (atkDirection) {
+            case "attackUp":
+                if (!collisionOn) y--;
+                break;
+            case "attackDown":
+                if (!collisionOn) y++;
+                break;
+            case "attackL":
+                if (!collisionOn) x--;
+                break;
+            case "attackR":
+                if (!collisionOn) x++;
+                break;
+        }
+
+        //reset trang thai suy nghi
+        isThink = false;
+        thinkCounter = 0;
+        isMoving = false;
+
+        //am thanh tan khong khi bat dau tan cong
+        if (attackCounter == 0) {
+            gp.playSoundEffect(1);
+        }
+        attackCounter++;
+        sliceCounter++;
+
+
+        if (sliceCounter % 5 == 0) {
+            sliceNum++;
+        }
+        if (attackCounter % 10 == 0) {
+            attackNum = (attackNum + 1) % attackR.length;
+        }
+        if (attackCounter == 1) canAttack = false;
+        if (attackCounter >= 20) {
+            isAttack = false;
+            keyH.attack = false;
+            attackCounter = 0;
+            sliceCounter = 0;
+            sliceNum = 0;
+            attackNum = 0;
+        }
+
+    }
+
+    public void thinkUpdate(){
+        thinkCounter++;
+        if (thinkCounter >= 300) {
+            isThink = true;
+            if (thinkCounter % 5 == 0 && thinkNum < 2) {
+                thinkNum++;
+            }
+            if (thinkCounter >= 400) {
+                if (thinkCounter % 10 == 0 && thinkNum < 4) {
+                    thinkNum++;
+                }
+            }
+            if (thinkCounter >= 500) {
+                if (thinkCounter % 10 == 0 && thinkNum < 6) {
+                    thinkNum++;
+                }
+            }
+            if (thinkCounter >= 600) {
+                if (thinkCounter % 10 == 0 && thinkNum < 7) {
+                    thinkNum++;
+                }
+            }
+            if (thinkCounter >= 611) {
+                isThink = false;
+                thinkCounter = 0;
+                thinkNum = 0;
+            }
+        }
+    }
+
+    public void rollUpdate(){
+        rM = true;
+
+        rollingCounter++;
+        if (rollingCounter % 5 == 0 && rollingNum < 6) {
+            rollingNum++;
+        }
+        if (rollingCounter == 35) {
+            isRolling = false;
+            rollingCounter = 0;
+            rollingNum = 0;
+            keyH.rolling = false;
+        }
+        switch (direction) {
+            case "up":
+                if (!collisionOn) y -= 9;
+                break;
+            case "down":
+                if (!collisionOn) y += 9;
+                break;
+            case "left":
+                if (!collisionOn) x -= 9;
+                break;
+            case "right":
+                if (!collisionOn) x += 9;
+                break;
+            case "upr":
+                if (!collisionR) x += 6;
+                if (!collisionU) y -= 6;
+                break;
+            case "upl":
+                if (!collisionL) x -= 6;
+                if (!collisionU) y -= 6;
+                break;
+            case "downr":
+                if (!collisionR) x += 6;
+                if (!collisionD) y += 6;
+                break;
+            case "downl":
+                if (!collisionL) x -= 6;
+                if (!collisionD) y += 6;
+                break;
+        }
+    }
+
+    public void manaUpdate(){
+        if (sM && mana > 0) {
+            sMC++;
+            if (sMC >= 3) {
+                sMC = 0;
+                if (mana > 0) mana--;
+            }
+        }
+        if (rM) {
+            rMC++;
+            if (rMC <= 50) mana--;
+            else {
+                rM = false;
+                rMC = 0;
+
+            }
+        }
+        if (aM) {
+            aMC++;
+            if (aMC <= 10) mana -= 2;
+            else {
+                aMC = 0;
+                aM = false;
+            }
+        }
+
+        if (!sM && !aM && !rM && mana < 100) {
+            mC++;
+            if (mC >= 3) {
+                mC = 0;
+                mana++;
+            }
         }
     }
 

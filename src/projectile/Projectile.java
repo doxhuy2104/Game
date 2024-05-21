@@ -44,7 +44,6 @@ public class Projectile {
         if(hitPlayer||hitWall){
             exist=false;
         }
-        System.out.println(hitWall);
     }
 
     public void direc(){
