@@ -5,7 +5,8 @@ import entity.Electronic;
 import entity.NPC;
 import entity.Slime;
 import object.objectBoots;
-import object.objectChest;
+import object.objectChestClose;
+import object.objectChestOpen;
 import object.objectDoor;
 import object.objectKey;
 
@@ -16,33 +17,61 @@ public class AssetSetter {
     }
     public void setObject(){
 
-        gp.obj[0] = new objectKey();
-        gp.obj[0].worldX = 3 * gp.tileSize;
-        gp.obj[0].worldY = 14 * gp.tileSize;
+        //Open Chest
+        gp.obj[0] = new objectChestOpen();
 
-        gp.obj[1] = new objectKey();
-        gp.obj[1].worldX = 1 * gp.tileSize;
-        gp.obj[1].worldY = 37 * gp.tileSize;
+        gp.obj[1] = new objectChestOpen();
 
-        gp.obj[2] = new objectKey();
-        gp.obj[2].worldX = 34 * gp.tileSize;
-        gp.obj[2].worldY = 26 * gp.tileSize;
+        gp.obj[2] = new objectChestOpen();
 
-        gp.obj[3] = new objectKey();
-        gp.obj[3].worldX = 67 * gp.tileSize;
-        gp.obj[3].worldY = 24 * gp.tileSize;
+        gp.obj[3] = new objectChestOpen();
 
-        gp.obj[4] = new objectBoots();
-        gp.obj[4].worldX = 3 * gp.tileSize;
-        gp.obj[4].worldY = 20 * gp.tileSize;
+        //Close Chest
+        gp.obj[4] = new objectChestClose();
+        gp.obj[4].worldX = 58 * gp.tileSize;
+        gp.obj[4].worldY = 48 * gp.tileSize;
 
-        gp.obj[5] = new objectChest();
-        gp.obj[5].worldX = 59 * gp.tileSize;
-        gp.obj[5].worldY = 49 * gp.tileSize;
+        gp.obj[5] = new objectChestClose();
+        gp.obj[5].worldX = 58 * gp.tileSize;
+        gp.obj[5].worldY = 51 * gp.tileSize;
 
-        gp.obj[6] = new objectDoor();
-        gp.obj[6].worldX = 34 * gp.tileSize;
-        gp.obj[6].worldY = 20 * gp.tileSize;
+        gp.obj[6] = new objectChestClose();
+        gp.obj[6].worldX = 61* gp.tileSize;
+        gp.obj[6].worldY = 48 * gp.tileSize;
+
+        gp.obj[7] = new objectChestClose();
+        gp.obj[7].worldX = 61 * gp.tileSize;
+        gp.obj[7].worldY = 51 * gp.tileSize;
+
+        gp.obj[8] = new objectKey();
+        gp.obj[8].worldX = 54 * gp.tileSize;
+        gp.obj[8].worldY = 44 * gp.tileSize;
+
+        gp.obj[9] = new objectKey();
+        gp.obj[9].worldX = 65 * gp.tileSize;
+        gp.obj[9].worldY = 44 * gp.tileSize;
+
+        gp.obj[10] = new objectKey();
+        gp.obj[10].worldX = 54 * gp.tileSize;
+        gp.obj[10].worldY = 55 * gp.tileSize;
+
+        gp.obj[11] = new objectKey();
+        gp.obj[11].worldX = 65 * gp.tileSize;
+        gp.obj[11].worldY = 55 * gp.tileSize;
+
+
+
+//        gp.obj[4] = new objectBoots();
+//        gp.obj[4].worldX = 3 * gp.tileSize;
+//        gp.obj[4].worldY = 20 * gp.tileSize;
+
+//        gp.obj[] = new objectChestClose();
+//        gp.obj[].worldX = 59 * gp.tileSize;
+//        gp.obj[].worldY = 49 * gp.tileSize;
+
+//        gp.obj[5] = new objectDoor();
+//        gp.obj[5].worldX = 34 * gp.tileSize;
+//        gp.obj[5].worldY = 20 * gp.tileSize;
 
     }
     public void setEnemies(){

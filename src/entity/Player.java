@@ -232,8 +232,11 @@ public class Player extends Entity {
                         gp.obj[i]=null;
                         hasKey--;
                     }
-                case "chest":
-                    if (hasKey == 4) gp.obj[i] = null;
+                case "chest-close":
+                    if (i+8 < 20) {
+                        boolean b = (gp.obj[i + 8] == null);
+                        if (b) gp.obj[i+4] = gp.obj[i];
+                    }
                     break;
                 case "boots":
                     //currentSpeed = speed;
@@ -267,10 +270,14 @@ public class Player extends Entity {
             if (mana == 0) canSprint = false;
             speed = 7;
             cspeed = 5;
+
         } else {
             sM = false;
-            speed = 5;
-            cspeed = 3;
+//            speed = 5;
+//            cspeed = 3;
+//          dev mode
+            speed = 15;
+            cspeed = 15;
         }
         if (boost) {
             speed = 8;
