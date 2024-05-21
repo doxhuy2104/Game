@@ -29,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
+
     //System
     public KeyHandler keyH = new KeyHandler(this);
     public MouseClickListener mouseClick = new MouseClickListener(this, this);
@@ -119,7 +120,6 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (uiManager.inGame) {
             FPS = 60;
-            lightingManager.setLightCenterPosition();
             if (uiManager.play) {
                 hud.update();
                 if (gameState == playState) {
@@ -162,9 +162,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 
             tileManager.drawMap(g2);
-
+            lightingManager.paintComponent(g);
             // Vẽ lọc tối/sáng
-            lightingManager.drawLighting(g2);
+
 
             if (player.pAlive) player.draw(g2);
             entities.add(player);

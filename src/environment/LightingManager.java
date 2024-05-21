@@ -2,53 +2,47 @@ package environment;
 
 import main.GamePanel;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class LightingManager {
+public class LightingManager extends JPanel {
     private GamePanel gp;
-    private BufferedImage darknessFilter;
+    public BufferedImage darknessFilter;
     private int lightRadius;
     private int centerX, centerY;
 
     public LightingManager(GamePanel gp, int lightRadius) {
         this.gp = gp;
         this.lightRadius = lightRadius;
-        createDarknessFilter();
     }
 
-    private void createDarknessFilter() {
-        int width = gp.screenWidth;
-        int height = gp.screenHeight;
-        darknessFilter = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-
-        // Đặt toàn bộ màn hình thành màu đen
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                darknessFilter.setRGB(x, y, 0xFF000000); // Màu đen (0xFF000000)
-            }
-        }
-
-        // Tạo vùng sáng xung quanh trung tâm
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                int distance = (int) Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-                if (distance < lightRadius) {
-                    darknessFilter.setRGB(x, y, 0x00000000); // Trong suốt (vùng sáng)
-                }
-            }
-        }
-    }
-
-    public void setLightCenterPosition() {
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         centerX = gp.screenWidth / 2;
         centerY = gp.screenHeight / 2;
-        createDarknessFilter();
-    }
+        int height = gp.screenHeight;
+        int width = gp.screenWidth;
+        darknessFilter = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 
-    public void drawLighting(Graphics2D g2) {
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.9f)); // Tăng độ trong suốt lên 0.9f
-        g2.drawImage(darknessFilter, 0, 0, null);
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        // Tạo đối tượng Graphics2D từ BufferedImage
+        Graphics2D g2d = darknessFilter.createGraphics();
+
+        // Đặt độ trong suốt cho màu đen (giá trị từ 0.0 đến 1.0, càng gần 0.0 càng mờ)
+        float opacity = 0.9f;
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+
+        // Vẽ màu đen lên toàn màn hình
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(0, 0, width, height);
+
+        // Vẽ vòng tròn trong suốt ở giữa màn hình
+        int circleRadius = Math.min(width, height) / 4; // Đặt bán kính hình tròn
+        g2d.setComposite(AlphaComposite.Clear); // Đặt màu trong suốt
+        g2d.fillOval(centerX - circleRadius, centerY - circleRadius, 2 * circleRadius, 2 * circleRadius);
+
+        // Kết thúc vẽ và hiển thị hình ảnh lên màn hình
+        g2d.dispose();
+        g.drawImage(darknessFilter, 0, 0, null);
     }
 }
