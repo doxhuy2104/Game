@@ -392,22 +392,42 @@ public class Player extends Entity {
             aM = true;
 
             isAttack = true;
-            if (abs(mouseX) < abs(mouseY) && mouseY < 0) {
+            if (keyH.upPressed) {
                 atkDirection = "attackUp";
                 collisionCheck = "up";
                 uD = "U";
             }
-            if (abs(mouseX) < abs(mouseY) && mouseY > 0) {
+            else if (keyH.downPressed) {
                 atkDirection = "attackDown";
                 collisionCheck = "down";
                 uD = "D";
             }
-            if (abs(mouseX) > abs(mouseY) && mouseX < 0) {
+            else if (keyH.leftPressed) {
                 atkDirection = "attackL";
                 collisionCheck = "left";
                 lR = "L";
             }
-            if (abs(mouseX) > abs(mouseY) && mouseX > 0) {
+            else if (keyH.rightPressed) {
+                atkDirection = "attackR";
+                collisionCheck = "right";
+                lR = "R";
+            }
+            else if (abs(mouseX) < abs(mouseY) && mouseY < 0) {
+                atkDirection = "attackUp";
+                collisionCheck = "up";
+                uD = "U";
+            }
+            else if (abs(mouseX) < abs(mouseY) && mouseY > 0) {
+                atkDirection = "attackDown";
+                collisionCheck = "down";
+                uD = "D";
+            }
+            else if (abs(mouseX) > abs(mouseY) && mouseX < 0) {
+                atkDirection = "attackL";
+                collisionCheck = "left";
+                lR = "L";
+            }
+            else if (abs(mouseX) > abs(mouseY) && mouseX > 0) {
                 atkDirection = "attackR";
                 collisionCheck = "right";
                 lR = "R";
