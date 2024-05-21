@@ -7,7 +7,7 @@ public class MapGenerator {
     public static void main(String[] args) {
         int rows = 100; // Số hàng
         int cols =100; // Số cột
-        String fileName = "map.txt"; // Tên file
+        String fileName = "mapmap.txt"; // Tên file
 
         try {
             FileWriter writer = new FileWriter(fileName);
