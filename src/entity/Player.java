@@ -3,6 +3,8 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 import main.MouseClickListener;
+import object.objectChestClose;
+import object.objectChestOpen;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -53,6 +55,7 @@ public class Player extends Entity {
         //toạ độ ban đầu
         x = 1000;
         y = 650;
+
 
         uD = "D";
         lR = "R";
@@ -233,9 +236,28 @@ public class Player extends Entity {
                         hasKey--;
                     }
                 case "chest-close":
-                    if (i+8 < 20) {
-                        boolean b = (gp.obj[i + 8] == null);
-                        if (b) gp.obj[i+4] = gp.obj[i];
+                    if(hasKey > 0){
+                        hasKey--;
+                        gp.obj[i] = null;
+                        if(i == 4){
+                            gp.obj[0] = new objectChestOpen();
+                            gp.obj[0].worldX = 58 * gp.tileSize;
+                            gp.obj[0].worldY = 48 * gp.tileSize;
+                        } else if (i == 5) {
+                            gp.obj[1] = new objectChestOpen();
+                            gp.obj[1].worldX = 58 * gp.tileSize;
+                            gp.obj[1].worldY = 51 * gp.tileSize;
+                        } else if (i == 6) {
+                            gp.obj[2] = new objectChestOpen();
+                            gp.obj[2].worldX = 61* gp.tileSize;
+                            gp.obj[2].worldY = 48 * gp.tileSize;
+                        } else {
+                            gp.obj[3] = new objectChestOpen();
+                            gp.obj[3].worldX = 61 * gp.tileSize;
+                            gp.obj[3].worldY = 51 * gp.tileSize;
+
+                        }
+
                     }
                     break;
                 case "boots":

@@ -17,15 +17,6 @@ public class AssetSetter {
     }
     public void setObject(){
 
-        //Open Chest
-        gp.obj[0] = new objectChestOpen();
-
-        gp.obj[1] = new objectChestOpen();
-
-        gp.obj[2] = new objectChestOpen();
-
-        gp.obj[3] = new objectChestOpen();
-
         //Close Chest
         gp.obj[4] = new objectChestClose();
         gp.obj[4].worldX = 58 * gp.tileSize;
