@@ -11,7 +11,7 @@ public class Entity {
     //player
     public int drawX, drawY;
     public int shadowX, shadowY;//bóng
-    public String direction;//hươớng nhân vật
+    public String direction;//hướng nhân vật
     public String atkDirection;//hướng tấn công
     public int x, y;//toạ độ nhân vật
     public boolean pAlive = true;//trạng thái sống
