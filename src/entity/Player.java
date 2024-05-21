@@ -239,6 +239,7 @@ public class Player extends Entity {
                     if(hasKey > 0){
                         hasKey--;
                         gp.obj[i] = null;
+                        gp.playSoundEffect(5);
                         if(i == 4){
                             gp.obj[0] = new objectChestOpen();
                             gp.obj[0].worldX = 58 * gp.tileSize;
