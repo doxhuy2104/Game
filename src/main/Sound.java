@@ -19,6 +19,7 @@ public class Sound {
         soundURL[4] = getClass().getResource("/sound/enemyDie.wav");
         soundURL[5] = getClass().getResource("/sound/coin.wav");
         soundURL[6] = getClass().getResource("/sound/speed.wav");
+        soundURL[7] = getClass().getResource("/sound/OnichanBaka.wav");
 
     }
     private void loadSound(URL url) {

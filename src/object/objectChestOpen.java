@@ -6,7 +6,7 @@ import java.io.IOException;
 public class objectChestOpen extends superObject{
 
     public objectChestOpen() {
-        name = "chest-close";
+        name = "chest-open";
         try {
             imageC = ImageIO.read(getClass().getResourceAsStream("/object/chest_open.png"));
         } catch (IOException e) {

@@ -3,6 +3,7 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 import main.MouseClickListener;
+import main.Sound;
 import object.objectChestClose;
 import object.objectChestOpen;
 
@@ -21,6 +22,7 @@ public class Player extends Entity {
     int sMC = 0, aMC = 0, rMC = 0, mC = 0;
     public boolean canSprint;
     int hasKey = 0;
+    int appearBoss = 0;
     public boolean boost;
     public boolean isHurt;
 
@@ -52,10 +54,6 @@ public class Player extends Entity {
     }
 
     public void setDefaultValues() {
-        //toạ độ ban đầu
-        x = 1000;
-        y = 650;
-
 
         uD = "D";
         lR = "R";
@@ -244,18 +242,25 @@ public class Player extends Entity {
                             gp.obj[0] = new objectChestOpen();
                             gp.obj[0].worldX = 58 * gp.tileSize;
                             gp.obj[0].worldY = 48 * gp.tileSize;
-                        } else if (i == 5) {
+                            appearBoss++;
+                        }
+                        if (i == 5) {
                             gp.obj[1] = new objectChestOpen();
                             gp.obj[1].worldX = 58 * gp.tileSize;
                             gp.obj[1].worldY = 51 * gp.tileSize;
-                        } else if (i == 6) {
+                            appearBoss++;
+                        }
+                        if (i == 6) {
                             gp.obj[2] = new objectChestOpen();
                             gp.obj[2].worldX = 61* gp.tileSize;
                             gp.obj[2].worldY = 48 * gp.tileSize;
-                        } else {
+                            appearBoss++;
+                        }
+                        if (i == 7){
                             gp.obj[3] = new objectChestOpen();
                             gp.obj[3].worldX = 61 * gp.tileSize;
                             gp.obj[3].worldY = 51 * gp.tileSize;
+                            appearBoss++;
 
                         }
 
@@ -269,6 +274,32 @@ public class Player extends Entity {
                     startTime = System.currentTimeMillis();
 
                     break;
+            }
+            if (appearBoss == 4){
+                //Quái phòng Boss
+                gp.electronic[0] = new Electronic(gp);
+                gp.electronic[0].sx = 54 * gp.tileSize;
+                gp.electronic[0].sy = 45 * gp.tileSize;
+
+                gp.electronic[1] = new Electronic(gp);
+                gp.electronic[1].sx = 65 * gp.tileSize;
+                gp.electronic[1].sy = 45 * gp.tileSize;
+
+                gp.electronic[2] = new Electronic(gp);
+                gp.electronic[2].sx = 54 * gp.tileSize;
+                gp.electronic[2].sy = 56 * gp.tileSize;
+
+                gp.electronic[3] = new Electronic(gp);
+                gp.electronic[3].sx = 65 * gp.tileSize;
+                gp.electronic[3].sy = 56 * gp.tileSize;
+
+                gp.obj[0] = null;
+                gp.obj[1] = null;
+                gp.obj[2] = null;
+                gp.obj[3] = null;
+                gp.playSoundEffect(7);
+
+                appearBoss = 0;
             }
         }
         return boost;
