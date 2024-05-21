@@ -41,10 +41,10 @@ public class Player extends Entity {
         solidArea = new Rectangle(8, 32, 48, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackAreaU = new Rectangle(screenX - 7 * gp.scale, screenY - 10 * gp.scale, 136, 76);
-        attackAreaL = new Rectangle(screenX - 15 * gp.scale, screenY - 9 * gp.scale, 76, 136);
-        attackAreaD = new Rectangle(screenX - 9 * gp.scale, screenY + 15 * gp.scale, 136, 76);
-        attackAreaR = new Rectangle(screenX + 13 * gp.scale, screenY - 8 * gp.scale, 76, 136);
+        attackAreaU = new Rectangle(screenX - 17*gp.scale, screenY - 22 * gp.scale, 136, 90);
+        attackAreaL = new Rectangle(screenX - 22 * gp.scale, screenY - 17 * gp.scale, 90, 136);
+        attackAreaD = new Rectangle(screenX - 17 * gp.scale, screenY , 136, 90);
+        attackAreaR = new Rectangle(screenX , screenY - 17 * gp.scale, 90, 136);
 
         setDefaultValues();
     }
