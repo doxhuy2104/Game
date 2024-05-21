@@ -327,11 +327,11 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-//            speed = 5;
-//            cspeed = 3;
+            speed = 5;
+            cspeed = 3;
 //          dev mode
-            speed = 15;
-            cspeed = 15;
+//            speed = 15;
+//            cspeed = 15;
         }
         if (boost) {
             speed = 8;
@@ -550,6 +550,12 @@ public class Player extends Entity {
             } else if (spriteCounter % 8 == 0) {
                 spriteNum = (spriteNum + 1) % (direction.equals("up") ? up.length : direction.equals("left") ? left.length : right.length);
             }
+            if ((spriteCounter % 50 == 1)) {
+                gp.playSoundEffect(8);
+            }
+        }
+        else {
+            spriteCounter = 0;
         }
 
         //nhan vat se tien ve phia tan cong mot khoang
