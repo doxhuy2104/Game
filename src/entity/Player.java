@@ -550,6 +550,7 @@ public class Player extends Entity {
             } else if (spriteCounter % 8 == 0) {
                 spriteNum = (spriteNum + 1) % (direction.equals("up") ? up.length : direction.equals("left") ? left.length : right.length);
             }
+            // Sound Move
             if ((spriteCounter % 50 == 1)) {
                 gp.playSoundEffect(8);
             }
