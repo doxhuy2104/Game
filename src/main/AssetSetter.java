@@ -70,9 +70,33 @@ public class AssetSetter {
         gp.slime[0].sx = 65 * gp.tileSize;
         gp.slime[0].sy = 20 * gp.tileSize;
 
+        gp.slime[1] = new Slime(gp);
+        gp.slime[1].sx = 14* gp.tileSize;
+        gp.slime[1].sy = 28 * gp.tileSize;
+
+        gp.slime[2] = new Slime(gp);
+        gp.slime[2].sx = 32* gp.tileSize;
+        gp.slime[2].sy = 06 * gp.tileSize;
+
+        gp.slime[3] = new Slime(gp);
+        gp.slime[3].sx = 57* gp.tileSize;
+        gp.slime[3].sy = 46 * gp.tileSize;
+
         gp.caSau[0] = new CaSau(gp);
         gp.caSau[0].sx = 54 * gp.tileSize;
         gp.caSau[0].sy = 22 * gp.tileSize;
+
+        gp.caSau[1] = new CaSau(gp);
+        gp.caSau[1].sx = 20 * gp.tileSize;
+        gp.caSau[1].sy = 37 * gp.tileSize;
+
+        gp.caSau[2] = new CaSau(gp);
+        gp.caSau[2].sx = 62 * gp.tileSize;
+        gp.caSau[2].sy = 46 * gp.tileSize;
+
+        gp.caSau[3] = new CaSau(gp);
+        gp.caSau[3].sx = 2 * gp.tileSize;
+        gp.caSau[3].sy = 34 * gp.tileSize;
 
 //        gp.electronic[0] = new Electronic(gp);
 //        gp.electronic[0].sx = 4 * gp.tileSize;

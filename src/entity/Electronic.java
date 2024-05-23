@@ -12,12 +12,15 @@ public class Electronic extends Entity {
     public ShockBall shockBall;
     BufferedImage[] elecMoveR, elecAttackR, elecMoveL, elecAttackL;
     BufferedImage Move, Attack;
-    boolean isAttack =false;
+    boolean isAttack =false,breaking = false;
     int mCounter,mNum,aCounter,aNum,coolDown=0;
+    int hurtCounter = 0,hurtNum = 0,brNum = 0,brCounter = 0;
     public Electronic(GamePanel gp) {
         super(gp);
         this.gp = gp;
+
         getElecImage();
+
         hp=5;
         alive=true;
         eSpeed=0.5;
@@ -72,27 +75,79 @@ public class Electronic extends Entity {
         if (distance < 300){
             saw = true;
         }
-        if(saw) {
-            super.saw();
-        }
         super.updateE();
+
+        if (hurt) {
+            super.Hurt();
+            if (dlNum == 30) {
+                move = true;
+                hurt = false;
+                dlNum = 0;
+            }
+            hurtCounter++;
+            if (hurtCounter % 5 == 0 && hurtNum < 4) {
+                hurtNum++;
+            }
+            if (hurtCounter == 30) {
+                hurtNum = 0;
+                hurtCounter = 0;
+                hurt = false;
+                move = true;
+            }
+        }
+
+        if (saw) super.saw();
+
         if (move && alive && !hurt&&!isAttack) {
-            saw = false;
             super.move();
+            eCounter++;
+            if (eCounter % 8 == 0 && eNum < 5) {
+                eNum++;
+            }
+            if (eCounter == 40) {
+                eNum = 0;
+            }
+            if (eCounter == 80) {
+                eNum = 0;
+                eCounter = 0;
+                dx = (centerScreenX - centerX) / distance;
+                dy = (centerScreenY - centerY) / distance;
+            }
         }
-        mCounter++;
-        if (mCounter >= 15) {
-            mCounter = 0;
-            mNum++;
-            if (mNum >= 3) mNum = 0;
+        if(!isAttack) {
+            mCounter++;
+            if (mCounter >= 15) {
+                mCounter = 0;
+                mNum++;
+                if (mNum >= 3) mNum = 0;
+            }
+            coolDown++;
+            if (coolDown >= 30) {
+                coolDown = 0;
+                isAttack = true;
+            }
         }
-        coolDown++;
-        if(coolDown>=30){
-            coolDown=0;
-            isAttack =true;
+        super.attacked();
+        if (hp == 0 && alive) {
+            breaking = true;
+        }
+        if (breaking) {
+            move = false;
+            hurt = false;
+            brCounter++;
+            if (brCounter % 5 == 0 && brNum < 6) {
+                brNum++;
+            }
+            if (brCounter == 35) {
+                brNum = 0;
+                brCounter = 0;
+                breaking = false;
+                alive = false;
+                dlNum = 0;
+            }
         }
         if(isAttack) attack();
-        if(shockBall!=null)shockBall.update();
+        if(shockBall!=null) shockBall.update();
     }
 
     public void attack(){
@@ -115,27 +170,30 @@ public class Electronic extends Entity {
         }
     }
 
-    public void draw(Graphics2D g2){
-        Move = null;
-        Attack = null;
-        switch (eD) {
-            case "L":
-                Attack = elecAttackL[aNum];
-                Move = elecMoveL[mNum];
-                break;
-            case "R":
-                Attack = elecAttackR[aNum];
-                Move = elecMoveR[mNum];
-                break;
-        }
-             if(!isAttack)g2.drawImage(Move, drawX, drawY, Move.getWidth() * gp.scale, Move.getHeight() * gp.scale, null);
+    public void draw(Graphics2D g2) {
+        if (alive) {
+            Move = null;
+            Attack = null;
+            switch (eD) {
+                case "L":
+                    Attack = elecAttackL[aNum];
+                    Move = elecMoveL[mNum];
+                    break;
+                case "R":
+                    Attack = elecAttackR[aNum];
+                    Move = elecMoveR[mNum];
+                    break;
+            }
+            if (!isAttack)
+                g2.drawImage(Move, drawX, drawY, Move.getWidth() * gp.scale, Move.getHeight() * gp.scale, null);
             if (isAttack) {
                 g2.drawImage(Attack, drawX, drawY, Attack.getWidth() * gp.scale, Attack.getHeight() * gp.scale, null);
             }
-        if(shockBall!=null) {
-            if(shockBall.exist)shockBall.draw(g2,shockBall.pjNum);
-            else shockBall.draw(g2,shockBall.hitNum);
-            //
+            if (shockBall != null) {
+                if (shockBall.exist) shockBall.draw(g2, shockBall.pjNum);
+                else shockBall.draw(g2, shockBall.hitNum);
+                //
+            }
         }
     }
 }

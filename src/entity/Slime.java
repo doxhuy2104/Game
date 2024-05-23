@@ -26,7 +26,7 @@ public class Slime extends Entity {
 
         saw = false;
         hp = 5;
-        eSpeed = 2;
+        eSpeed = 1;
 
         eNum = 2;
         mD = "L";
@@ -139,7 +139,7 @@ public class Slime extends Entity {
             super.Hurt();
             jump = false;
             eCounter = 0;
-            eSpeed = 2;
+            eSpeed = 1;
             eNum = 0;
             hurtCounter++;
             if (hurtCounter % 5 == 0 && hurtNum < 4) {
@@ -211,13 +211,13 @@ public class Slime extends Entity {
         if (eCounter % 10 == 0 && eNum < 4) {
             eNum++;
             if (eNum == 0) eSpeed = 0;
-            else eSpeed = 5;
+            else eSpeed = 4;
         }
         if (eCounter == 40) {
             eNum = 0;
             eCounter = 0;
             jump = false;
-            eSpeed = 2;
+            eSpeed = 1;
             move = true;
         }
         xMove += dx * eSpeed;

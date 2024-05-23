@@ -327,8 +327,8 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 5;
-            cspeed = 3;
+            speed = 8;
+            cspeed = 6;
 //          dev mode
 //            speed = 15;
 //            cspeed = 15;
