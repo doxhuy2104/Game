@@ -63,7 +63,7 @@ public class Entity {
     public boolean invisible, canAttack;
     //player
 
-    //enermies
+    //ênmies
     //public final int screenX, screenY;
     private float transparency = 1.0f;
     private final float TRANSPARENCY_STEP = 0.5f;
@@ -239,21 +239,8 @@ public class Entity {
     }
 
     public void saw() {
-        if (!moved && sawCounter < 60) {
-            sawCounter++;
-            chamThan = true;
-            if (sawW < 20) {
-                sawW += 2;
-                sawH += 4;
-                cX++;
-                cY += 2;
-            }
-        } else if (sawCounter == 60) {
-            sawCounter = 0;
             move = true;
             moved = true;
-            chamThan = false;
-        }
     }
 
     public void move() {

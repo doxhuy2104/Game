@@ -21,7 +21,7 @@ public class Sound {
         soundURL[6] = getClass().getResource("/sound/speed.wav");
         soundURL[7] = getClass().getResource("/sound/OnichanBaka.wav");
         soundURL[8] = getClass().getResource("/sound/walk.wav");
-
+        soundURL[9] = getClass().getResource("/sound/bigSlash.wav");
     }
     private void loadSound(URL url) {
         try {

@@ -151,6 +151,7 @@ public class GamePanel extends JPanel implements Runnable {
             FPS = 240;
             uiManager.updateUI();
         }
+
     }
 
     public void paintComponent(Graphics g) {

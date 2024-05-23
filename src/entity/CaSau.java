@@ -75,7 +75,6 @@ public class CaSau extends Entity {
             e.printStackTrace();
         }
     }
-
     public void updateE() {
         if (!attack) super.direction();
 

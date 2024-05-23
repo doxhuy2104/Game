@@ -6,11 +6,14 @@ import main.MouseClickListener;
 import main.Sound;
 import object.objectChestClose;
 import object.objectChestOpen;
+import projectile.FlameAttack;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Entity {
     KeyHandler keyH;
@@ -25,7 +28,12 @@ public class Player extends Entity {
     int appearBoss = 0;
     public boolean boost;
     public boolean isHurt;
-
+    public List<FlameAttack> flames = new ArrayList<>();
+    public int spriteWidth = 48;
+    public int spriteHeight = 48;
+    public boolean isShootingFlame = false;
+    public boolean isUsingFlame = false;
+    public boolean usingFlame = false;
     public static int abs(int x) {
         return x >= 0 ? x : -x;
     }
@@ -347,61 +355,11 @@ public class Player extends Entity {
         //toạ độ chuột
         mouseX = mouseClick.getMouseX() - gp.screenWidth / 2;
         mouseY = mouseClick.getMouseY() - gp.getHeight() / 2;
-
+            //isShootingFlame = true;
+            //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
         if (!isAttack) {
-            if (keyH.upPressed) {
-                uD = "U";
-                isMoving = true;
-                direction = "up";
-                collisionCheck = "up";
-                if (keyH.rightPressed) {
-                    lR = "R";
-                    collisionCheck = direction = "upr";
-                    if (keyH.rolling && mana >= 50) isRolling = true;
-                } else if (keyH.leftPressed) {
-                    lR = "L";
-                    collisionCheck = direction = "upl";
-                    if (keyH.rolling && mana >= 50) isRolling = true;
-                } else if (keyH.rolling && mana >= 50) {
-                    isRolling = true;
-                    collisionCheck = "up";
-                }
-            } else if (keyH.downPressed) {
-                uD = "D";
-                isMoving = true;
-                collisionCheck = direction = "down";
-                if (keyH.rightPressed) {
-                    lR = "R";
-                    collisionCheck = direction = "downr";
-                    if (keyH.rolling && mana >= 50) isRolling = true;
-                } else if (keyH.leftPressed) {
-                    lR = "L";
-                    collisionCheck = direction = "downl";
-                    if (keyH.rolling && mana >= 50) isRolling = true;
-                } else if (keyH.rolling && mana >= 50) {
-                    isRolling = true;
-                }
-            } else if (keyH.rightPressed) {
-                isMoving = true;
-                uD = "D";
-                lR = "R";
-                collisionCheck = direction = "right";
-                if (keyH.rolling && mana >= 50) {
-                    isRolling = true;
-                }
-            } else if (keyH.leftPressed) {
-                isMoving = true;
-                uD = "D";
-                lR = "L";
-                collisionCheck = direction = "left";
-                if (keyH.rolling && mana >= 50) {
-                    isRolling = true;
-                }
-            } else {
-                isMoving = false;
-            }
+           setKeyH();
         }
-
         pToECU = false;
         pToECD = false;
         pToECL = false;
@@ -453,6 +411,7 @@ public class Player extends Entity {
             aM = true;
 
             isAttack = true;
+
             if (keyH.upPressed) {
                 atkDirection = "attackUp";
                 collisionCheck = "up";
@@ -492,6 +451,17 @@ public class Player extends Entity {
                 atkDirection = "attackR";
                 collisionCheck = "right";
                 lR = "R";
+            }
+            System.out.println("left click");
+            double dx = mouseX;
+            double dy = mouseY;
+            double distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance > 0) {
+                dx /= distance;
+                dy /= distance;
+            }
+            if(usingFlame){
+            shootFlame(dx, dy);
             }
         }
         //va chạm vối đối tượng
@@ -537,7 +507,14 @@ public class Player extends Entity {
         if (isRolling) {
             rollUpdate();
         }
-
+        for (int i = 0; i < flames.size(); i++) {
+            FlameAttack flame = flames.get(i);
+            flame.update();
+            if (!flame.isActive()) {
+                flames.remove(i);
+                i--;
+            }
+        }
         //hieu ung di chuyen
         if (isMoving) {
             isThink = false;
@@ -603,7 +580,8 @@ public class Player extends Entity {
 
         //am thanh tan khong khi bat dau tan cong
         if (attackCounter == 0) {
-            gp.playSoundEffect(1);
+            if(usingFlame) gp.playSoundEffect(9);
+            else gp.playSoundEffect(1);
         }
         attackCounter++;
         sliceCounter++;
@@ -626,7 +604,6 @@ public class Player extends Entity {
         }
 
     }
-
     public void thinkUpdate(){
         thinkCounter++;
         if (thinkCounter >= 300) {
@@ -736,7 +713,66 @@ public class Player extends Entity {
             }
         }
     }
-
+    public void shootFlame(double dx, double dy) {
+        if (mana >= 10) {
+            FlameAttack flame = new FlameAttack(gp, x, y, dx, dy);
+            flames.add(flame);
+            mana -= 20;
+        }
+    }
+    public void setKeyH(){
+        if (keyH.upPressed) {
+            uD = "U";
+            isMoving = true;
+            direction = "up";
+            collisionCheck = "up";
+            if (keyH.rightPressed) {
+                lR = "R";
+                collisionCheck = direction = "upr";
+                if (keyH.rolling && mana >= 50) isRolling = true;
+            } else if (keyH.leftPressed) {
+                lR = "L";
+                collisionCheck = direction = "upl";
+                if (keyH.rolling && mana >= 50) isRolling = true;
+            } else if (keyH.rolling && mana >= 50) {
+                isRolling = true;
+                collisionCheck = "up";
+            }
+        } else if (keyH.downPressed) {
+            uD = "D";
+            isMoving = true;
+            collisionCheck = direction = "down";
+            if (keyH.rightPressed) {
+                lR = "R";
+                collisionCheck = direction = "downr";
+                if (keyH.rolling && mana >= 50) isRolling = true;
+            } else if (keyH.leftPressed) {
+                lR = "L";
+                collisionCheck = direction = "downl";
+                if (keyH.rolling && mana >= 50) isRolling = true;
+            } else if (keyH.rolling && mana >= 50) {
+                isRolling = true;
+            }
+        } else if (keyH.rightPressed) {
+            isMoving = true;
+            uD = "D";
+            lR = "R";
+            collisionCheck = direction = "right";
+            if (keyH.rolling && mana >= 50) {
+                isRolling = true;
+            }
+        } else if (keyH.leftPressed) {
+            isMoving = true;
+            uD = "D";
+            lR = "L";
+            collisionCheck = direction = "left";
+            if (keyH.rolling && mana >= 50) {
+                isRolling = true;
+            }
+        } else {
+            isMoving = false;
+        }
+    }
     public void draw(Graphics2D g2) {
         BufferedImage image = null;
         BufferedImage sliceImage;
@@ -765,6 +801,11 @@ public class Player extends Entity {
             }
 
         }
+
+            for (int i = 0; i < flames.size(); i++) {
+                FlameAttack flame = flames.get(i);
+                flame.draw(g2, flame.flameNum); // Sử dụng một trong bốn sprite của flame
+            }
         if (invisible && invi) g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         if (isMoving) {
             switch (direction) {
@@ -897,5 +938,6 @@ public class Player extends Entity {
         gp.keyH.attack = false;
         invisibleTime = 0;
         mana = 100;
+        //isFlames = false;
     }
 }
