@@ -725,7 +725,10 @@ public class CollisionChecker {
 
                 if (flameLeft < enemyRight && flameRight > enemyLeft && flameTop < enemyBottom && flameBottom > enemyTop) {
                     flame.isHitEnemy = true;
-                    enemy.hp -= 1;
+                    if(flame.canHit){
+                        enemy.hp -= 1;
+                        flame.canHit=false;
+                    }
                     if(enemy.hp <= 0){
                         enemy.alive = false;
                     }

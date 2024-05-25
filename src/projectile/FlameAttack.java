@@ -14,7 +14,7 @@ public class FlameAttack extends Projectile{
     public int flameCounter = 0, flameSpeed = 4, flameNum = 0, spaceCounter = 0;
     public boolean active;
     public double angle;
-    public boolean isHitEnemy = false;
+    public boolean isHitEnemy = false,canHit;
 
     public FlameAttack(GamePanel gp,int x,int y, double dx, double dy) {
         super(gp);
@@ -26,6 +26,7 @@ public class FlameAttack extends Projectile{
         this.active = true;
         this.angle = Math.atan2(dy, dx);
         GetImage();
+        canHit=true;
     }
 
     public void GetImage() {
