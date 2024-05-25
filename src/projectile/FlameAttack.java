@@ -9,10 +9,12 @@ public class FlameAttack extends Projectile{
     GamePanel gp;
 
     BufferedImage flameSheet;
-    BufferedImage[] flameSprite,hitI;
+    public BufferedImage[] flameSprite;
+    BufferedImage[] hitI;
     public int flameCounter = 0, flameSpeed = 4, flameNum = 0, spaceCounter = 0;
     public boolean active;
     public double angle;
+    public boolean isHitEnemy = false;
 
     public FlameAttack(GamePanel gp,int x,int y, double dx, double dy) {
         super(gp);

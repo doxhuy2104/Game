@@ -2,12 +2,14 @@ package main;
 
 import entity.Entity;
 import entity.Player;
+import projectile.FlameAttack;
 import projectile.Projectile;
 
 public class CollisionChecker {
     GamePanel gp;
 
     public CollisionChecker(GamePanel gp) {
+
         this.gp = gp;
     }
 
@@ -695,6 +697,42 @@ public class CollisionChecker {
                 }
                 break;
         }
-    }}
+    }
+    public void checkFlameEnemyCollision(FlameAttack flame) {
+        for (Entity enemy : gp.slime) {
+            Dead(enemy, flame);
+        }
+        for (Entity enemy : gp.caSau) {
+            Dead(enemy, flame);
+        }
+        for (Entity enemy : gp.electronic) {
+            Dead(enemy, flame);
+        }
+    }
+    public void Dead(Entity enemy, FlameAttack flame){
+        if (enemy != null && enemy.alive) {
+            // Kiểm tra va chạm giữa flame và quái vật
+            for(int i = 0; i< 6; i++) {
+                int flameLeft = flame.x;
+                int flameRight = flameLeft + flame.flameSprite[i].getWidth();
+                int flameTop = flame.y;
+                int flameBottom = flameTop + flame.flameSprite[i].getHeight();
+
+                int enemyLeft = enemy.x + enemy.solidArea.x;
+                int enemyRight = enemyLeft + enemy.solidArea.width;
+                int enemyTop = enemy.y + enemy.solidArea.y;
+                int enemyBottom = enemyTop + enemy.solidArea.height;
+
+                if (flameLeft < enemyRight && flameRight > enemyLeft && flameTop < enemyBottom && flameBottom > enemyTop) {
+                    flame.isHitEnemy = true;
+                    enemy.hp -= 1;
+                    if(enemy.hp <= 0){
+                        enemy.alive = false;
+                    }
+                }
+            }
+        }
+    }
+}
 
 

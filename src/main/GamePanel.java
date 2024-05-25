@@ -3,6 +3,7 @@ package main;
 import entity.*;
 import environment.LightingManager;
 import object.superObject;
+import projectile.FlameAttack;
 import projectile.Projectile;
 import projectile.ShockBall;
 import tile.TileManager;
