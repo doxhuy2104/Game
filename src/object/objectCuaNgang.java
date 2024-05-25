@@ -7,7 +7,7 @@ public class objectCuaNgang extends superObject{
     public objectCuaNgang() {
         name="DoorNgang";
         try {
-            imageDN = ImageIO.read(getClass().getResourceAsStream("/object/CuaDoc.jpg"));
+            imageDN = ImageIO.read(getClass().getResourceAsStream("/object/CuaNgang.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
