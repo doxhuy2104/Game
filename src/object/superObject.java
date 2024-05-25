@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import static tile.TileManager.abs;
 
 public class superObject {
-    public BufferedImage imageK, imageD, imageC,imageDD,imageBC,imageDN,imageDB;
+    public BufferedImage imageK, imageD, imageC,imageDD,imageBC,imageDN,imageDB, imageHealBase;
     public BufferedImage imageB;
     public String name;
     public boolean collision= false;

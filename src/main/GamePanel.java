@@ -16,6 +16,9 @@ import java.util.Comparator;
 
 
 public class GamePanel extends JPanel implements Runnable {
+    public static int col;
+    public static int row;
+
     public final int originalTileSize = 16;
     public final int scale = 4;
     public final int tileSize = originalTileSize * scale;
@@ -60,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public AttackChecker attackChecker = new AttackChecker(this);
 
-    public superObject obj[] = new superObject[20];
+    public superObject obj[] = new superObject[40];
     public Entity npc[] = new Entity[40];
     public int FPS = 60;
 
@@ -207,9 +210,10 @@ public class GamePanel extends JPanel implements Runnable {
             ui.draw(g2);
             //hud.draw(g2);
             //toa do nhan vat
-
-            g2.drawString("Col: " + (player.x + player.solidArea.x) / tileSize, 10, 300);
-            g2.drawString("Row: " + (player.y + player.solidArea.y) / tileSize, 10, 310);
+            col = (player.x + player.solidArea.x) / tileSize;
+            row = (player.y + player.solidArea.y) / tileSize;
+            g2.drawString("Col: " + col, 10, 300);
+            g2.drawString("Row: " + row, 10, 310);
         } else if (!uiManager.gameO) {
             //main menu
             uiManager.draw(g2);

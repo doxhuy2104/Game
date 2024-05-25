@@ -227,6 +227,15 @@ public class Player extends Entity {
     }
 
     public boolean pickUpObj(int i) {
+        healTime++;
+        if ((currentHP < maxHP) && (healTime%120 == 0)){
+            if((GamePanel.col == 34) && (GamePanel.row == 4)) currentHP++;
+            if((GamePanel.col == 35) && (GamePanel.row == 4)) currentHP++;
+            if((GamePanel.col == 34) && (GamePanel.row == 5)) currentHP++;
+            if((GamePanel.col == 35) && (GamePanel.row == 5)) currentHP++;
+            healTime = 0;
+        }
+
         if (i != 999) {
             String objName = gp.obj[i].name;
             switch (objName) {

@@ -76,9 +76,9 @@ public class AssetSetter {
         gp.obj[18].worldY = 9 * gp.tileSize;
 
 
-        gp.obj[16] = new objectKeyDoor();
-        gp.obj[16].worldX = 2 * gp.tileSize;
-        gp.obj[16].worldY = 3 * gp.tileSize;
+//        gp.obj[16] = new objectKeyDoor();
+//        gp.obj[16].worldX = 3 * gp.tileSize;
+//        gp.obj[16].worldY = 3 * gp.tileSize;
 
         gp.obj[17] = new objectBlockCheckDoor();
         gp.obj[17].worldX = 4 * gp.tileSize;
@@ -92,7 +92,7 @@ public class AssetSetter {
         gp.obj[19].worldX = 58 * gp.tileSize;
         gp.obj[19].worldY = 29 * gp.tileSize;
 
-        //
+
 
 
 
