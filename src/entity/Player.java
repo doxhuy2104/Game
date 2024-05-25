@@ -24,7 +24,7 @@ public class Player extends Entity {
     private boolean rM = false, aM = false, sM = false;
     int sMC = 0, aMC = 0, rMC = 0, mC = 0;
     public boolean canSprint;
-    int hasKey = 0;
+    int hasKey = 0,hasKeyDoor;
     int appearBoss = 0;
     public boolean boost;
     public boolean isHurt;
@@ -236,10 +236,25 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     System.out.println("Key: "+hasKey);
                     break;
+                case "keydoor":
+                    gp.playSoundEffect(5);
+                    hasKeyDoor++;
+                    gp.obj[i] = null;
+                    System.out.println("KeyDoor: "+hasKeyDoor);
+                    break;
+
+                case "BlockCheck":
+                    if(hasKeyDoor>0){
+                        gp.obj[i+1]=null;
+                        gp.obj[i]=null;
+                        hasKeyDoor--;
+                        break;
+                    }
                 case "Door":
                     if(hasKey>0){
                         gp.obj[i]=null;
                         hasKey--;
+                        break;
                     }
                 case "chest-close":
                     if(hasKey > 0){
@@ -301,6 +316,18 @@ public class Player extends Entity {
                 gp.electronic[3].sx = 65 * gp.tileSize;
                 gp.electronic[3].sy = 56 * gp.tileSize;
 
+                gp.electronic[4] = new Electronic(gp);
+                gp.electronic[4].sx = 60 * gp.tileSize;
+                gp.electronic[4].sy = 50 * gp.tileSize;
+
+                gp.electronic[5] = new Electronic(gp);
+                gp.electronic[5].sx = 65 * gp.tileSize;
+                gp.electronic[5].sy = 40 * gp.tileSize;
+
+                gp.electronic[6] = new Electronic(gp);
+                gp.electronic[6].sx = 50 * gp.tileSize;
+                gp.electronic[6].sy = 56 * gp.tileSize;
+
                 gp.obj[0] = null;
                 gp.obj[1] = null;
                 gp.obj[2] = null;
@@ -335,8 +362,8 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 8;
-            cspeed = 6;
+            speed = 8;//8
+            cspeed = 6;//6
 //          dev mode
 //            speed = 15;
 //            cspeed = 15;
@@ -403,7 +430,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

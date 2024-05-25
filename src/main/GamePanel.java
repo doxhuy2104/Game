@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     public AttackChecker attackChecker = new AttackChecker(this);
 
     public superObject obj[] = new superObject[20];
-    public Entity npc[] = new Entity[20];
+    public Entity npc[] = new Entity[40];
     public int FPS = 60;
 
     //Game State
@@ -163,8 +163,9 @@ public class GamePanel extends JPanel implements Runnable {
 
 
             tileManager.drawMap(g2);
-            lightingManager.paintComponent(g);
-            // Vẽ lọc tối/sáng
+
+
+
 
 
             if (player.pAlive) player.draw(g2);
@@ -195,6 +196,9 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             entities.clear();
+            // Vẽ lọc tối/sáng
+            //lightingManager.paintComponent(g);
+
             hud.draw(g2);
             if (uiManager.pause) {
                 pauseS.draw(g2);
@@ -210,6 +214,7 @@ public class GamePanel extends JPanel implements Runnable {
             //main menu
             uiManager.draw(g2);
         }
+
 
         if (uiManager.gameO) {
             gameOver.draw(g2);//Game Over

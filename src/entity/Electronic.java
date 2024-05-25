@@ -65,7 +65,7 @@ public class Electronic extends Entity {
             drawY = -gp.player.y + gp.player.screenY + eSY + sy;
             y=eSY+sy;
         }
-        bodyAreaA = new Rectangle(drawX + 4, drawY + 6, 80, 108);
+        bodyAreaA = new Rectangle(drawX -8, drawY + 2, 24*3, 60);
         bodyAreaC = new Rectangle(x + 4, y + 6, 80, 108);
         centerX = bodyAreaA.x + bodyAreaA.width / 2;
         centerY = bodyAreaA.y + bodyAreaA.height / 2;

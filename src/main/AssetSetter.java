@@ -4,11 +4,7 @@ import entity.CaSau;
 import entity.Electronic;
 import entity.NPC;
 import entity.Slime;
-import object.objectBoots;
-import object.objectChestClose;
-import object.objectChestOpen;
-import object.objectDoor;
-import object.objectKey;
+import object.*;
 
 public class AssetSetter {
     GamePanel gp;
@@ -49,6 +45,55 @@ public class AssetSetter {
         gp.obj[11] = new objectKey();
         gp.obj[11].worldX = 65 * gp.tileSize;
         gp.obj[11].worldY = 55 * gp.tileSize;
+
+        //cua doc cua ngang, chia khoa cua
+        gp.obj[12] = new objectBlockCheckDoor();
+        gp.obj[12].worldX = 29 * gp.tileSize;
+        gp.obj[12].worldY = 37 * gp.tileSize +gp.tileSize;
+
+        gp.obj[13] = new objectCuaDoc();
+        gp.obj[13].worldX = 29 * gp.tileSize;
+        gp.obj[13].worldY = 37 * gp.tileSize;
+
+        gp.obj[14] = new objectBlockCheckDoor();
+        gp.obj[14].worldX = 39 * gp.tileSize;
+        gp.obj[14].worldY = 23 * gp.tileSize +gp.tileSize;
+
+        gp.obj[15] = new objectCuaDoc();
+        gp.obj[15].worldX = 39 * gp.tileSize;
+        gp.obj[15].worldY = 23 * gp.tileSize;
+
+        gp.obj[16] = new objectKeyDoor();
+        gp.obj[16].worldX = 38 * gp.tileSize;
+        gp.obj[16].worldY = 21 * gp.tileSize;
+
+        gp.obj[17] = new objectBlockCheckDoor();
+        gp.obj[17].worldX = 4 * gp.tileSize;
+        gp.obj[17].worldY = 9 * gp.tileSize;
+
+        gp.obj[18] = new objectCuaNgang();
+        gp.obj[18].worldX = 3 * gp.tileSize;
+        gp.obj[18].worldY = 9 * gp.tileSize;
+
+
+        gp.obj[16] = new objectKeyDoor();
+        gp.obj[16].worldX = 2 * gp.tileSize;
+        gp.obj[16].worldY = 3 * gp.tileSize;
+
+        gp.obj[17] = new objectBlockCheckDoor();
+        gp.obj[17].worldX = 4 * gp.tileSize;
+        gp.obj[17].worldY = 9 * gp.tileSize;
+
+        gp.obj[18] = new objectCuaNgang();
+        gp.obj[18].worldX = 3 * gp.tileSize;
+        gp.obj[18].worldY = 9 * gp.tileSize;
+
+        gp.obj[19] = new objectDoorBoss();
+        gp.obj[19].worldX = 58 * gp.tileSize;
+        gp.obj[19].worldY = 29 * gp.tileSize;
+
+        //
+
 
 
 

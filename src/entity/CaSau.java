@@ -161,8 +161,8 @@ public class CaSau extends Entity {
             aNum = 2;
         }
         if (aNum == 2) {
-            xMove += dx * 7;
-            yMove += dy * 7;
+            xMove += dx * 13;
+            yMove += dy * 13;
             eCollision = false;
             eCollisionR = false;
             eCollisionL = false;
