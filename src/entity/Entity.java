@@ -59,6 +59,7 @@ public class Entity {
     public boolean pToECU, pToECD, pToECR, pToECL;
     public int maxHP, currentHP;
 
+    public int healTime = 0;
     public int invisibleTime = 0, iT = 0;
     public boolean invisible, canAttack;
     //player
@@ -239,8 +240,21 @@ public class Entity {
     }
 
     public void saw() {
+        if (!moved && sawCounter < 60) {
+            sawCounter++;
+            chamThan = true;
+            if (sawW < 20) {
+                sawW += 2;
+                sawH += 4;
+                cX++;
+                cY += 2;
+            }
+        } else if (sawCounter == 60) {
+            sawCounter = 0;
             move = true;
             moved = true;
+            chamThan = false;
+        }
     }
 
     public void move() {
