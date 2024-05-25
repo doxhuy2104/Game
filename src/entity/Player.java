@@ -6,7 +6,10 @@ import main.MouseClickListener;
 import main.Sound;
 import object.objectChestClose;
 import object.objectChestOpen;
+import object.objectDoorWin;
 import projectile.FlameAttack;
+import ui.GameOver;
+import ui.UI;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -37,6 +40,8 @@ public class Player extends Entity {
     public static int abs(int x) {
         return x >= 0 ? x : -x;
     }
+
+    public static boolean OpenDoorWin = false;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -236,6 +241,13 @@ public class Player extends Entity {
             healTime = 0;
         }
 
+        if ((OpenDoorWin = true)){
+            if((GamePanel.col == 58) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
+            if((GamePanel.col == 59) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
+            if((GamePanel.col == 60) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
+            if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
+        }
+
         if (i != 999) {
             String objName = gp.obj[i].name;
             switch (objName) {
@@ -342,6 +354,12 @@ public class Player extends Entity {
                 gp.obj[2] = null;
                 gp.obj[3] = null;
                 gp.playSoundEffect(7);
+
+                //Draw Door Win
+                gp.obj[21] = new objectDoorWin();
+                gp.obj[21].worldX = 58 * gp.tileSize;
+                gp.obj[21].worldY = 19 * gp.tileSize;
+                OpenDoorWin = true;
 
                 appearBoss = 0;
             }

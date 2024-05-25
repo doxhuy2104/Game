@@ -35,7 +35,7 @@ public class UI {
     BufferedImage voidI,shadow;
     BufferedImage[] dieI;
     public int voidX=0,screenX,screenY,dieCounter=0,dieNum=0;
-    public boolean gameO=false;
+    public static boolean gameO=false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
     boolean gameT=true;

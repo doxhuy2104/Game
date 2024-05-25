@@ -165,12 +165,7 @@ public class GamePanel extends JPanel implements Runnable {
         long drawStart = System.nanoTime();
         if (uiManager.inGame) {
 
-
             tileManager.drawMap(g2);
-
-
-
-
 
             if (player.pAlive) player.draw(g2);
             entities.add(player);
