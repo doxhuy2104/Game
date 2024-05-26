@@ -481,11 +481,7 @@ public class Player extends Entity {
             collisionD = true;
             collisionL = true;
             collisionR = true;
-                if(keyH.spacePressed) {
-                    gp.npc[i].speak();
-                    gp.keyH.spacePressed = false;
-                    System.out.println(keyH.spacePressed);
-                }
+            if(gp.ui.currentDialouge != null) gp.npc[i].speak();
         }
     }
 
@@ -636,6 +632,7 @@ public class Player extends Entity {
         pickUpObj(objIndex);
         int npcIndex = gp.collisionChecker.checkNpc(this, gp.npc);
         interRactNpc(npcIndex);
+
         //cap nhat tao do khi nhan vat di chuyen
         if (!isAttack && !isRolling && isMoving) {
             switch (direction) {
