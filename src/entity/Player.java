@@ -245,6 +245,24 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
+        boolean intoMapOX = true;
+        if(intoMapOX) {
+            if ((GamePanel.col == 50) && (GamePanel.row == 23)){
+                intoMapOX = false;
+                TileManager.mapTileNum[50][23] = 0;
+                gp.obj[36] = new objectCuaDoc();
+                gp.obj[36].worldX = 50 * gp.tileSize;
+                gp.obj[36].worldY = 23 * gp.tileSize;
+            }
+            if ((GamePanel.col == 50) && (GamePanel.row == 24)){
+                intoMapOX = false;
+                TileManager.mapTileNum[50][23] = 0;
+                gp.obj[36] = new objectCuaDoc();
+                gp.obj[36].worldX = 50 * gp.tileSize;
+                gp.obj[36].worldY = 23 * gp.tileSize;
+            }
+        }
+
 //        if(LightingManager.opacity > 0.0f){
 //            if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
 //            if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
