@@ -85,7 +85,7 @@ public class AssetSetter {
         gp.obj[20].worldY = 21 * gp.tileSize;
 
         //Cua sau me cung
-        gp.obj[22] = new objectCuaNgang();
+        gp.obj[22] = new objectCuaDoc();
         gp.obj[22].worldX = 19 * gp.tileSize;
         gp.obj[22].worldY = 37 * gp.tileSize;
 
