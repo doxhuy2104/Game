@@ -903,7 +903,7 @@ public class Player extends Entity {
         if (mana >= 10) {
             FlameAttack flame = new FlameAttack(gp, x, y, dx, dy);
             flames.add(flame);
-            mana -= 20;
+            mana -= 40;
         }
     }
     public void setKeyH(){
