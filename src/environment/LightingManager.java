@@ -11,6 +11,7 @@ public class LightingManager extends JPanel {
     public BufferedImage darknessFilter;
     private int lightRadius;
     private int centerX, centerY;
+    public static float opacity = 0.0f;
 
     public LightingManager(GamePanel gp, int lightRadius) {
         this.gp = gp;
@@ -29,7 +30,6 @@ public class LightingManager extends JPanel {
         Graphics2D g2d = darknessFilter.createGraphics();
 
         // Đặt độ trong suốt cho màu đen (giá trị từ 0.0 đến 1.0, càng gần 0.0 càng mờ)
-        float opacity = 0.0f;
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
 
         // Vẽ màu đen lên toàn màn hình

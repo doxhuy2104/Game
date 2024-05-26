@@ -11,6 +11,6 @@ public class objectCuaNgang extends superObject{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        collision = true;
+        collision = false;
     }
 }

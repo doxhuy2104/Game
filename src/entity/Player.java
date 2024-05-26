@@ -1,22 +1,20 @@
 package entity;
 
+import environment.LightingManager;
 import main.GamePanel;
 import main.KeyHandler;
 import main.MouseClickListener;
-import main.Sound;
-import object.objectChestClose;
 import object.objectChestOpen;
 import object.objectDoorWin;
+import object.objectSwitchOn;
 import projectile.FlameAttack;
-import ui.GameOver;
-import ui.UI;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import tile.TileManager;
 
 public class Player extends Entity {
     KeyHandler keyH;
@@ -248,15 +246,45 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
+        if(LightingManager.opacity == 1.0f){
+            if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
+            if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
+        }
+
         if (i != 999) {
             String objName = gp.obj[i].name;
             switch (objName) {
+                case "SwitchOff":
+                    if(LightingManager.opacity == 0.0f){
+                        gp.playSoundEffect(1);
+                        gp.obj[15] = null;
+                        gp.obj[18] = null;
+                        gp.obj[19] = new objectSwitchOn();
+                        gp.obj[19].worldX = 6 * gp.tileSize;
+                        gp.obj[19].worldY = gp.tileSize;
+                        TileManager.mapTileNum[3][20] = 0;
+                        TileManager.mapTileNum[4][20] = 0;
+                        LightingManager.opacity = 1.0f;
+                        break;
+                    }
+
+                    gp.playSoundEffect(1);
+                    gp.obj[20] = null;
+                    gp.obj[22] = null;
+                    gp.obj[21] = new objectSwitchOn();
+                    gp.obj[21].worldX = 18 * gp.tileSize;
+                    gp.obj[21].worldY = 21 * gp.tileSize;
+                    TileManager.mapTileNum[19][37] = 0;
+                    TileManager.mapTileNum[19][38] = 0;
+                    break;
+
                 case "key":
                     gp.playSoundEffect(5);
                     hasKey++;
                     gp.obj[i] = null;
                     System.out.println("Key: "+hasKey);
                     break;
+
                 case "keydoor":
                     gp.playSoundEffect(5);
                     hasKeyDoor++;
@@ -271,12 +299,14 @@ public class Player extends Entity {
                         hasKeyDoor--;
                         break;
                     }
+
                 case "Door":
                     if(hasKey>0){
                         gp.obj[i]=null;
                         hasKey--;
                         break;
                     }
+
                 case "chest-close":
                     if(hasKey > 0){
                         hasKey--;
@@ -310,15 +340,17 @@ public class Player extends Entity {
 
                     }
                     break;
+
                 case "boots":
                     //currentSpeed = speed;
                     gp.playSoundEffect(6);
                     gp.obj[i] = null;
                     boost = true;
                     startTime = System.currentTimeMillis();
-
+                    LightingManager.opacity = LightingManager.opacity - 0.033f;
                     break;
             }
+
             if (appearBoss == 4){
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
@@ -396,8 +428,8 @@ public class Player extends Entity {
 //            cspeed = 15;
         }
         if (boost) {
-            speed = 8;
-            cspeed = 5;
+            speed = 10;
+            cspeed = 7;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
@@ -419,7 +451,7 @@ public class Player extends Entity {
         pToECL = false;
         pToECR = false;
         if (!invisible) {//check va cham voi quai vat
-            //gp.collisionChecker.pToECo(this);
+            gp.collisionChecker.pToECo(this);
         }
 
 
@@ -457,7 +489,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

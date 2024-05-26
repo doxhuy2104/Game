@@ -12,6 +12,7 @@ public class AssetSetter {
         this.gp=gp;
     }
     public void setObject(){
+        //Open Chest
 
         //Close Chest
         gp.obj[4] = new objectChestClose();
@@ -46,70 +47,64 @@ public class AssetSetter {
         gp.obj[11].worldX = 65 * gp.tileSize;
         gp.obj[11].worldY = 55 * gp.tileSize;
 
-        //cua doc cua ngang, chia khoa cua
-        gp.obj[12] = new objectBlockCheckDoor();
-        gp.obj[12].worldX = 29 * gp.tileSize;
-        gp.obj[12].worldY = 37 * gp.tileSize +gp.tileSize;
+        //Cua truoc phong Quai
+        gp.obj[12] = new objectCuaDoc();
+        gp.obj[12].worldX = 30 * gp.tileSize;
+        gp.obj[12].worldY = 37 * gp.tileSize;
 
         gp.obj[13] = new objectCuaDoc();
-        gp.obj[13].worldX = 29 * gp.tileSize;
-        gp.obj[13].worldY = 37 * gp.tileSize;
+        gp.obj[13].worldX = 39 * gp.tileSize;
+        gp.obj[13].worldY = 23 * gp.tileSize;
 
-        gp.obj[14] = new objectBlockCheckDoor();
-        gp.obj[14].worldX = 39 * gp.tileSize;
-        gp.obj[14].worldY = 23 * gp.tileSize +gp.tileSize;
+        gp.obj[14] = new objectKeyDoor();
+        gp.obj[14].worldX = 38 * gp.tileSize;
+        gp.obj[14].worldY = 21 * gp.tileSize;
 
-        gp.obj[15] = new objectCuaDoc();
-        gp.obj[15].worldX = 39 * gp.tileSize;
-        gp.obj[15].worldY = 23 * gp.tileSize;
+        //Cua truoc Me Cung
+        gp.obj[15] = new objectCuaNgang();
+        gp.obj[15].worldX = 3 * gp.tileSize;
+        gp.obj[15].worldY = 20 * gp.tileSize;
 
-        gp.obj[16] = new objectKeyDoor();
-        gp.obj[16].worldX = 38 * gp.tileSize;
-        gp.obj[16].worldY = 21 * gp.tileSize;
-
-        gp.obj[17] = new objectBlockCheckDoor();
-        gp.obj[17].worldX = 4 * gp.tileSize;
-        gp.obj[17].worldY = 9 * gp.tileSize;
-
-        gp.obj[18] = new objectCuaNgang();
-        gp.obj[18].worldX = 3 * gp.tileSize;
-        gp.obj[18].worldY = 9 * gp.tileSize;
-
-
-//        gp.obj[16] = new objectKeyDoor();
-//        gp.obj[16].worldX = 3 * gp.tileSize;
-//        gp.obj[16].worldY = 3 * gp.tileSize;
-
-        gp.obj[17] = new objectBlockCheckDoor();
-        gp.obj[17].worldX = 4 * gp.tileSize;
-        gp.obj[17].worldY = 9 * gp.tileSize;
-
-        gp.obj[18] = new objectCuaNgang();
-        gp.obj[18].worldX = 3 * gp.tileSize;
-        gp.obj[18].worldY = 9 * gp.tileSize;
-
-        gp.obj[19] = new objectDoorBoss();
-        gp.obj[19].worldX = 58 * gp.tileSize;
-        gp.obj[19].worldY = 29 * gp.tileSize;
+        gp.obj[16] = new objectDoorBoss();
+        gp.obj[16].worldX = 58 * gp.tileSize;
+        gp.obj[16].worldY = 29 * gp.tileSize;
 
         //DoorForPrincess
-        gp.obj[20] = new objectDoorHelpPrincess();
-        gp.obj[20].worldX = 67 * gp.tileSize;
-        gp.obj[20].worldY = 23 * gp.tileSize;
+        gp.obj[17] = new objectDoorHelpPrincess();
+        gp.obj[17].worldX = 67 * gp.tileSize;
+        gp.obj[17].worldY = 23 * gp.tileSize;
 
+        //Switch vao me cung
+        gp.obj[18] = new objectSwitchOff();
+        gp.obj[18].worldX = 6 * gp.tileSize;
+        gp.obj[18].worldY = 1 * gp.tileSize;
 
+        //Switch out me cung
+        gp.obj[20] = new objectSwitchOff();
+        gp.obj[20].worldX = 18 * gp.tileSize;
+        gp.obj[20].worldY = 21 * gp.tileSize;
 
-//        gp.obj[4] = new objectBoots();
-//        gp.obj[4].worldX = 3 * gp.tileSize;
-//        gp.obj[4].worldY = 20 * gp.tileSize;
+        //Cua sau me cung
+        gp.obj[22] = new objectCuaNgang();
+        gp.obj[22].worldX = 19 * gp.tileSize;
+        gp.obj[22].worldY = 37 * gp.tileSize;
+
+        //Boots
+        gp.obj[23] = new objectBoots();
+        gp.obj[23].worldX = gp.tileSize;
+        gp.obj[23].worldY = 31 * gp.tileSize;
+
+        gp.obj[24] = new objectBoots();
+        gp.obj[24].worldX = 7 * gp.tileSize;
+        gp.obj[24].worldY = 38 * gp.tileSize;
+
+        gp.obj[25] = new objectBoots();
+        gp.obj[25].worldX = 14 * gp.tileSize;
+        gp.obj[25].worldY = 21 * gp.tileSize;
 
 //        gp.obj[] = new objectChestClose();
 //        gp.obj[].worldX = 59 * gp.tileSize;
 //        gp.obj[].worldY = 49 * gp.tileSize;
-
-//        gp.obj[5] = new objectDoor();
-//        gp.obj[5].worldX = 34 * gp.tileSize;
-//        gp.obj[5].worldY = 20 * gp.tileSize;
 
     }
     public void setEnemies(){

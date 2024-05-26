@@ -3,11 +3,11 @@ package object;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class objectCuaDoc extends superObject{
-    public objectCuaDoc() {
-        name="DoorDoc";
+public class objectSwitchOn extends superObject{
+    public objectSwitchOn() {
+        name="SwitchOn";
         try {
-            imageDD = ImageIO.read(getClass().getResourceAsStream("/object/CuaDoc.png"));
+            imageSON = ImageIO.read(getClass().getResourceAsStream("/object/switch_on.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

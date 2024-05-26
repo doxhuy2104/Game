@@ -16,7 +16,7 @@ public class TileManager extends Tile{
 
     public Tile[] tile;
 
-    public int mapTileNum[][];
+    public static int mapTileNum[][];
     public int currentSprite=0;
 
     public static int abs(int x) {

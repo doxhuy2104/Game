@@ -196,7 +196,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             entities.clear();
             // Vẽ lọc tối/sáng
-            //lightingManager.paintComponent(g);
+            lightingManager.paintComponent(g);
 
             hud.draw(g2);
             if (uiManager.pause) {
@@ -204,7 +204,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             ui.draw(g2);
-            //hud.draw(g2);
+            hud.draw(g2);
             //toa do nhan vat
             col = (player.x + player.solidArea.x) / tileSize;
             row = (player.y + player.solidArea.y) / tileSize;

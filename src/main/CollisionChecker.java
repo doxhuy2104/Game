@@ -7,6 +7,7 @@ import projectile.Projectile;
 
 public class CollisionChecker {
     GamePanel gp;
+    public static int tileNum1, tileNum2, tileNum3;
 
     public CollisionChecker(GamePanel gp) {
 
@@ -24,7 +25,6 @@ public class CollisionChecker {
         int entityTopRow = entityTop / gp.tileSize;
         int entityBotRow = entityBottom / gp.tileSize;
 
-        int tileNum1, tileNum2, tileNum3;
 
         switch (entity.collisionCheck) {
             case "up":
