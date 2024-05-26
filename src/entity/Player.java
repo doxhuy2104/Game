@@ -684,7 +684,7 @@ public class Player extends Entity {
             // Sound Move
             if ((spriteCounter % 50 == 1)) {
                 gp.playSoundEffect(8);
-            }
+             }
         }
         else {
             spriteCounter = 0;
