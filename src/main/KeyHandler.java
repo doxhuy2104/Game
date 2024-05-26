@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, sprint, attack=false, rolling=false,escape, flameKey = false;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed = true, sprint, attack=false, rolling=false,escape, flameKey = false;
     public GamePanel gp;
     public KeyHandler(GamePanel gp){
         this.gp = gp;
@@ -54,15 +54,12 @@ public class KeyHandler implements KeyListener {
                         canChange = false;
                     }
                 }
-                if (code == KeyEvent.VK_P) {
-                    gp.gameState = gp.CharacterState;
-                }
-
-
-        }else if(gp.gameState==gp.CharacterState){
-            Character(code);
-            if (code == KeyEvent.VK_P) {
-                gp.gameState = gp.playState;
+        }else if(gp.gameState==gp.npcState){
+            if (code == KeyEvent.VK_SPACE) {
+                gp.dialougeIndex++;
+                spacePressed = true;
+                System.out.println(gp.dialougeIndex);
+                System.out.println(spacePressed);
             }
         }
     }

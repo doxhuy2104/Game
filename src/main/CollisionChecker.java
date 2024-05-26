@@ -726,11 +726,13 @@ public class CollisionChecker {
                 if (flameLeft < enemyRight && flameRight > enemyLeft && flameTop < enemyBottom && flameBottom > enemyTop) {
                     flame.isHitEnemy = true;
                     if(flame.canHit){
-                        enemy.hp -= 1;
+                        gp.playSoundEffect(10);
+                        enemy.hp -= 3;
                         flame.canHit=false;
                     }
                     if(enemy.hp <= 0){
                         enemy.alive = false;
+                        gp.playSoundEffect(4);
                     }
                 }
             }

@@ -481,6 +481,11 @@ public class Player extends Entity {
             collisionD = true;
             collisionL = true;
             collisionR = true;
+                if(keyH.spacePressed) {
+                    gp.npc[i].speak();
+                    gp.keyH.spacePressed = false;
+                    System.out.println(keyH.spacePressed);
+                }
         }
     }
 
@@ -673,7 +678,6 @@ public class Player extends Entity {
             FlameAttack flame = flames.get(i);
             flame.update();
             gp.collisionChecker.checkFlameEnemyCollision(flame);
-            if(flame.isHitEnemy) System.out.println("va cham");
             if (!flame.isActive()) {
                 flames.remove(i);
                 i--;
@@ -744,7 +748,7 @@ public class Player extends Entity {
 
         //am thanh tan khong khi bat dau tan cong
         if (attackCounter == 0) {
-            if(usingFlame) gp.playSoundEffect(10);
+            if(usingFlame) gp.playSoundEffect(9);
             else gp.playSoundEffect(1);
         }
         attackCounter++;

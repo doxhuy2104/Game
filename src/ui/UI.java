@@ -1,7 +1,6 @@
 package ui;
 
 import main.GamePanel;
-import tile.TileManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -40,6 +39,8 @@ public class UI {
 
     BufferedImage manaFull, manaFill, manaEmpty;
     boolean gameT=true;
+    boolean chat = true;
+    public String currentDialouge = "";
 
 
     public void draw(Graphics2D g2){
@@ -54,23 +55,23 @@ public class UI {
         }
         if (gp.gameState == gp.npcState) {
             //drawIventory();
-            if (gameT) {
-                ticTacToe = new TicTacToe();
-                gameT = false;
-            }
-            if (ticTacToe.gameOver) {
-                if(ticTacToe.Win){
-                    gp.gameState = gp.playState;
-                    TileManager.mapTileNum[58][29] = 0;
-                    TileManager.mapTileNum[59][29] = 0;
-                    TileManager.mapTileNum[60][29] = 0;
-                    gp.obj[16] = null;
-                }
-                if(ticTacToe.Lose){
-                    gameT = true;
+            if(chat){
+                drawDialougeScreen();
+                if(currentDialouge==null){
+                    chat = false;
+                    gp.npc[0] = null;
                     gp.gameState = gp.playState;
                 }
             }
+//            if (gameT) {
+//                ticTacToe = new TicTacToe();
+//                gameT = false;
+//            }
+//            if (ticTacToe.gameOver) {
+//                gameT = true;
+//                gp.npc[0] = null;
+//                gp.gameState = gp.playState;
+//            }
 
         }
     }
@@ -97,11 +98,24 @@ public class UI {
             g2.drawRoundRect(cursorX, cursorY, cursorWitdth, cursorHeight, 10, 10);
     }
     public void drawSubWindow(int x, int y, int width, int height){
+        Color c = new Color(0, 0, 0, 200);
+        g2.setColor(c);
         g2.setColor(Color.BLACK);
         g2.fillRoundRect(x, y, width, height, 35, 35);
-        Color c = new Color(255,255,255);//màu trắng
+        c = new Color(255,255,255);//màu trắng
         g2.setColor(c);
-        g2.setStroke(new BasicStroke(5));
+        g2.setStroke(new BasicStroke(3));
         g2.drawRoundRect(x+5, y+5, width - 10, height - 10, 25, 25);
+    }
+    public void drawDialougeScreen(){
+        int x = gp.tileSize * 3;
+        int y = gp.tileSize/2;
+        int width = gp.screenWidth - gp.tileSize*4;
+        int height = gp.tileSize * 2;
+        drawSubWindow(x, y, width, height);
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 30));
+        x += gp.tileSize;
+        y += gp.tileSize;
+        g2.drawString(currentDialouge, x, y);
     }
 }

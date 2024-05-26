@@ -104,6 +104,7 @@ public class Entity {
     public int defaultX = worldX, defaultY = worldY;
     public int acTionCounter = 0;
     GamePanel gp;
+    String dialouge[] = new String[20];
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -131,9 +132,7 @@ public class Entity {
 
     public void setAction() {
     }
-
-    ;
-
+    public void speak(){}
     public void update() {
         //setAction();
         //collisionOn = false;
@@ -371,6 +370,7 @@ public class Entity {
                 if (spriteNum == 0) {
                     image = up1;
                 }
+
                 if (spriteNum == 1) {
                     image = up2;
                 }

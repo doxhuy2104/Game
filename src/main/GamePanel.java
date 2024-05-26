@@ -74,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int CharacterState = 2;
     public final int npcState = 3;
     //public final int gameState = 3;
-
+    public int dialougeIndex = 0;
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.PINK);
