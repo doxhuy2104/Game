@@ -2,37 +2,55 @@ package entity;
 
 import main.GamePanel;
 
-import java.util.Random;
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+public class Princess extends Entity {
+    private static final int FRAME_WIDTH = 64;
+    private static final int FRAME_HEIGHT = 128;
+    private static final int FRAME_DELAY = 6; // Độ trễ giữa các khung hình, có thể điều chỉnh
 
-public class Princess extends Entity{
-        public Princess(GamePanel gp) {
-            super(gp);
-            this.gp=gp;
-            direction = "down";
-            speed = 1;
-            getPrincessImage();
-        }
-        public void  getPrincessImage () {
-            up1 = setup("/npc/oldman_up_1.png", gp.tileSize, gp.tileSize);
-            up2 = setup("/npc/oldman_up_2.png", gp.tileSize, gp.tileSize);
-            down1 = setup("/npc/oldman_down_1.png", gp.tileSize, gp.tileSize);
-            down2 = setup("/npc/oldman_down_2.png", gp.tileSize, gp.tileSize);
-            left1 = setup("/npc/oldman_left_1.png", gp.tileSize, gp.tileSize);
-            left2 = setup("/npc/oldman_left_2.png", gp.tileSize, gp.tileSize);
-            right1 = setup("/npc/oldman_right_1.png", gp.tileSize, gp.tileSize);
-            right2 = setup("/npc/oldman_right_2.png", gp.tileSize, gp.tileSize);
-        }
+    private GamePanel gp;
+    private BufferedImage[] move;
+    private int currentFrameIndex = 0;
+    private int frameDelayCount = 0;
 
-        public void setAction(){
-            acTionCounter++;
-            if(acTionCounter==3) {
-                Random random = new Random();
-                int i = random.nextInt(5)+1;
-                if (i == 1) direction = "up";
-                else if (i == 2) direction = "down";
-                else if (i == 3) direction = "left";
-                else if (i == 4) direction = "right";
+    public Princess(GamePanel gp) {
+        super(gp);
+        this.gp = gp;
+        getPrincessImage();
+    }
+
+    private void getPrincessImage() {
+        try {
+            BufferedImage princess = ImageIO.read(getClass().getResourceAsStream("/npc/princess.png"));
+
+            move = new BufferedImage[8];
+            for (int i = 0; i < 8; i++) {
+                move[i] = princess.getSubimage(i * FRAME_WIDTH, 0, FRAME_WIDTH, FRAME_HEIGHT);
             }
-
+        } catch (Exception e) {
+            // Xử lý ngoại lệ
+            e.printStackTrace();
         }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        // Tăng biến đếm độ trễ giữa các khung hình
+        frameDelayCount++;
+        if (frameDelayCount >= FRAME_DELAY) {
+            // Đặt lại biến đếm và chuyển sang khung hình tiếp theo
+            frameDelayCount = 0;
+            currentFrameIndex = (currentFrameIndex + 1) % move.length;
+        }
+    }
+
+    @Override
+    public void draw(Graphics2D g2) {
+        drawX = worldX - gp.player.x + gp.player.screenX;
+        drawY = worldY - gp.player.y + gp.player.screenY;
+        g2.drawImage(move[currentFrameIndex], drawX, drawY, FRAME_WIDTH, FRAME_HEIGHT, null);
+    }
 }

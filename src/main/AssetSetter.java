@@ -1,9 +1,6 @@
 package main;
 
-import entity.CaSau;
-import entity.Electronic;
-import entity.NPC;
-import entity.Slime;
+import entity.*;
 import object.*;
 
 public class AssetSetter {
@@ -56,9 +53,9 @@ public class AssetSetter {
 //        gp.obj[13].worldX = 39 * gp.tileSize;
 //        gp.obj[13].worldY = 23 * gp.tileSize;
 
-        gp.obj[14] = new objectKeyDoor();
-        gp.obj[14].worldX = 38 * gp.tileSize;
-        gp.obj[14].worldY = 21 * gp.tileSize;
+//        gp.obj[14] = new objectKeyDoor();
+//        gp.obj[14].worldX = 38 * gp.tileSize;
+//        gp.obj[14].worldY = 21 * gp.tileSize;
 
         //Cua truoc Me Cung
         gp.obj[15] = new objectCuaNgang();
@@ -171,5 +168,9 @@ public class AssetSetter {
         gp.npc[0] = new NPC(gp);
         gp.npc[0].worldX = 61 * gp.tileSize;
         gp.npc[0].worldY = 22 * gp.tileSize;
+
+        gp.npc[1] = new Princess(gp);
+        gp.npc[1].worldX = 67 * gp.tileSize;
+        gp.npc[1].worldY = 21 * gp.tileSize;
     }
 }
