@@ -23,6 +23,7 @@ public class Sound {
         soundURL[8] = getClass().getResource("/sound/walk.wav");
         soundURL[9] = getClass().getResource("/sound/bigSlash.wav");
         soundURL[10] = getClass().getResource("/sound/zapDash.wav");
+        soundURL[11] = getClass().getResource("/sound/Yamete-Kudasai.wav");
     }
     private void loadSound(URL url) {
         try {
