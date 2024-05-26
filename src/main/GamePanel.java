@@ -208,8 +208,9 @@ public class GamePanel extends JPanel implements Runnable {
             //toa do nhan vat
             col = (player.x + player.solidArea.x) / tileSize;
             row = (player.y + player.solidArea.y) / tileSize;
-            g2.drawString("Col: " + col, 10, 300);
-            g2.drawString("Row: " + row, 10, 310);
+            //Toa do trung tam
+//            g2.drawString("Col: " + col, 10, 300);
+//            g2.drawString("Row: " + row, 10, 310);
         } else if (!uiManager.gameO) {
             //main menu
             uiManager.draw(g2);
