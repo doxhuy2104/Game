@@ -602,7 +602,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
@@ -878,7 +878,7 @@ public class Player extends Entity {
         }
         if (aM) {
             aMC++;
-            if (aMC <= 10) mana -= 2;
+            if (aMC <= 10) mana -= 0;
             else {
                 aMC = 0;
                 aM = false;

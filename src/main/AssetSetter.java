@@ -109,24 +109,27 @@ public class AssetSetter {
         gp.obj[31].worldX = 31 * gp.tileSize;
         gp.obj[31].worldY = 38 * gp.tileSize;
 
-
+        gp.obj[32] =new objectBlockCheck();
+        gp.obj[32].worldX = 38 * gp.tileSize;
+        gp.obj[32].worldY = 23 * gp.tileSize;
 
         gp.obj[33] =new objectBlockCheck();
         gp.obj[33].worldX = 38 * gp.tileSize;
         gp.obj[33].worldY = 24 * gp.tileSize;
 
         gp.obj[34] =new objectBlockCheck();
-        gp.obj[34].worldX = 37 * gp.tileSize;
-        gp.obj[34].worldY = 25 * gp.tileSize;
+        gp.obj[34].worldX = 24 * gp.tileSize;
+        gp.obj[34].worldY = 21 * gp.tileSize;
 
         gp.obj[35] =new objectBlockCheck();
-        gp.obj[35].worldX = 32 * gp.tileSize;
-        gp.obj[35].worldY = 25 * gp.tileSize;
+        gp.obj[35].worldX = 35 * gp.tileSize;
+        gp.obj[35].worldY = 21 * gp.tileSize;
+        //obj tu 36 den 38 dang su dung
 
         //Cua vao den tho
-        gp.obj[37] = new objectCuaNgang();
-        gp.obj[37].worldX = 34 * gp.tileSize;
-        gp.obj[37].worldY = 20 * gp.tileSize;
+        gp.obj[39] = new objectCuaNgang();
+        gp.obj[39].worldX = 34 * gp.tileSize;
+        gp.obj[39].worldY = 20 * gp.tileSize;
 
 
     }
