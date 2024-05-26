@@ -257,6 +257,77 @@ public class Player extends Entity {
             TileManager.mapTileNum[61][40] = 0;
         }
 
+        //Vao map danh quai
+        if((GamePanel.col == 31) && (GamePanel.row == 37) ||
+                (GamePanel.col == 31) && (GamePanel.row == 38)){
+
+            gp.obj[12] = new objectCuaDoc();
+            gp.obj[12].worldX = 30 * gp.tileSize;
+            gp.obj[12].worldY = 37 * gp.tileSize;
+
+            TileManager.mapTileNum[30][37] = 1;
+            TileManager.mapTileNum[30][38] = 1;
+
+            gp.obj[13] = new objectCuaDoc();
+            gp.obj[13].worldX = 39 * gp.tileSize;
+            gp.obj[13].worldY = 23 * gp.tileSize;
+
+            gp.slime[4] = new Slime(gp);
+            gp.slime[4].sx = 35 * gp.tileSize;
+            gp.slime[4].sy = 27 * gp.tileSize;
+
+            gp.slime[5] = new Slime(gp);
+            gp.slime[5].sx = 33 * gp.tileSize;
+            gp.slime[5].sy = 27 * gp.tileSize;
+
+            gp.slime[6] = new Slime(gp);
+            gp.slime[6].sx = 35 * gp.tileSize;
+            gp.slime[6].sy = 31 * gp.tileSize;
+
+            gp.slime[7] = new Slime(gp);
+            gp.slime[7].sx = 33 * gp.tileSize;
+            gp.slime[7].sy = 31 * gp.tileSize;
+        }
+
+        if (gp.slime[4] != null) {
+            if (gp.slime[4].hp <= 0 &&
+                    gp.slime[5].hp <= 0 &&
+                    gp.slime[6].hp <= 0 &&
+                    gp.slime[7].hp <= 0) {
+                gp.caSau[4] = new CaSau(gp);
+                gp.caSau[4].sx = 35 * gp.tileSize;
+                gp.caSau[4].sy = 27 * gp.tileSize;
+
+                gp.caSau[5] = new CaSau(gp);
+                gp.caSau[5].sx = 33 * gp.tileSize;
+                gp.caSau[5].sy = 27 * gp.tileSize;
+
+                gp.caSau[6] = new CaSau(gp);
+                gp.caSau[6].sx = 35 * gp.tileSize;
+                gp.caSau[6].sy = 31 * gp.tileSize;
+
+                gp.caSau[7] = new CaSau(gp);
+                gp.caSau[7].sx = 33 * gp.tileSize;
+                gp.caSau[7].sy = 31 * gp.tileSize;
+            }
+        }
+
+        if(gp.caSau[4] != null) {
+            if (gp.caSau[4].hp <= 0 &&
+                    gp.caSau[5].hp <= 0 &&
+                    gp.caSau[6].hp <= 0 &&
+                    gp.caSau[7].hp <= 0) {
+
+                gp.obj[12] = null;
+                TileManager.mapTileNum[30][37] = 0;
+                TileManager.mapTileNum[30][38] = 0;
+
+                gp.obj[13] = null;
+                TileManager.mapTileNum[39][23] = 0;
+                TileManager.mapTileNum[39][24] = 0;
+            }
+        }
+
         if (i != 999) {
 
             String objName = gp.obj[i].name;
@@ -308,87 +379,6 @@ public class Player extends Entity {
                     System.out.println("KeyDoor: "+hasKeyDoor);
                     break;
 
-                case "BlockCheck":
-                {
-                    if(gp.slime[4]==null) {
-                        gp.obj[12] = new objectCuaDoc();
-                        gp.obj[12].worldX = 30 * gp.tileSize;
-                        gp.obj[12].worldY = 37 * gp.tileSize;
-
-                        TileManager.mapTileNum[30][37] = 1;
-                        TileManager.mapTileNum[30][38] = 1;
-
-                        gp.obj[30] = null;
-                        gp.obj[31] = null;
-
-                        gp.obj[13] = new objectCuaDoc();
-                        gp.obj[13].worldX = 39 * gp.tileSize;
-                        gp.obj[13].worldY = 23 * gp.tileSize;
-
-                        TileManager.mapTileNum[39][23] = 1;
-                        TileManager.mapTileNum[39][24] = 1;
-
-                        gp.slime[4] = new Slime(gp);
-                        gp.slime[4].sx = 35 * gp.tileSize;
-                        gp.slime[4].sy = 27 * gp.tileSize;
-
-                        gp.slime[5] = new Slime(gp);
-                        gp.slime[5].sx = 33 * gp.tileSize;
-                        gp.slime[5].sy = 27 * gp.tileSize;
-
-                        gp.slime[6] = new Slime(gp);
-                        gp.slime[6].sx = 35 * gp.tileSize;
-                        gp.slime[6].sy = 31 * gp.tileSize;
-
-                        gp.slime[7] = new Slime(gp);
-                        gp.slime[7].sx = 33 * gp.tileSize;
-                        gp.slime[7].sy = 31 * gp.tileSize;
-                    }
-                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0&&gp.caSau[4]==null) {
-
-                        gp.caSau[4] = new CaSau(gp);
-                        gp.caSau[4].sx = 35 * gp.tileSize;
-                        gp.caSau[4].sy = 27 * gp.tileSize;
-
-                        gp.caSau[5] = new CaSau(gp);
-                        gp.caSau[5].sx = 33* gp.tileSize;
-                        gp.caSau[5].sy = 27 * gp.tileSize;
-
-                        gp.caSau[6] = new CaSau(gp);
-                        gp.caSau[6].sx = 35* gp.tileSize;
-                        gp.caSau[6].sy = 31 * gp.tileSize;
-
-                        gp.caSau[7] = new CaSau(gp);
-                        gp.caSau[7].sx = 33* gp.tileSize;
-                        gp.caSau[7].sy = 31 * gp.tileSize;
-                    }
-
-                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0
-                            &&gp.caSau[4].hp<=0&&gp.caSau[5].hp<=0&&gp.caSau[6].hp<=0&&gp.caSau[7].hp<=0){
-                        gp.obj[12] = null;
-                        TileManager.mapTileNum[30][37] = 0;
-                        TileManager.mapTileNum[30][38] = 0;
-                        gp.obj[13] = null;
-                        TileManager.mapTileNum[39][23] = 0;
-                        TileManager.mapTileNum[39][24] = 0;
-                        gp.obj[37] = null;
-                        TileManager.mapTileNum[35][20] = 0;
-                        TileManager.mapTileNum[34][20] = 0;
-
-                    }
-                    if(gp.electronic[0]!=null){
-                        if(gp.electronic[0].hp<=0&&gp.electronic[1].hp<=0&&gp.electronic[2].hp<=0&&gp.electronic[3].hp<=0
-                                &&gp.electronic[4].hp<=0&&gp.electronic[5].hp<=0&&gp.electronic[6].hp<=0&&gp.electronic[7].hp<=0){
-                            TileManager.mapTileNum[58][40] = 0;
-                            TileManager.mapTileNum[59][40] = 0;
-                            TileManager.mapTileNum[60][40] = 0;
-                            gp.obj[26]=null;
-                        }
-                    }
-                }
-                break;
-
-
                 case "chest-close":
                     if(hasKey > 0){
                         hasKey--;
@@ -417,9 +407,7 @@ public class Player extends Entity {
                             gp.obj[3].worldX = 61 * gp.tileSize;
                             gp.obj[3].worldY = 51 * gp.tileSize;
                             appearBoss++;
-
                         }
-
                     }
                     break;
 
@@ -433,22 +421,7 @@ public class Player extends Entity {
                     break;
             }
 
-
-
-
             if (appearBoss == 4){
-                gp.obj[36] =new objectBlockCheck();
-                gp.obj[36].worldX = 58 * gp.tileSize;
-                gp.obj[36].worldY = 41 * gp.tileSize;
-
-                gp.obj[37] =new objectBlockCheck();
-                gp.obj[37].worldX = 59 * gp.tileSize;
-                gp.obj[37].worldY = 41 * gp.tileSize;
-
-                gp.obj[38] =new objectBlockCheck();
-                gp.obj[38].worldX = 60 * gp.tileSize;
-                gp.obj[38].worldY = 41 * gp.tileSize;
-
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
                 gp.electronic[0].sx = 65 * gp.tileSize;
@@ -505,6 +478,22 @@ public class Player extends Entity {
 
                 appearBoss = 0;
                 aliveBoss = 8;
+            }
+
+            if(gp.electronic[0] != null) {
+                if (gp.electronic[0].hp <= 0 &&
+                        gp.electronic[1].hp <= 0 &&
+                        gp.electronic[2].hp <= 0 &&
+                        gp.electronic[3].hp <= 0 &&
+                        gp.electronic[4].hp <= 0 &&
+                        gp.electronic[5].hp <= 0 &&
+                        gp.electronic[6].hp <= 0 &&
+                        gp.electronic[7].hp <= 0) {
+                    TileManager.mapTileNum[58][40] = 0;
+                    TileManager.mapTileNum[59][40] = 0;
+                    TileManager.mapTileNum[60][40] = 0;
+                    gp.obj[26] = null;
+                }
             }
         }
         return boost;
