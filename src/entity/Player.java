@@ -518,7 +518,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-//        gp.collisionChecker.checkTile(this);
+        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

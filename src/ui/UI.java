@@ -1,6 +1,7 @@
 package ui;
 
 import main.GamePanel;
+import tile.TileManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -60,6 +61,10 @@ public class UI {
             if (ticTacToe.gameOver) {
                 if(ticTacToe.Win){
                     gp.gameState = gp.playState;
+                    TileManager.mapTileNum[58][29] = 0;
+                    TileManager.mapTileNum[59][29] = 0;
+                    TileManager.mapTileNum[60][29] = 0;
+                    gp.obj[16] = null;
                 }
                 if(ticTacToe.Lose){
                     gameT = true;
