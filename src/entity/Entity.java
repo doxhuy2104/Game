@@ -196,7 +196,6 @@ public class Entity {
         eToPCL = false;
         eToPCR = false;
         if (!gp.player.invisible) gp.collisionChecker.eToPCo(this);
-        if (eToPCR || eToPCL || eToPCD || eToPCU) gp.player.invisible = true;
     }
 
     public void Hurt() {
