@@ -128,17 +128,6 @@ public class AssetSetter {
         gp.obj[35].worldX = 32 * gp.tileSize;
         gp.obj[35].worldY = 25 * gp.tileSize;
 
-        gp.obj[36] =new objectBlockCheck();
-        gp.obj[36].worldX = 58 * gp.tileSize;
-        gp.obj[36].worldY = 41 * gp.tileSize;
-
-        gp.obj[37] =new objectBlockCheck();
-        gp.obj[37].worldX = 59 * gp.tileSize;
-        gp.obj[37].worldY = 41 * gp.tileSize;
-
-        gp.obj[38] =new objectBlockCheck();
-        gp.obj[38].worldX = 60 * gp.tileSize;
-        gp.obj[38].worldY = 41 * gp.tileSize;
 
     }
     public void setEnemies(){
