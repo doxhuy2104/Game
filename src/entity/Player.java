@@ -331,9 +331,21 @@ public class Player extends Entity {
                     gp.slime[7].sx = 33* gp.tileSize;
                     gp.slime[7].sy = 31 * gp.tileSize;
 
+                    gp.caSau[4] = new CaSau(gp);
+                    gp.caSau[4].sx = 35 * gp.tileSize;
+                    gp.caSau[4].sy = 27 * gp.tileSize;
 
+                    gp.caSau[5] = new CaSau(gp);
+                    gp.caSau[5].sx = 33* gp.tileSize;
+                    gp.caSau[5].sy = 27 * gp.tileSize;
 
+                    gp.caSau[6] = new CaSau(gp);
+                    gp.caSau[6].sx = 35* gp.tileSize;
+                    gp.caSau[6].sy = 31 * gp.tileSize;
 
+                    gp.caSau[7] = new CaSau(gp);
+                    gp.caSau[7].sx = 33* gp.tileSize;
+                    gp.caSau[7].sy = 31 * gp.tileSize;
                 }
                 break;
 
@@ -382,24 +394,7 @@ public class Player extends Entity {
                     break;
             }
 
-            if(gp.slime[4]==null&&gp.slime[5]==null&&gp.slime[6]==null&&gp.slime[7]==null){
-                gp.caSau[4] = new CaSau(gp);
-                gp.caSau[4].sx = 35 * gp.tileSize;
-                gp.caSau[4].sy = 27 * gp.tileSize;
 
-                gp.caSau[5] = new CaSau(gp);
-                gp.caSau[5].sx = 33* gp.tileSize;
-                gp.caSau[5].sy = 27 * gp.tileSize;
-
-                gp.caSau[6] = new CaSau(gp);
-                gp.caSau[6].sx = 35* gp.tileSize;
-                gp.caSau[6].sy = 31 * gp.tileSize;
-
-                gp.caSau[7] = new CaSau(gp);
-                gp.caSau[7].sx = 33* gp.tileSize;
-                gp.caSau[7].sy = 31 * gp.tileSize;
-
-            }
 
 
             if (appearBoss == 4){
