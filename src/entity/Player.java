@@ -246,7 +246,7 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
-        if(LightingManager.opacity == 1.0f){
+        if(LightingManager.opacity > 0.0f){
             if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
             if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
         }
@@ -354,7 +354,7 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     boost = true;
                     startTime = System.currentTimeMillis();
-                    LightingManager.opacity = LightingManager.opacity - 0.033f;
+                    LightingManager.opacity = LightingManager.opacity - 0.05f;
                     break;
             }
 
