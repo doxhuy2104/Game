@@ -125,6 +125,11 @@ public class AssetSetter {
         gp.obj[35].worldX = 32 * gp.tileSize;
         gp.obj[35].worldY = 25 * gp.tileSize;
 
+        //Cua vao den tho
+        gp.obj[37] = new objectCuaNgang();
+        gp.obj[37].worldX = 34 * gp.tileSize;
+        gp.obj[37].worldY = 20 * gp.tileSize;
+
 
     }
     public void setEnemies(){
