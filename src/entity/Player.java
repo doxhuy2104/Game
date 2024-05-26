@@ -306,6 +306,7 @@ public class Player extends Entity {
 
                         TileManager.mapTileNum[30][37] = 1;
                         TileManager.mapTileNum[30][38] = 1;
+
                         gp.obj[30] = null;
                         gp.obj[31] = null;
 
@@ -587,7 +588,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
