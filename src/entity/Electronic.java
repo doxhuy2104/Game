@@ -50,6 +50,8 @@ public class Electronic extends Entity {
             for(int i=0;i<6;i++){
                 elecAttackL[i] = elec.getSubimage(130-i*26,160,26,32);
             }
+            shadow = ImageIO.read(getClass().getResourceAsStream("/enemies/enemyMed.png"));
+
         }   catch (Exception e) {
             e.printStackTrace();
         }
@@ -176,6 +178,8 @@ public class Electronic extends Entity {
 
     public void draw(Graphics2D g2) {
         if (alive) {
+            g2.drawImage(shadow, drawX + 20, drawY + 130, gp.scale * shadow.getWidth(), gp.scale * shadow.getHeight(), null);
+
             Move = null;
             Attack = null;
             switch (eD) {

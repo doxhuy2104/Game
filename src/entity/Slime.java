@@ -240,7 +240,7 @@ public class Slime extends Entity {
     public void draw(Graphics2D g2) {
         g2.setColor(Color.WHITE);
         if (alive) {
-            g2.drawImage(shadow, x + 7, y + 48, gp.scale * shadow.getWidth(), gp.scale * shadow.getHeight(), null);
+            g2.drawImage(shadow, drawX + 8, drawY + 30, gp.scale * shadow.getWidth(), gp.scale * shadow.getHeight(), null);
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transparency));
             if (move) {
                 switch (eD) {
