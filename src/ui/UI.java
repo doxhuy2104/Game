@@ -40,6 +40,7 @@ public class UI {
     BufferedImage manaFull, manaFill, manaEmpty;
     boolean gameT=false;
     public boolean chat = true;
+    public boolean replay = true;
     public String currentDialouge = "";
 
 
@@ -64,12 +65,22 @@ public class UI {
                     //gp.gameState = gp.playState;
                 }
             }
-            if (gameT) {
-                ticTacToe = new TicTacToe();
-                gameT = false;
-                gp.npc[0] = null;
-                gp.gameState = gp.playState;
-            }
+
+                System.out.println("lap");
+                if (gameT) {
+                    ticTacToe = new TicTacToe();
+                    gameT = false;
+                    if(ticTacToe.checkWinner()) {
+                            gp.npc[0] = null;
+                            gp.gameState = gp.playState;
+                        }
+                    else {
+                            //ticTacToe.gameOver = false;
+                            gameT = true;
+                        }
+                        System.out.println(gameT);
+                }
+
 //            if (ticTacToe.gameOver) {
 //                gameT = true;
 //                gp.npc[0] = null;

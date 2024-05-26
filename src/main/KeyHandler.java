@@ -58,8 +58,6 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_SPACE || code == KeyEvent.VK_ENTER) {
                 gp.dialougeIndex++;
                 spacePressed = true;
-                System.out.println(gp.dialougeIndex);
-                System.out.println(spacePressed);
             }
         }
     }
