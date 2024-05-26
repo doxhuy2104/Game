@@ -5,6 +5,7 @@ import main.GamePanel;
 import main.KeyHandler;
 import main.MouseClickListener;
 import object.objectChestOpen;
+import object.objectDoorBoss;
 import object.objectDoorWin;
 import object.objectSwitchOn;
 import projectile.FlameAttack;
@@ -38,6 +39,7 @@ public class Player extends Entity {
     public static int abs(int x) {
         return x >= 0 ? x : -x;
     }
+    public static int aliveBoss;
 
     public static boolean OpenDoorWin = false;
 
@@ -251,6 +253,12 @@ public class Player extends Entity {
             if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
         }
 
+        if(aliveBoss == 0){
+            TileManager.mapTileNum[59][40] = 0;
+            TileManager.mapTileNum[60][40] = 0;
+            TileManager.mapTileNum[61][40] = 0;
+        }
+
         if (i != 999) {
             String objName = gp.obj[i].name;
             switch (objName) {
@@ -361,32 +369,36 @@ public class Player extends Entity {
             if (appearBoss == 4){
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
-                gp.electronic[0].sx = 54 * gp.tileSize;
-                gp.electronic[0].sy = 45 * gp.tileSize;
+                gp.electronic[0].sx = 51 * gp.tileSize;
+                gp.electronic[0].sy = 41 * gp.tileSize;
 
                 gp.electronic[1] = new Electronic(gp);
-                gp.electronic[1].sx = 65 * gp.tileSize;
-                gp.electronic[1].sy = 45 * gp.tileSize;
+                gp.electronic[1].sx = 68 * gp.tileSize;
+                gp.electronic[1].sy = 58 * gp.tileSize;
 
                 gp.electronic[2] = new Electronic(gp);
                 gp.electronic[2].sx = 54 * gp.tileSize;
-                gp.electronic[2].sy = 56 * gp.tileSize;
+                gp.electronic[2].sy = 55 * gp.tileSize;
 
                 gp.electronic[3] = new Electronic(gp);
-                gp.electronic[3].sx = 65 * gp.tileSize;
-                gp.electronic[3].sy = 56 * gp.tileSize;
+                gp.electronic[3].sx = 51 * gp.tileSize;
+                gp.electronic[3].sy = 58 * gp.tileSize;
 
                 gp.electronic[4] = new Electronic(gp);
-                gp.electronic[4].sx = 60 * gp.tileSize;
-                gp.electronic[4].sy = 50 * gp.tileSize;
+                gp.electronic[4].sx = 54 * gp.tileSize;
+                gp.electronic[4].sy = 44 * gp.tileSize;
 
                 gp.electronic[5] = new Electronic(gp);
-                gp.electronic[5].sx = 65 * gp.tileSize;
-                gp.electronic[5].sy = 40 * gp.tileSize;
+                gp.electronic[5].sx = 68 * gp.tileSize;
+                gp.electronic[5].sy = 41 * gp.tileSize;
 
                 gp.electronic[6] = new Electronic(gp);
-                gp.electronic[6].sx = 50 * gp.tileSize;
-                gp.electronic[6].sy = 56 * gp.tileSize;
+                gp.electronic[6].sx = 65 * gp.tileSize;
+                gp.electronic[6].sy = 44 * gp.tileSize;
+
+                gp.electronic[7] = new Electronic(gp);
+                gp.electronic[7].sx = 65 * gp.tileSize;
+                gp.electronic[7].sy = 55 * gp.tileSize;
 
                 gp.obj[0] = null;
                 gp.obj[1] = null;
@@ -400,7 +412,17 @@ public class Player extends Entity {
                 gp.obj[21].worldY = 19 * gp.tileSize;
                 OpenDoorWin = true;
 
+                //Ra Boss
+                gp.obj[26] = new objectDoorBoss();
+                gp.obj[26].worldX = 58 * gp.tileSize;
+                gp.obj[26].worldY = 40 * gp.tileSize;
+
+                TileManager.mapTileNum[59][40] = 1;
+                TileManager.mapTileNum[60][40] = 1;
+                TileManager.mapTileNum[61][40] = 1;
+
                 appearBoss = 0;
+                aliveBoss = 8;
             }
         }
         return boost;
@@ -496,7 +518,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+//        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

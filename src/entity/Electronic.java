@@ -57,7 +57,10 @@ public class Electronic extends Entity {
     public void updateE(){
         super.direction();
 
-        if (hp == 0) alive = false;
+        if (hp == 0) {
+            alive = false;
+            Player.aliveBoss--;
+        }
 
         if (alive) {
             drawX = -gp.player.x + gp.player.screenX + eSX + sx;

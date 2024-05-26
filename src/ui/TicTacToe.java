@@ -2,6 +2,7 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.Objects;
 import java.util.Random;
 import java.util.Timer;
@@ -28,7 +29,9 @@ public class TicTacToe {
     String humanX = "X";
     String aiO = "O";
 
-    boolean gameOver = false;
+    public boolean Lose = false;
+    public boolean Win = false;
+    public boolean gameOver = false;
     int turns = 0;
 
     public TicTacToe() {
@@ -68,23 +71,7 @@ public class TicTacToe {
                 tile.setFocusable(false);
                 // tile.setText(currentPlayer);
 
-                tile.addActionListener(e -> {
-                    JButton tile1 = (JButton) e.getSource();
-                    if (Objects.equals(tile1.getText(), "")) {
-                        tile1.setText(humanX);
-                        turns++;
-                        checkWinner();
-                        if (!gameOver) {
-                            JButton tile2 = bestMove();
-                            tile2.setText(aiO);
-                            turns++;
-                            checkWinner();
-                        }
-                        if (gameOver){
-                            timer.schedule(task,1000);
-                        }
-                    }
-                });
+                tile.addActionListener(this::actionPerformed);
             }
         }
     }
@@ -94,11 +81,24 @@ public class TicTacToe {
         for (int r = 0; r < 3; r++) {
             if (Objects.equals(board[r][0].getText(), "")) continue;
 
-            if (Objects.equals(board[r][0].getText(), board[r][1].getText()) &&
-                    Objects.equals(board[r][1].getText(), board[r][2].getText())) {
+            if (Objects.equals(board[r][0].getText(), "X") &&
+                    Objects.equals(board[r][1].getText(), "X") &&
+                        Objects.equals(board[r][2].getText(), "X")) {
                 for (int i = 0; i < 3; i++) {
                     setWinner(board[r][i]);
                 }
+                Win = true;
+                gameOver = true;
+                return;
+            }
+
+            if (Objects.equals(board[r][0].getText(), "O") &&
+                    Objects.equals(board[r][1].getText(), "O") &&
+                    Objects.equals(board[r][2].getText(), "O")) {
+                for (int i = 0; i < 3; i++) {
+                    setWinner(board[r][i]);
+                }
+                Lose = true;
                 gameOver = true;
                 return;
             }
@@ -108,11 +108,24 @@ public class TicTacToe {
         for (int c = 0; c < 3; c++) {
             if (Objects.equals(board[0][c].getText(), "")) continue;
 
-            if (Objects.equals(board[0][c].getText(), board[1][c].getText()) &&
-                    Objects.equals(board[1][c].getText(), board[2][c].getText())) {
+            if (Objects.equals(board[0][c].getText(), "X") &&
+                    Objects.equals(board[1][c].getText(), "X") &&
+                        Objects.equals(board[2][c].getText(), "X")) {
                 for (int i = 0; i < 3; i++) {
                     setWinner(board[i][c]);
                 }
+                Win = true;
+                gameOver = true;
+                return;
+            }
+
+            if (Objects.equals(board[0][c].getText(), "O") &&
+                    Objects.equals(board[1][c].getText(), "O") &&
+                    Objects.equals(board[2][c].getText(), "O")) {
+                for (int i = 0; i < 3; i++) {
+                    setWinner(board[i][c]);
+                }
+                Lose = true;
                 gameOver = true;
                 return;
             }
@@ -121,10 +134,22 @@ public class TicTacToe {
         //diagonally
         if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
                 Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
-                !Objects.equals(board[0][0].getText(), "")) {
+                    Objects.equals(board[0][0].getText(), "X")) {
             for (int i = 0; i < 3; i++) {
                 setWinner(board[i][i]);
             }
+            Win = true;
+            gameOver = true;
+            return;
+        }
+
+        if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
+                Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
+                Objects.equals(board[0][0].getText(), "O")) {
+            for (int i = 0; i < 3; i++) {
+                setWinner(board[i][i]);
+            }
+            Lose = true;
             gameOver = true;
             return;
         }
@@ -132,10 +157,22 @@ public class TicTacToe {
         //anti-diagonally
         if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
                 Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
-                !Objects.equals(board[0][2].getText(), "")) {
+                    Objects.equals(board[0][2].getText(), "X")) {
             setWinner(board[0][2]);
             setWinner(board[1][1]);
             setWinner(board[2][0]);
+            Win = true;
+            gameOver = true;
+            return;
+        }
+
+        if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
+                Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
+                Objects.equals(board[0][2].getText(), "O")) {
+            setWinner(board[0][2]);
+            setWinner(board[1][1]);
+            setWinner(board[2][0]);
+            Lose = true;
             gameOver = true;
             return;
         }
@@ -146,6 +183,7 @@ public class TicTacToe {
                     setTie(board[r][c]);
                 }
             }
+            Lose = true;
             gameOver = true;
         }
     }
@@ -251,12 +289,26 @@ public class TicTacToe {
                 }
             }
         }
-        move[0] = rand.nextInt(3);
-        move[1] = rand.nextInt(3);
-        while (!Objects.equals(board[move[0]][move[1]].getText(), "")) {
+        do {
             move[0] = rand.nextInt(3);
             move[1] = rand.nextInt(3);
-        }
+        } while (!Objects.equals(board[move[0]][move[1]].getText(), ""));
         return board[move[0]][move[1]];
+    }
+
+    private void actionPerformed(ActionEvent e) {
+        JButton tile1 = (JButton) e.getSource();
+        if (Objects.equals(tile1.getText(), "")) {
+            tile1.setText(humanX);
+            turns++;
+            checkWinner();
+            if (!gameOver) {
+                JButton tile2 = bestMove();
+                tile2.setText(aiO);
+                turns++;
+                checkWinner();
+            }
+            if (gameOver) timer.schedule(task, 1000);
+        }
     }
 }

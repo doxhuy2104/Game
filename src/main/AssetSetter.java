@@ -65,6 +65,7 @@ public class AssetSetter {
         gp.obj[15].worldX = 3 * gp.tileSize;
         gp.obj[15].worldY = 20 * gp.tileSize;
 
+        //Vao Boss
         gp.obj[16] = new objectDoorBoss();
         gp.obj[16].worldX = 58 * gp.tileSize;
         gp.obj[16].worldY = 29 * gp.tileSize;
@@ -101,10 +102,6 @@ public class AssetSetter {
         gp.obj[25] = new objectBoots();
         gp.obj[25].worldX = 14 * gp.tileSize;
         gp.obj[25].worldY = 21 * gp.tileSize;
-
-//        gp.obj[] = new objectChestClose();
-//        gp.obj[].worldX = 59 * gp.tileSize;
-//        gp.obj[].worldY = 49 * gp.tileSize;
 
     }
     public void setEnemies(){

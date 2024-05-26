@@ -58,9 +58,13 @@ public class UI {
                 gameT = false;
             }
             if (ticTacToe.gameOver) {
-                gameT = true;
-                gp.npc[0] = null;
-                gp.gameState = gp.playState;
+                if(ticTacToe.Win){
+                    gp.gameState = gp.playState;
+                }
+                if(ticTacToe.Lose){
+                    gameT = true;
+                    gp.gameState = gp.playState;
+                }
             }
 
         }
