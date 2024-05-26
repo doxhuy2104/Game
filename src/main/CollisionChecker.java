@@ -7,7 +7,7 @@ import projectile.Projectile;
 
 public class CollisionChecker {
     GamePanel gp;
-    public static int tileNum1, tileNum2, tileNum3;
+    public int tileNum1, tileNum2, tileNum3;
 
     public CollisionChecker(GamePanel gp) {
 
