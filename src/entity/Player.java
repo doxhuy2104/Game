@@ -250,11 +250,11 @@ public class Player extends Entity {
             if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
         }
 
-        if(aliveBoss == 0){
-            TileManager.mapTileNum[59][40] = 0;
-            TileManager.mapTileNum[60][40] = 0;
-            TileManager.mapTileNum[61][40] = 0;
-        }
+//        if(aliveBoss == 0){
+//            TileManager.mapTileNum[59][40] = 0;
+//            TileManager.mapTileNum[60][40] = 0;
+//            TileManager.mapTileNum[61][40] = 0;
+//        }
 
         if (i != 999) {
             String objName = gp.obj[i].name;
@@ -332,7 +332,7 @@ public class Player extends Entity {
                         gp.slime[7].sx = 33 * gp.tileSize;
                         gp.slime[7].sy = 31 * gp.tileSize;
                     }
-                    else if(gp.caSau[4]==null) {
+                    else if(gp.slime[4].hp==0&&gp.slime[5].hp==0&&gp.slime[6].hp==0&&gp.slime[7].hp==0&&gp.caSau[4]==null) {
 
                     gp.caSau[4] = new CaSau(gp);
                     gp.caSau[4].sx = 35 * gp.tileSize;
@@ -360,6 +360,15 @@ public class Player extends Entity {
                         TileManager.mapTileNum[39][23] = 0;
                         TileManager.mapTileNum[39][24] = 0;
 
+                    }
+                    if(gp.electronic[0]!=null){
+                         if(gp.electronic[0].hp==0&&gp.electronic[1].hp==0&&gp.electronic[2].hp==0&&gp.electronic[3].hp==0
+                                &&gp.electronic[4].hp==0&&gp.electronic[5].hp==0&&gp.electronic[6].hp==0&&gp.electronic[7].hp==0){
+                            TileManager.mapTileNum[58][40] = 0;
+                            TileManager.mapTileNum[59][40] = 0;
+                            TileManager.mapTileNum[60][40] = 0;
+                            gp.obj[26]=null;
+                        }
                     }
                 }
                 break;
@@ -413,6 +422,18 @@ public class Player extends Entity {
 
 
             if (appearBoss == 4){
+                gp.obj[36] =new objectBlockCheck();
+                gp.obj[36].worldX = 58 * gp.tileSize;
+                gp.obj[36].worldY = 41 * gp.tileSize;
+
+                gp.obj[37] =new objectBlockCheck();
+                gp.obj[37].worldX = 59 * gp.tileSize;
+                gp.obj[37].worldY = 41 * gp.tileSize;
+
+                gp.obj[38] =new objectBlockCheck();
+                gp.obj[38].worldX = 60 * gp.tileSize;
+                gp.obj[38].worldY = 41 * gp.tileSize;
+
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
                 gp.electronic[0].sx = 51 * gp.tileSize;
@@ -463,9 +484,9 @@ public class Player extends Entity {
                 gp.obj[26].worldX = 58 * gp.tileSize;
                 gp.obj[26].worldY = 40 * gp.tileSize;
 
+                TileManager.mapTileNum[58][40] = 1;
                 TileManager.mapTileNum[59][40] = 1;
                 TileManager.mapTileNum[60][40] = 1;
-                TileManager.mapTileNum[61][40] = 1;
 
                 appearBoss = 0;
                 aliveBoss = 8;
