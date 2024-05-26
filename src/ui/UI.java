@@ -1,6 +1,7 @@
 package ui;
 
 import main.GamePanel;
+import object.objectCuaDoc;
 import object.objectDoorWin;
 import tile.TileManager;
 
@@ -91,10 +92,19 @@ public class UI {
                         gp.player.OpenDoorWin = true;
                     }
                     if (ticTacToe.Lose) {
+                        //Mo cua vao phong boss
                         gp.obj[16] = null;
                         TileManager.mapTileNum[58][29] = 0;
                         TileManager.mapTileNum[59][29] = 0;
                         TileManager.mapTileNum[60][29] = 0;
+
+                        //Dong cua vao map NPC
+                        gp.obj[39] = new objectCuaDoc();
+                        gp.obj[39].worldX = 50 * gp.tileSize;
+                        gp.obj[39].worldY = 23 * gp.tileSize;
+                        TileManager.mapTileNum[50][23] = 1;
+                        TileManager.mapTileNum[50][24] = 1;
+
                         if (truHp) {
                             gp.player.currentHP = 2;
                             truHp = false;

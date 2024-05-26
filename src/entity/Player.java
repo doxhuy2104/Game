@@ -261,39 +261,42 @@ public class Player extends Entity {
         if((GamePanel.col == 31) && (GamePanel.row == 37) ||
                 (GamePanel.col == 31) && (GamePanel.row == 38)){
 
-            gp.obj[12] = new objectCuaDoc();
-            gp.obj[12].worldX = 30 * gp.tileSize;
-            gp.obj[12].worldY = 37 * gp.tileSize;
+            if(gp.slime[4] == null) {
+                gp.obj[12] = new objectCuaDoc();
+                gp.obj[12].worldX = 30 * gp.tileSize;
+                gp.obj[12].worldY = 37 * gp.tileSize;
 
-            TileManager.mapTileNum[30][37] = 1;
-            TileManager.mapTileNum[30][38] = 1;
+                TileManager.mapTileNum[30][37] = 1;
+                TileManager.mapTileNum[30][38] = 1;
 
-            gp.obj[13] = new objectCuaDoc();
-            gp.obj[13].worldX = 39 * gp.tileSize;
-            gp.obj[13].worldY = 23 * gp.tileSize;
+                gp.obj[13] = new objectCuaDoc();
+                gp.obj[13].worldX = 39 * gp.tileSize;
+                gp.obj[13].worldY = 23 * gp.tileSize;
 
-            gp.slime[4] = new Slime(gp);
-            gp.slime[4].sx = 35 * gp.tileSize;
-            gp.slime[4].sy = 27 * gp.tileSize;
+                gp.slime[4] = new Slime(gp);
+                gp.slime[4].sx = 35 * gp.tileSize;
+                gp.slime[4].sy = 27 * gp.tileSize;
 
-            gp.slime[5] = new Slime(gp);
-            gp.slime[5].sx = 33 * gp.tileSize;
-            gp.slime[5].sy = 27 * gp.tileSize;
+                gp.slime[5] = new Slime(gp);
+                gp.slime[5].sx = 33 * gp.tileSize;
+                gp.slime[5].sy = 27 * gp.tileSize;
 
-            gp.slime[6] = new Slime(gp);
-            gp.slime[6].sx = 35 * gp.tileSize;
-            gp.slime[6].sy = 31 * gp.tileSize;
+                gp.slime[6] = new Slime(gp);
+                gp.slime[6].sx = 35 * gp.tileSize;
+                gp.slime[6].sy = 31 * gp.tileSize;
 
-            gp.slime[7] = new Slime(gp);
-            gp.slime[7].sx = 33 * gp.tileSize;
-            gp.slime[7].sy = 31 * gp.tileSize;
+                gp.slime[7] = new Slime(gp);
+                gp.slime[7].sx = 33 * gp.tileSize;
+                gp.slime[7].sy = 31 * gp.tileSize;
+            }
         }
 
         if (gp.slime[4] != null) {
             if (gp.slime[4].hp <= 0 &&
                     gp.slime[5].hp <= 0 &&
                     gp.slime[6].hp <= 0 &&
-                    gp.slime[7].hp <= 0) {
+                    gp.slime[7].hp <= 0 &&
+                    gp.caSau[4] == null) {
                 gp.caSau[4] = new CaSau(gp);
                 gp.caSau[4].sx = 35 * gp.tileSize;
                 gp.caSau[4].sy = 27 * gp.tileSize;
@@ -325,6 +328,10 @@ public class Player extends Entity {
                 gp.obj[13] = null;
                 TileManager.mapTileNum[39][23] = 0;
                 TileManager.mapTileNum[39][24] = 0;
+
+                gp.obj[39] = null;
+                TileManager.mapTileNum[34][20] = 0;
+                TileManager.mapTileNum[35][20] = 0;
             }
         }
 
@@ -591,7 +598,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

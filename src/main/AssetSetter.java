@@ -131,7 +131,6 @@ public class AssetSetter {
         gp.obj[39].worldX = 34 * gp.tileSize;
         gp.obj[39].worldY = 20 * gp.tileSize;
 
-
     }
     public void setEnemies(){
         gp.slime[0] = new Slime(gp);
