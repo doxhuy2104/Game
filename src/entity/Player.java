@@ -52,11 +52,11 @@ public class Player extends Entity {
         mana = 100;
 
 
-        solidArea = new Rectangle(8, 32, 48, 32);
+        solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackAreaU = new Rectangle(screenX - 17*gp.scale, screenY - 22 * gp.scale, 136, 90);
-        attackAreaL = new Rectangle(screenX - 22 * gp.scale, screenY - 17 * gp.scale, 90, 136);
+        attackAreaU = new Rectangle(screenX - 44, screenY - 66, 136, 130);
+        attackAreaL = new Rectangle(screenX - 42 , screenY - 44, 130, 136);
         attackAreaD = new Rectangle(screenX - 17 * gp.scale, screenY , 136, 90);
         attackAreaR = new Rectangle(screenX , screenY - 17 * gp.scale, 90, 136);
 
