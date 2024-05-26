@@ -22,7 +22,7 @@ public class CaSau extends Entity {
         bodyAreaA = new Rectangle();
         bodyAreaC = new Rectangle();
         saw = false;
-        hp = 15;
+        hp = 10;
         eSpeed = 2;
         moved = false;
 
@@ -225,7 +225,7 @@ public class CaSau extends Entity {
     public void reset() {
         super.reset();
         mNum = 0;
-        hp = 15;
+        hp = 10;
         attack=false;
         atk=false;
         aNum=0;
