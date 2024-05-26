@@ -27,7 +27,7 @@ public class Player extends Entity {
     private boolean rM = false, aM = false, sM = false;
     int sMC = 0, aMC = 0, rMC = 0, mC = 0;
     public boolean canSprint;
-    int hasKey = 0,hasKeyDoor;
+    int hasKey = 0,hasKeyDoor=3;
     int appearBoss = 0;
     public boolean boost;
     public boolean isHurt;
@@ -266,8 +266,15 @@ public class Player extends Entity {
 
                 case "BlockCheck":
                     if(hasKeyDoor>0){
-                        gp.obj[i+1]=null;
-                        gp.obj[i]=null;
+                        if(i==20||i==21){
+                            gp.obj[20]=null;
+                            gp.obj[21]=null;
+                            gp.obj[19]=null;
+                        }
+                        else {
+                            gp.obj[i + 1] = null;
+                            gp.obj[i] = null;
+                        }
                         hasKeyDoor--;
                         break;
                     }

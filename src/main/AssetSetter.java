@@ -67,18 +67,7 @@ public class AssetSetter {
         gp.obj[16].worldX = 38 * gp.tileSize;
         gp.obj[16].worldY = 21 * gp.tileSize;
 
-        gp.obj[17] = new objectBlockCheckDoor();
-        gp.obj[17].worldX = 4 * gp.tileSize;
-        gp.obj[17].worldY = 9 * gp.tileSize;
 
-        gp.obj[18] = new objectCuaNgang();
-        gp.obj[18].worldX = 3 * gp.tileSize;
-        gp.obj[18].worldY = 9 * gp.tileSize;
-
-
-//        gp.obj[16] = new objectKeyDoor();
-//        gp.obj[16].worldX = 3 * gp.tileSize;
-//        gp.obj[16].worldY = 3 * gp.tileSize;
 
         gp.obj[17] = new objectBlockCheckDoor();
         gp.obj[17].worldX = 4 * gp.tileSize;
@@ -92,10 +81,20 @@ public class AssetSetter {
         gp.obj[19].worldX = 58 * gp.tileSize;
         gp.obj[19].worldY = 29 * gp.tileSize;
 
+        gp.obj[20] = new objectBlockCheckDoor();
+        gp.obj[20].worldX = 59 * gp.tileSize;
+        gp.obj[20].worldY = 29 * gp.tileSize;
+
+        gp.obj[21] = new objectBlockCheckDoor();
+        gp.obj[21].worldX = 60 * gp.tileSize;
+        gp.obj[21].worldY = 29 * gp.tileSize;
+
+
+
         //DoorForPrincess
-        gp.obj[20] = new objectDoorHelpPrincess();
-        gp.obj[20].worldX = 67 * gp.tileSize;
-        gp.obj[20].worldY = 23 * gp.tileSize;
+        gp.obj[30] = new objectDoorHelpPrincess();
+        gp.obj[30].worldX = 67 * gp.tileSize;
+        gp.obj[30].worldY = 23 * gp.tileSize;
 
 
 
