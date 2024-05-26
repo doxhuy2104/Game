@@ -436,36 +436,36 @@ public class Player extends Entity {
 
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
-                gp.electronic[0].sx = 51 * gp.tileSize;
-                gp.electronic[0].sy = 41 * gp.tileSize;
+                gp.electronic[0].sx = 65 * gp.tileSize;
+                gp.electronic[0].sy = 49 * gp.tileSize;
 
                 gp.electronic[1] = new Electronic(gp);
-                gp.electronic[1].sx = 68 * gp.tileSize;
-                gp.electronic[1].sy = 58 * gp.tileSize;
+                gp.electronic[1].sx = 59 * gp.tileSize;
+                gp.electronic[1].sy = 49 * gp.tileSize;
 
                 gp.electronic[2] = new Electronic(gp);
                 gp.electronic[2].sx = 54 * gp.tileSize;
-                gp.electronic[2].sy = 55 * gp.tileSize;
+                gp.electronic[2].sy = 49 * gp.tileSize;
 
                 gp.electronic[3] = new Electronic(gp);
-                gp.electronic[3].sx = 51 * gp.tileSize;
-                gp.electronic[3].sy = 58 * gp.tileSize;
+                gp.electronic[3].sx = 59 * gp.tileSize;
+                gp.electronic[3].sy = 55 * gp.tileSize;
 
                 gp.electronic[4] = new Electronic(gp);
-                gp.electronic[4].sx = 54 * gp.tileSize;
+                gp.electronic[4].sx = 59 * gp.tileSize;
                 gp.electronic[4].sy = 44 * gp.tileSize;
 
                 gp.electronic[5] = new Electronic(gp);
-                gp.electronic[5].sx = 68 * gp.tileSize;
-                gp.electronic[5].sy = 41 * gp.tileSize;
+                gp.electronic[5].sx = 54 * gp.tileSize;
+                gp.electronic[5].sy = 44 * gp.tileSize;
 
                 gp.electronic[6] = new Electronic(gp);
                 gp.electronic[6].sx = 65 * gp.tileSize;
                 gp.electronic[6].sy = 44 * gp.tileSize;
 
                 gp.electronic[7] = new Electronic(gp);
-                gp.electronic[7].sx = 65 * gp.tileSize;
-                gp.electronic[7].sy = 55 * gp.tileSize;
+                gp.electronic[7].sx = 59 * gp.tileSize;
+                gp.electronic[7].sy = 42 * gp.tileSize;
 
                 gp.obj[0] = null;
                 gp.obj[1] = null;
