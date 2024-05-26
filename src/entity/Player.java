@@ -245,16 +245,31 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
-        if(LightingManager.opacity > 0.0f){
-            if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
-            if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
+        boolean intoMapOX = true;
+        if(intoMapOX) {
+            if ((GamePanel.col == 50) && (GamePanel.row == 23)){
+                intoMapOX = false;
+                TileManager.mapTileNum[50][23] = 0;
+                gp.obj[36] = new objectCuaDoc();
+                gp.obj[36].worldX = 50 * gp.tileSize;
+                gp.obj[36].worldY = 23 * gp.tileSize;
+                TileManager.mapTileNum[50][23] = 1;
+                TileManager.mapTileNum[50][24] = 1;
+            }
+            if ((GamePanel.col == 50) && (GamePanel.row == 24)){
+                intoMapOX = false;
+                TileManager.mapTileNum[50][23] = 0;
+                gp.obj[36] = new objectCuaDoc();
+                TileManager.mapTileNum[50][23] = 1;
+                TileManager.mapTileNum[50][24] = 1;
+            }
         }
 
-//        if(aliveBoss == 0){
-//            TileManager.mapTileNum[59][40] = 0;
-//            TileManager.mapTileNum[60][40] = 0;
-//            TileManager.mapTileNum[61][40] = 0;
-//        }
+        if(aliveBoss == 0){
+            TileManager.mapTileNum[59][40] = 0;
+            TileManager.mapTileNum[60][40] = 0;
+            TileManager.mapTileNum[61][40] = 0;
+        }
 
         if (i != 999) {
             String objName = gp.obj[i].name;
@@ -306,6 +321,7 @@ public class Player extends Entity {
 
                         TileManager.mapTileNum[30][37] = 1;
                         TileManager.mapTileNum[30][38] = 1;
+
                         gp.obj[30] = null;
                         gp.obj[31] = null;
 
@@ -332,38 +348,41 @@ public class Player extends Entity {
                         gp.slime[7].sx = 33 * gp.tileSize;
                         gp.slime[7].sy = 31 * gp.tileSize;
                     }
-                    else if(gp.slime[4].hp==0&&gp.slime[5].hp==0&&gp.slime[6].hp==0&&gp.slime[7].hp==0&&gp.caSau[4]==null) {
+                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0&&gp.caSau[4]==null) {
 
-                    gp.caSau[4] = new CaSau(gp);
-                    gp.caSau[4].sx = 35 * gp.tileSize;
-                    gp.caSau[4].sy = 27 * gp.tileSize;
+                        gp.caSau[4] = new CaSau(gp);
+                        gp.caSau[4].sx = 35 * gp.tileSize;
+                        gp.caSau[4].sy = 27 * gp.tileSize;
 
-                    gp.caSau[5] = new CaSau(gp);
-                    gp.caSau[5].sx = 33* gp.tileSize;
-                    gp.caSau[5].sy = 27 * gp.tileSize;
+                        gp.caSau[5] = new CaSau(gp);
+                        gp.caSau[5].sx = 33* gp.tileSize;
+                        gp.caSau[5].sy = 27 * gp.tileSize;
 
-                    gp.caSau[6] = new CaSau(gp);
-                    gp.caSau[6].sx = 35* gp.tileSize;
-                    gp.caSau[6].sy = 31 * gp.tileSize;
+                        gp.caSau[6] = new CaSau(gp);
+                        gp.caSau[6].sx = 35* gp.tileSize;
+                        gp.caSau[6].sy = 31 * gp.tileSize;
 
-                    gp.caSau[7] = new CaSau(gp);
-                    gp.caSau[7].sx = 33* gp.tileSize;
-                    gp.caSau[7].sy = 31 * gp.tileSize;
-                }
+                        gp.caSau[7] = new CaSau(gp);
+                        gp.caSau[7].sx = 33* gp.tileSize;
+                        gp.caSau[7].sy = 31 * gp.tileSize;
+                    }
 
-                    else if(gp.slime[4].hp==0&&gp.slime[5].hp==0&&gp.slime[6].hp==0&&gp.slime[7].hp==0
-                    &&gp.caSau[4].hp==0&&gp.caSau[5].hp==0&&gp.caSau[6].hp==0&&gp.caSau[7].hp==0){
+                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0
+                            &&gp.caSau[4].hp<=0&&gp.caSau[5].hp<=0&&gp.caSau[6].hp<=0&&gp.caSau[7].hp<=0){
                         gp.obj[12] = null;
                         TileManager.mapTileNum[30][37] = 0;
                         TileManager.mapTileNum[30][38] = 0;
                         gp.obj[13] = null;
                         TileManager.mapTileNum[39][23] = 0;
                         TileManager.mapTileNum[39][24] = 0;
+                        gp.obj[37] = null;
+                        TileManager.mapTileNum[35][20] = 0;
+                        TileManager.mapTileNum[34][20] = 0;
 
                     }
                     if(gp.electronic[0]!=null){
-                         if(gp.electronic[0].hp==0&&gp.electronic[1].hp==0&&gp.electronic[2].hp==0&&gp.electronic[3].hp==0
-                                &&gp.electronic[4].hp==0&&gp.electronic[5].hp==0&&gp.electronic[6].hp==0&&gp.electronic[7].hp==0){
+                        if(gp.electronic[0].hp<=0&&gp.electronic[1].hp<=0&&gp.electronic[2].hp<=0&&gp.electronic[3].hp<=0
+                                &&gp.electronic[4].hp<=0&&gp.electronic[5].hp<=0&&gp.electronic[6].hp<=0&&gp.electronic[7].hp<=0){
                             TileManager.mapTileNum[58][40] = 0;
                             TileManager.mapTileNum[59][40] = 0;
                             TileManager.mapTileNum[60][40] = 0;
@@ -436,36 +455,36 @@ public class Player extends Entity {
 
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
-                gp.electronic[0].sx = 51 * gp.tileSize;
-                gp.electronic[0].sy = 41 * gp.tileSize;
+                gp.electronic[0].sx = 65 * gp.tileSize;
+                gp.electronic[0].sy = 49 * gp.tileSize;
 
                 gp.electronic[1] = new Electronic(gp);
-                gp.electronic[1].sx = 68 * gp.tileSize;
-                gp.electronic[1].sy = 58 * gp.tileSize;
+                gp.electronic[1].sx = 59 * gp.tileSize;
+                gp.electronic[1].sy = 49 * gp.tileSize;
 
                 gp.electronic[2] = new Electronic(gp);
                 gp.electronic[2].sx = 54 * gp.tileSize;
-                gp.electronic[2].sy = 55 * gp.tileSize;
+                gp.electronic[2].sy = 49 * gp.tileSize;
 
                 gp.electronic[3] = new Electronic(gp);
-                gp.electronic[3].sx = 51 * gp.tileSize;
-                gp.electronic[3].sy = 58 * gp.tileSize;
+                gp.electronic[3].sx = 59 * gp.tileSize;
+                gp.electronic[3].sy = 55 * gp.tileSize;
 
                 gp.electronic[4] = new Electronic(gp);
-                gp.electronic[4].sx = 54 * gp.tileSize;
+                gp.electronic[4].sx = 59 * gp.tileSize;
                 gp.electronic[4].sy = 44 * gp.tileSize;
 
                 gp.electronic[5] = new Electronic(gp);
-                gp.electronic[5].sx = 68 * gp.tileSize;
-                gp.electronic[5].sy = 41 * gp.tileSize;
+                gp.electronic[5].sx = 54 * gp.tileSize;
+                gp.electronic[5].sy = 44 * gp.tileSize;
 
                 gp.electronic[6] = new Electronic(gp);
                 gp.electronic[6].sx = 65 * gp.tileSize;
                 gp.electronic[6].sy = 44 * gp.tileSize;
 
                 gp.electronic[7] = new Electronic(gp);
-                gp.electronic[7].sx = 65 * gp.tileSize;
-                gp.electronic[7].sy = 55 * gp.tileSize;
+                gp.electronic[7].sx = 59 * gp.tileSize;
+                gp.electronic[7].sy = 42 * gp.tileSize;
 
                 gp.obj[0] = null;
                 gp.obj[1] = null;
@@ -534,15 +553,15 @@ public class Player extends Entity {
             }
         }
 
-       manaUpdate();
+        manaUpdate();
 
         //toạ độ chuột
         mouseX = mouseClick.getMouseX() - gp.screenWidth / 2;
         mouseY = mouseClick.getMouseY() - gp.getHeight() / 2;
-            //isShootingFlame = true;
-            //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
+        //isShootingFlame = true;
+        //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
         if (!isAttack) {
-           setKeyH();
+            setKeyH();
         }
         pToECU = false;
         pToECD = false;
@@ -645,7 +664,7 @@ public class Player extends Entity {
                 dy /= distance;
             }
             if(usingFlame){
-            shootFlame(dx, dy);
+                shootFlame(dx, dy);
             }
         }
         //va chạm vối đối tượng
@@ -716,7 +735,7 @@ public class Player extends Entity {
             // Sound Move
             if ((spriteCounter % 50 == 1)) {
                 gp.playSoundEffect(8);
-             }
+            }
         }
         else {
             spriteCounter = 0;
@@ -988,10 +1007,10 @@ public class Player extends Entity {
 
         }
 
-            for (int i = 0; i < flames.size(); i++) {
-                FlameAttack flame = flames.get(i);
-                flame.draw(g2, flame.flameNum); // Sử dụng một trong bốn sprite của flame
-            }
+        for (int i = 0; i < flames.size(); i++) {
+            FlameAttack flame = flames.get(i);
+            flame.draw(g2, flame.flameNum); // Sử dụng một trong bốn sprite của flame
+        }
         if (invisible && invi) g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         if (isMoving) {
             switch (direction) {

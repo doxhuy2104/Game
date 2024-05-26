@@ -4,15 +4,19 @@ import main.GamePanel;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UI {
     GamePanel gp;
-    Font Font1;
+    //Font Font1;
     TicTacToe ticTacToe;
     public UI(GamePanel gp){
         this.gp = gp;
+        loadFont();
     }
     public Graphics2D g2;
+    public Font myFont, Font1, Font2;
     //menu
     BufferedImage castle,moon,layer1,layer2,layer3,layer4,layer5,layer6,logo,checkBox,checkedBox,cursorBox,mSetting,mFill,mSettingC,menuBox;
     public BufferedImage sideCursorL,sideCursorR;
@@ -40,8 +44,20 @@ public class UI {
     BufferedImage manaFull, manaFill, manaEmpty;
     boolean gameT=false;
     public boolean chat = true;
-    public boolean replay = true;
     public String currentDialouge = "";
+
+    private void loadFont() {
+        try {
+            InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
+            InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
+            InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
+            Font1 = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(30f);
+            Font2 = Font.createFont(Font.TRUETYPE_FONT, is2).deriveFont(36f);
+        } catch (IOException | FontFormatException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public void draw(Graphics2D g2){
@@ -65,22 +81,12 @@ public class UI {
                     //gp.gameState = gp.playState;
                 }
             }
-
-                System.out.println("lap");
-                if (gameT) {
-                    ticTacToe = new TicTacToe();
-                    gameT = false;
-                    if(ticTacToe.checkWinner()) {
-                            gp.npc[0] = null;
-                            gp.gameState = gp.playState;
-                        }
-                    else {
-                            //ticTacToe.gameOver = false;
-                            gameT = true;
-                        }
-                        System.out.println(gameT);
-                }
-
+            if (gameT) {
+                ticTacToe = new TicTacToe();
+                gameT = false;
+                gp.npc[0] = null;
+                gp.gameState = gp.playState;
+            }
 //            if (ticTacToe.gameOver) {
 //                gameT = true;
 //                gp.npc[0] = null;
@@ -102,14 +108,14 @@ public class UI {
         int slotx = slotStartX;
         int slotY = slotStartY;
         //cursor
-            int cursorX = slotStartX + (gp.tileSize * slotCol);
-            int cursorY = slotStartY + (gp.tileSize * slotRow);
-            int cursorWitdth = gp.tileSize;
-            int cursorHeight = gp.tileSize;
-            //draw cursor
-            g2.setColor(Color.WHITE);
-            g2.setStroke(new BasicStroke(3));
-            g2.drawRoundRect(cursorX, cursorY, cursorWitdth, cursorHeight, 10, 10);
+        int cursorX = slotStartX + (gp.tileSize * slotCol);
+        int cursorY = slotStartY + (gp.tileSize * slotRow);
+        int cursorWitdth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        //draw cursor
+        g2.setColor(Color.WHITE);
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRoundRect(cursorX, cursorY, cursorWitdth, cursorHeight, 10, 10);
     }
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0, 0, 0, 200);
@@ -127,7 +133,7 @@ public class UI {
         int width = gp.screenWidth - gp.tileSize*4;
         int height = gp.tileSize * 2;
         drawSubWindow(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
+        g2.setFont(Font1);
         x += gp.tileSize;
         y += gp.tileSize;
         for(String line : currentDialouge.split("\n")) {

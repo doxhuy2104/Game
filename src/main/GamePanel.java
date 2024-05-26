@@ -126,27 +126,27 @@ public class GamePanel extends JPanel implements Runnable {
             FPS = 60;
             if (uiManager.play) {
                 hud.update();
-                    if (player.pAlive) {
-                        player.update();
-                    }
-                    if(gameState == playState) {
-                        for (int i = 0; i < slime.length; i++) {
-                            if (slime[i] != null) {
-                                slime[i].updateE();
-                            }
-                            if (caSau[i] != null) {
-                                caSau[i].updateE();
-                            }
-                            if (electronic[i] != null) {
-                                electronic[i].updateE();
-                            }
+                if (player.pAlive) {
+                    player.update();
+                }
+                if(gameState == playState) {
+                    for (int i = 0; i < slime.length; i++) {
+                        if (slime[i] != null) {
+                            slime[i].updateE();
                         }
-                        for (int i = 0; i < npc.length; i++) {
-                            if (npc[i] != null) {
-                                npc[i].update();
-                            }
+                        if (caSau[i] != null) {
+                            caSau[i].updateE();
+                        }
+                        if (electronic[i] != null) {
+                            electronic[i].updateE();
                         }
                     }
+                    for (int i = 0; i < npc.length; i++) {
+                        if (npc[i] != null) {
+                            npc[i].update();
+                        }
+                    }
+                }
             }
             if (uiManager.pause) {
                 pauseS.update();
