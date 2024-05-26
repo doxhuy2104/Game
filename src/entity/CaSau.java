@@ -169,9 +169,9 @@ public class CaSau extends Entity {
             eCollisionU = false;
             eCollisionD = false;
             gp.collisionChecker.checkTileEnemies(this);
-            //if (!eCollision && !eCollisionL && !eCollisionR)
+            if (!eCollision && !eCollisionL && !eCollisionR)
                 eSX += (int) xMove;
-            //if (!eCollision && !eCollisionD && !eCollisionU)
+            if (!eCollision && !eCollisionD && !eCollisionU)
                 eSY += (int) yMove;
             xMove -= (int) xMove;
             yMove -= (int) yMove;
