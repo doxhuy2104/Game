@@ -878,7 +878,7 @@ public class Player extends Entity {
         }
         if (aM) {
             aMC++;
-            if (aMC <= 10) mana -= 0;
+            if (aMC <= 10) mana -= 2;
             else {
                 aMC = 0;
                 aM = false;
