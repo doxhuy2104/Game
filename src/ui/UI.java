@@ -38,8 +38,8 @@ public class UI {
     public static boolean gameO=false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
-    boolean gameT=true;
-    boolean chat = true;
+    boolean gameT=false;
+    public boolean chat = true;
     public String currentDialouge = "";
 
 
@@ -57,16 +57,19 @@ public class UI {
             //drawIventory();
             if(chat){
                 drawDialougeScreen();
-                if(currentDialouge==null){
+                if(gp.dialougeIndex == 4){
                     chat = false;
-                    gp.npc[0] = null;
-                    gp.gameState = gp.playState;
+                    //gp.npc[0] = null;
+                    gameT = true;
+                    //gp.gameState = gp.playState;
                 }
             }
-//            if (gameT) {
-//                ticTacToe = new TicTacToe();
-//                gameT = false;
-//            }
+            if (gameT) {
+                ticTacToe = new TicTacToe();
+                gameT = false;
+                gp.npc[0] = null;
+                gp.gameState = gp.playState;
+            }
 //            if (ticTacToe.gameOver) {
 //                gameT = true;
 //                gp.npc[0] = null;
@@ -88,14 +91,14 @@ public class UI {
         int slotx = slotStartX;
         int slotY = slotStartY;
         //cursor
-            int cursorX = slotStartX + (gp.tileSize * slotCol);
-            int cursorY = slotStartY + (gp.tileSize * slotRow);
-            int cursorWitdth = gp.tileSize;
-            int cursorHeight = gp.tileSize;
-            //draw cursor
-            g2.setColor(Color.WHITE);
-            g2.setStroke(new BasicStroke(3));
-            g2.drawRoundRect(cursorX, cursorY, cursorWitdth, cursorHeight, 10, 10);
+        int cursorX = slotStartX + (gp.tileSize * slotCol);
+        int cursorY = slotStartY + (gp.tileSize * slotRow);
+        int cursorWitdth = gp.tileSize;
+        int cursorHeight = gp.tileSize;
+        //draw cursor
+        g2.setColor(Color.WHITE);
+        g2.setStroke(new BasicStroke(3));
+        g2.drawRoundRect(cursorX, cursorY, cursorWitdth, cursorHeight, 10, 10);
     }
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0, 0, 0, 200);
@@ -113,9 +116,12 @@ public class UI {
         int width = gp.screenWidth - gp.tileSize*4;
         int height = gp.tileSize * 2;
         drawSubWindow(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 30));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 20));
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(currentDialouge, x, y);
+        for(String line : currentDialouge.split("\n")) {
+            g2.drawString(line, x, y);
+            y += 40;
+        }
     }
 }

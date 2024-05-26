@@ -334,25 +334,25 @@ public class Player extends Entity {
                     }
                     else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0&&gp.caSau[4]==null) {
 
-                    gp.caSau[4] = new CaSau(gp);
-                    gp.caSau[4].sx = 35 * gp.tileSize;
-                    gp.caSau[4].sy = 27 * gp.tileSize;
+                        gp.caSau[4] = new CaSau(gp);
+                        gp.caSau[4].sx = 35 * gp.tileSize;
+                        gp.caSau[4].sy = 27 * gp.tileSize;
 
-                    gp.caSau[5] = new CaSau(gp);
-                    gp.caSau[5].sx = 33* gp.tileSize;
-                    gp.caSau[5].sy = 27 * gp.tileSize;
+                        gp.caSau[5] = new CaSau(gp);
+                        gp.caSau[5].sx = 33* gp.tileSize;
+                        gp.caSau[5].sy = 27 * gp.tileSize;
 
-                    gp.caSau[6] = new CaSau(gp);
-                    gp.caSau[6].sx = 35* gp.tileSize;
-                    gp.caSau[6].sy = 31 * gp.tileSize;
+                        gp.caSau[6] = new CaSau(gp);
+                        gp.caSau[6].sx = 35* gp.tileSize;
+                        gp.caSau[6].sy = 31 * gp.tileSize;
 
-                    gp.caSau[7] = new CaSau(gp);
-                    gp.caSau[7].sx = 33* gp.tileSize;
-                    gp.caSau[7].sy = 31 * gp.tileSize;
-                }
+                        gp.caSau[7] = new CaSau(gp);
+                        gp.caSau[7].sx = 33* gp.tileSize;
+                        gp.caSau[7].sy = 31 * gp.tileSize;
+                    }
 
                     else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0
-                    &&gp.caSau[4].hp<=0&&gp.caSau[5].hp<=0&&gp.caSau[6].hp<=0&&gp.caSau[7].hp<=0){
+                            &&gp.caSau[4].hp<=0&&gp.caSau[5].hp<=0&&gp.caSau[6].hp<=0&&gp.caSau[7].hp<=0){
                         gp.obj[12] = null;
                         TileManager.mapTileNum[30][37] = 0;
                         TileManager.mapTileNum[30][38] = 0;
@@ -362,7 +362,7 @@ public class Player extends Entity {
 
                     }
                     if(gp.electronic[0]!=null){
-                         if(gp.electronic[0].hp<=0&&gp.electronic[1].hp<=0&&gp.electronic[2].hp<=0&&gp.electronic[3].hp<=0
+                        if(gp.electronic[0].hp<=0&&gp.electronic[1].hp<=0&&gp.electronic[2].hp<=0&&gp.electronic[3].hp<=0
                                 &&gp.electronic[4].hp<=0&&gp.electronic[5].hp<=0&&gp.electronic[6].hp<=0&&gp.electronic[7].hp<=0){
                             TileManager.mapTileNum[58][40] = 0;
                             TileManager.mapTileNum[59][40] = 0;
@@ -502,11 +502,7 @@ public class Player extends Entity {
             collisionD = true;
             collisionL = true;
             collisionR = true;
-                if(keyH.spacePressed) {
-                    gp.npc[i].speak();
-                    gp.keyH.spacePressed = false;
-                    System.out.println(keyH.spacePressed);
-                }
+            if(gp.ui.currentDialouge != null) gp.npc[i].speak();
         }
     }
 
@@ -538,15 +534,15 @@ public class Player extends Entity {
             }
         }
 
-       manaUpdate();
+        manaUpdate();
 
         //toạ độ chuột
         mouseX = mouseClick.getMouseX() - gp.screenWidth / 2;
         mouseY = mouseClick.getMouseY() - gp.getHeight() / 2;
-            //isShootingFlame = true;
-            //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
+        //isShootingFlame = true;
+        //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
         if (!isAttack) {
-           setKeyH();
+            setKeyH();
         }
         pToECU = false;
         pToECD = false;
@@ -649,7 +645,7 @@ public class Player extends Entity {
                 dy /= distance;
             }
             if(usingFlame){
-            shootFlame(dx, dy);
+                shootFlame(dx, dy);
             }
         }
         //va chạm vối đối tượng
@@ -657,6 +653,7 @@ public class Player extends Entity {
         pickUpObj(objIndex);
         int npcIndex = gp.collisionChecker.checkNpc(this, gp.npc);
         interRactNpc(npcIndex);
+
         //cap nhat tao do khi nhan vat di chuyen
         if (!isAttack && !isRolling && isMoving) {
             switch (direction) {
@@ -719,7 +716,7 @@ public class Player extends Entity {
             // Sound Move
             if ((spriteCounter % 50 == 1)) {
                 gp.playSoundEffect(8);
-             }
+            }
         }
         else {
             spriteCounter = 0;
@@ -991,10 +988,10 @@ public class Player extends Entity {
 
         }
 
-            for (int i = 0; i < flames.size(); i++) {
-                FlameAttack flame = flames.get(i);
-                flame.draw(g2, flame.flameNum); // Sử dụng một trong bốn sprite của flame
-            }
+        for (int i = 0; i < flames.size(); i++) {
+            FlameAttack flame = flames.get(i);
+            flame.draw(g2, flame.flameNum); // Sử dụng một trong bốn sprite của flame
+        }
         if (invisible && invi) g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
         if (isMoving) {
             switch (direction) {

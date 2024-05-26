@@ -18,42 +18,42 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if(gp.gameState==gp.playState) {
-                if (code == KeyEvent.VK_W) {
-                    upPressed = true;
+            if (code == KeyEvent.VK_W) {
+                upPressed = true;
+            }
+            if (code == KeyEvent.VK_S) {
+                downPressed = true;
+            }
+            if (code == KeyEvent.VK_A) {
+                leftPressed = true;
+            }
+            if (code == KeyEvent.VK_D) {
+                rightPressed = true;
+            }
+            if (code == KeyEvent.VK_SHIFT) {
+                sprint = true;
+            }
+            if (code == KeyEvent.VK_ENTER) {
+                attack = true;
+            }
+            if (code == KeyEvent.VK_SPACE) {
+                rolling = true;
+            }
+            if (code == KeyEvent.VK_E) {
+                if(gp.player.usingFlame) gp.player.usingFlame = false;
+                else gp.player.usingFlame = true;
+            }
+            if (code == KeyEvent.VK_ESCAPE) {
+                if (gp.uiManager.play && canChange) {
+                    gp.uiManager.play = false;
+                    gp.uiManager.pause = true;
+                    canChange = false;
+                } else if (gp.uiManager.pause && canChange) {
+                    gp.uiManager.play = true;
+                    gp.uiManager.pause = false;
+                    canChange = false;
                 }
-                if (code == KeyEvent.VK_S) {
-                    downPressed = true;
-                }
-                if (code == KeyEvent.VK_A) {
-                    leftPressed = true;
-                }
-                if (code == KeyEvent.VK_D) {
-                    rightPressed = true;
-                }
-                if (code == KeyEvent.VK_SHIFT) {
-                    sprint = true;
-                }
-                if (code == KeyEvent.VK_ENTER) {
-                    attack = true;
-                }
-                if (code == KeyEvent.VK_SPACE) {
-                    rolling = true;
-                }
-                if (code == KeyEvent.VK_E) {
-                    if(gp.player.usingFlame) gp.player.usingFlame = false;
-                    else gp.player.usingFlame = true;
-                }
-                if (code == KeyEvent.VK_ESCAPE) {
-                    if (gp.uiManager.play && canChange) {
-                        gp.uiManager.play = false;
-                        gp.uiManager.pause = true;
-                        canChange = false;
-                    } else if (gp.uiManager.pause && canChange) {
-                        gp.uiManager.play = true;
-                        gp.uiManager.pause = false;
-                        canChange = false;
-                    }
-                }
+            }
         }else if(gp.gameState==gp.npcState){
             if (code == KeyEvent.VK_SPACE) {
                 gp.dialougeIndex++;
