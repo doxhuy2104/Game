@@ -523,15 +523,15 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 6;//8
-            cspeed = 4;//6
+//            speed = 6;//8
+//            cspeed = 4;//6
 //          dev mode
-//            speed = 15;
-//            cspeed = 15;
-        }
-        if (boost) {
             speed = 8;
             cspeed = 6;
+        }
+        if (boost) {
+            speed = 12;
+            cspeed = 10;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
@@ -568,7 +568,6 @@ public class Player extends Entity {
         if (invisible) {
             if (invisibleTime == 0) {
                 currentHP--;
-                currentHP--;
             }
             invisibleTime++;
             if (invisibleTime % 10 == 0) {
@@ -581,7 +580,7 @@ public class Player extends Entity {
                 invisibleTime = 0;
             }
         }
-        if (currentHP <= 0) {
+        if (currentHP == 0) {
             gp.uiManager.gameO = true;
             pAlive = false;
         }//nhan vat chet
