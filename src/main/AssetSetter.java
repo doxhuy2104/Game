@@ -48,13 +48,13 @@ public class AssetSetter {
         gp.obj[11].worldY = 55 * gp.tileSize;
 
         //Cua truoc phong Quai
-        gp.obj[12] = new objectCuaDoc();
-        gp.obj[12].worldX = 30 * gp.tileSize;
-        gp.obj[12].worldY = 37 * gp.tileSize;
+//        gp.obj[12] = new objectCuaDoc();
+//        gp.obj[12].worldX = 30 * gp.tileSize;
+//        gp.obj[12].worldY = 37 * gp.tileSize;
 
-        gp.obj[13] = new objectCuaDoc();
-        gp.obj[13].worldX = 39 * gp.tileSize;
-        gp.obj[13].worldY = 23 * gp.tileSize;
+//        gp.obj[13] = new objectCuaDoc();
+//        gp.obj[13].worldX = 39 * gp.tileSize;
+//        gp.obj[13].worldY = 23 * gp.tileSize;
 
         gp.obj[14] = new objectKeyDoor();
         gp.obj[14].worldX = 38 * gp.tileSize;
