@@ -39,6 +39,7 @@ public class Player extends Entity {
     public static int aliveBoss;
 
     public boolean OpenDoorWin = false;
+    public boolean oneOfTime = true;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -257,8 +258,18 @@ public class Player extends Entity {
         }
 
         if (i != 999) {
+
             String objName = gp.obj[i].name;
             switch (objName) {
+                case "DoorHelpPrincess":
+                    if(oneOfTime) {
+                        gp.playSoundEffect(11);
+                        oneOfTime = false;
+                    }
+
+                    if(healTime % 120 == 0) oneOfTime = true;
+
+                    break;
                 case "SwitchOff":
                     if(LightingManager.opacity == 0.0f){
                         gp.playSoundEffect(1);
@@ -592,7 +603,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
