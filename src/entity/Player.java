@@ -237,7 +237,7 @@ public class Player extends Entity {
             healTime = 0;
         }
 
-        if ((OpenDoorWin = true)){
+        if ((OpenDoorWin)){
             if((GamePanel.col == 58) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 59) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 60) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
