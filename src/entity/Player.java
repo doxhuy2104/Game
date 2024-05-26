@@ -534,11 +534,11 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-//            speed = 6;//8
-//            cspeed = 4;//6
+            speed = 6;//8
+            cspeed = 4;//6
 //          dev mode
-            speed = 8;
-            cspeed = 6;
+//            speed = 10;
+//            cspeed = 10;
         }
         if (boost) {
             speed = 12;
