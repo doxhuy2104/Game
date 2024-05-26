@@ -428,15 +428,15 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 8;//8
-            cspeed = 6;//6
+            speed = 6;//8
+            cspeed = 4;//6
 //          dev mode
 //            speed = 15;
 //            cspeed = 15;
         }
         if (boost) {
-            speed = 10;
-            cspeed = 7;
+            speed = 8;
+            cspeed = 6;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
