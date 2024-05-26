@@ -245,16 +245,16 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
-        if(LightingManager.opacity > 0.0f){
-            if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
-            if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
-        }
-
-//        if(aliveBoss == 0){
-//            TileManager.mapTileNum[59][40] = 0;
-//            TileManager.mapTileNum[60][40] = 0;
-//            TileManager.mapTileNum[61][40] = 0;
+//        if(LightingManager.opacity > 0.0f){
+//            if((GamePanel.col == 20) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
+//            if((GamePanel.col == 20) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
 //        }
+
+        if(aliveBoss == 0){
+            TileManager.mapTileNum[59][40] = 0;
+            TileManager.mapTileNum[60][40] = 0;
+            TileManager.mapTileNum[61][40] = 0;
+        }
 
         if (i != 999) {
             String objName = gp.obj[i].name;
@@ -591,7 +591,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+            //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
