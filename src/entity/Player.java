@@ -332,7 +332,7 @@ public class Player extends Entity {
                         gp.slime[7].sx = 33 * gp.tileSize;
                         gp.slime[7].sy = 31 * gp.tileSize;
                     }
-                    else if(gp.slime[4].hp==0&&gp.slime[5].hp==0&&gp.slime[6].hp==0&&gp.slime[7].hp==0&&gp.caSau[4]==null) {
+                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0&&gp.caSau[4]==null) {
 
                     gp.caSau[4] = new CaSau(gp);
                     gp.caSau[4].sx = 35 * gp.tileSize;
@@ -351,8 +351,8 @@ public class Player extends Entity {
                     gp.caSau[7].sy = 31 * gp.tileSize;
                 }
 
-                    else if(gp.slime[4].hp==0&&gp.slime[5].hp==0&&gp.slime[6].hp==0&&gp.slime[7].hp==0
-                    &&gp.caSau[4].hp==0&&gp.caSau[5].hp==0&&gp.caSau[6].hp==0&&gp.caSau[7].hp==0){
+                    else if(gp.slime[4].hp<=0&&gp.slime[5].hp<=0&&gp.slime[6].hp<=0&&gp.slime[7].hp<=0
+                    &&gp.caSau[4].hp<=0&&gp.caSau[5].hp<=0&&gp.caSau[6].hp<=0&&gp.caSau[7].hp<=0){
                         gp.obj[12] = null;
                         TileManager.mapTileNum[30][37] = 0;
                         TileManager.mapTileNum[30][38] = 0;
@@ -362,8 +362,8 @@ public class Player extends Entity {
 
                     }
                     if(gp.electronic[0]!=null){
-                         if(gp.electronic[0].hp==0&&gp.electronic[1].hp==0&&gp.electronic[2].hp==0&&gp.electronic[3].hp==0
-                                &&gp.electronic[4].hp==0&&gp.electronic[5].hp==0&&gp.electronic[6].hp==0&&gp.electronic[7].hp==0){
+                         if(gp.electronic[0].hp<=0&&gp.electronic[1].hp<=0&&gp.electronic[2].hp<=0&&gp.electronic[3].hp<=0
+                                &&gp.electronic[4].hp<=0&&gp.electronic[5].hp<=0&&gp.electronic[6].hp<=0&&gp.electronic[7].hp<=0){
                             TileManager.mapTileNum[58][40] = 0;
                             TileManager.mapTileNum[59][40] = 0;
                             TileManager.mapTileNum[60][40] = 0;
