@@ -244,26 +244,7 @@ public class Player extends Entity {
             if((GamePanel.col == 60) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
-
-        boolean intoMapOX = true;
-        if(intoMapOX) {
-            if ((GamePanel.col == 50) && (GamePanel.row == 23)){
-                intoMapOX = false;
-                TileManager.mapTileNum[50][23] = 0;
-                gp.obj[36] = new objectCuaDoc();
-                gp.obj[36].worldX = 50 * gp.tileSize;
-                gp.obj[36].worldY = 23 * gp.tileSize;
-                TileManager.mapTileNum[50][23] = 1;
-                TileManager.mapTileNum[50][24] = 1;
-            }
-            if ((GamePanel.col == 50) && (GamePanel.row == 24)){
-                intoMapOX = false;
-                TileManager.mapTileNum[50][23] = 0;
-                gp.obj[36] = new objectCuaDoc();
-                TileManager.mapTileNum[50][23] = 1;
-                TileManager.mapTileNum[50][24] = 1;
-            }
-        }
+//ư
 
         if(aliveBoss == 0){
             TileManager.mapTileNum[59][40] = 0;
