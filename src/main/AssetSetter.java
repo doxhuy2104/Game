@@ -104,13 +104,13 @@ public class AssetSetter {
         gp.obj[25].worldY = 21 * gp.tileSize;
 
         //blockcheck
-//        gp.obj[30] =new objectBlockCheck();
-//        gp.obj[30].worldX = 31 * gp.tileSize;
-//        gp.obj[30].worldY = 37 * gp.tileSize;
-//
-//        gp.obj[31] =new objectBlockCheck();
-//        gp.obj[31].worldX = 31 * gp.tileSize;
-//        gp.obj[31].worldY = 38 * gp.tileSize;
+        gp.obj[30] =new objectBlockCheck();
+        gp.obj[30].worldX = 31 * gp.tileSize;
+        gp.obj[30].worldY = 37 * gp.tileSize;
+
+        gp.obj[31] =new objectBlockCheck();
+        gp.obj[31].worldX = 31 * gp.tileSize;
+        gp.obj[31].worldY = 38 * gp.tileSize;
 
         gp.obj[32] =new objectBlockCheck();
         gp.obj[32].worldX = 38 * gp.tileSize;
@@ -121,12 +121,24 @@ public class AssetSetter {
         gp.obj[33].worldY = 24 * gp.tileSize;
 
         gp.obj[34] =new objectBlockCheck();
-        gp.obj[34].worldX = 25 * gp.tileSize;
-        gp.obj[34].worldY = 37 * gp.tileSize;
+        gp.obj[34].worldX = 37 * gp.tileSize;
+        gp.obj[34].worldY = 25 * gp.tileSize;
 
         gp.obj[35] =new objectBlockCheck();
         gp.obj[35].worldX = 32 * gp.tileSize;
         gp.obj[35].worldY = 25 * gp.tileSize;
+
+        gp.obj[36] =new objectBlockCheck();
+        gp.obj[36].worldX = 58 * gp.tileSize;
+        gp.obj[36].worldY = 41 * gp.tileSize;
+
+        gp.obj[37] =new objectBlockCheck();
+        gp.obj[37].worldX = 59 * gp.tileSize;
+        gp.obj[37].worldY = 41 * gp.tileSize;
+
+        gp.obj[38] =new objectBlockCheck();
+        gp.obj[38].worldX = 60 * gp.tileSize;
+        gp.obj[38].worldY = 41 * gp.tileSize;
 
     }
     public void setEnemies(){
