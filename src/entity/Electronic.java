@@ -6,6 +6,7 @@ import projectile.ShockBall;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
 public class Electronic extends Entity {
     GamePanel gp;
@@ -28,7 +29,7 @@ public class Electronic extends Entity {
 
     public void getElecImage() {
         try {
-            BufferedImage elec = ImageIO.read(getClass().getResource("/enemies/cloudSpirit.png"));
+            BufferedImage elec = ImageIO.read(Objects.requireNonNull(getClass().getResource("/enemies/cloudSpirit.png")));
 
             elecMoveR = new BufferedImage[4];
             for(int i=0;i<4;i++){

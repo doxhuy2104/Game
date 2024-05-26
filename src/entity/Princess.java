@@ -13,7 +13,7 @@ public class Princess extends Entity {
     private GamePanel gp;
     private BufferedImage[] move;
     private int currentFrameIndex = 0;
-    private int frameDelayCount = 0; // Biến đếm độ trễ giữa các khung hình
+    private int frameDelayCount = 0;
 
     public Princess(GamePanel gp) {
         super(gp);
@@ -30,7 +30,7 @@ public class Princess extends Entity {
                 move[i] = princess.getSubimage(i * FRAME_WIDTH, 0, FRAME_WIDTH, FRAME_HEIGHT);
             }
         } catch (Exception e) {
-            // Xử lý ngoại lệ một cách thích hợp, ví dụ: ghi log hoặc hiển thị thông báo lỗi
+            // Xử lý ngoại lệ
             e.printStackTrace();
         }
     }
@@ -40,7 +40,6 @@ public class Princess extends Entity {
         super.update();
         // Tăng biến đếm độ trễ giữa các khung hình
         frameDelayCount++;
-        // Nếu đã đủ độ trễ giữa các khung hình
         if (frameDelayCount >= FRAME_DELAY) {
             // Đặt lại biến đếm và chuyển sang khung hình tiếp theo
             frameDelayCount = 0;
