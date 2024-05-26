@@ -91,6 +91,11 @@ public class UI {
                     TileManager.mapTileNum[58][29] = 0;
                     TileManager.mapTileNum[59][29] = 0;
                     TileManager.mapTileNum[60][29] = 0;
+                    boolean truHp = true;
+                    if(truHp) {
+                        gp.player.currentHP = 1;
+                        truHp = false;
+                    }
                 }
                 gp.gameState = gp.playState;
             }
