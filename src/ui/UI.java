@@ -42,7 +42,7 @@ public class UI {
     BufferedImage voidI,shadow;
     BufferedImage[] dieI;
     public int voidX=0,screenX,screenY,dieCounter=0,dieNum=0;
-    public static boolean gameO=false;
+    public boolean gameO=false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
     boolean gameT = false;
@@ -74,30 +74,34 @@ public class UI {
             drawIventory();
         }
         if (gp.gameState == gp.npcState) {
-            //drawIventory();
+            //Draw thoai
             if(chat){
                 drawDialougeScreen();
-                chat = false;
-                ticTacToe = new TicTacToe();
+                if(gp.dialougeIndex == 4) {
+                    chat = false;
+                    ticTacToe = new TicTacToe();
+                }
             }
-            if(ticTacToe.gameOver) {
-                if (ticTacToe.Win) {
-                    gp.obj[21] = new objectDoorWin();
-                    gp.obj[21].worldX = 58 * gp.tileSize;
-                    gp.obj[21].worldY = 19 * gp.tileSize;
-                    gp.player.OpenDoorWin = true;
-                }
-                if (ticTacToe.Lose) {
-                    gp.obj[16] = null;
-                    TileManager.mapTileNum[58][29] = 0;
-                    TileManager.mapTileNum[59][29] = 0;
-                    TileManager.mapTileNum[60][29] = 0;
-                    if(truHp) {
-                        gp.player.currentHP = 1;
-                        truHp = false;
+            if (!chat) {
+                if (ticTacToe.gameOver) {
+                    if (ticTacToe.Win) {
+                        gp.obj[21] = new objectDoorWin();
+                        gp.obj[21].worldX = 58 * gp.tileSize;
+                        gp.obj[21].worldY = 19 * gp.tileSize;
+                        gp.player.OpenDoorWin = true;
                     }
+                    if (ticTacToe.Lose) {
+                        gp.obj[16] = null;
+                        TileManager.mapTileNum[58][29] = 0;
+                        TileManager.mapTileNum[59][29] = 0;
+                        TileManager.mapTileNum[60][29] = 0;
+                        if (truHp) {
+                            gp.player.currentHP = 2;
+                            truHp = false;
+                        }
+                    }
+                    gp.gameState = gp.playState;
                 }
-                gp.gameState = gp.playState;
             }
         }
     }

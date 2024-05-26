@@ -33,12 +33,13 @@ public class Player extends Entity {
     public boolean isShootingFlame = false;
     public boolean isUsingFlame = false;
     public boolean usingFlame = false;
-    public static int abs(int x) {
+    public int abs(int x) {
         return x >= 0 ? x : -x;
     }
     public static int aliveBoss;
 
     public boolean OpenDoorWin = false;
+    public boolean oneOfTime = true;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -55,10 +56,10 @@ public class Player extends Entity {
         solidArea = new Rectangle(8, 32, 48, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackAreaU = new Rectangle(screenX - 17*gp.scale, screenY - 22 * gp.scale, 136, 90);
-        attackAreaL = new Rectangle(screenX - 22 * gp.scale, screenY - 17 * gp.scale, 90, 136);
-        attackAreaD = new Rectangle(screenX - 17 * gp.scale, screenY , 136, 90);
-        attackAreaR = new Rectangle(screenX , screenY - 17 * gp.scale, 90, 136);
+        attackAreaU = new Rectangle(screenX - 7 * gp.scale, screenY - 10 * gp.scale, 136, 90);
+        attackAreaL = new Rectangle(screenX - 15 * gp.scale, screenY - 9 * gp.scale, 90, 136);
+        attackAreaD = new Rectangle(screenX - 17 * gp.scale, screenY + 15 * gp.scale , 136, 90);
+        attackAreaR = new Rectangle(screenX + 13 * gp.scale , screenY - 8 * gp.scale, 90, 136);
 
         setDefaultValues();
     }
@@ -257,8 +258,18 @@ public class Player extends Entity {
         }
 
         if (i != 999) {
+
             String objName = gp.obj[i].name;
             switch (objName) {
+                case "DoorHelpPrincess":
+                    if(oneOfTime) {
+                        gp.playSoundEffect(11);
+                        oneOfTime = false;
+                    }
+
+                    if(healTime % 120 == 0) oneOfTime = true;
+
+                    break;
                 case "SwitchOff":
                     if(LightingManager.opacity == 0.0f){
                         gp.playSoundEffect(1);
@@ -523,15 +534,15 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-//            speed = 6;//8
-//            cspeed = 4;//6
+            speed = 6;//8
+            cspeed = 4;//6
 //          dev mode
-            speed = 15;
-            cspeed = 15;
+//            speed = 10;
+//            cspeed = 10;
         }
         if (boost) {
-            speed = 8;
-            cspeed = 6;
+            speed = 12;
+            cspeed = 10;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
@@ -599,43 +610,22 @@ public class Player extends Entity {
             aM = true;
 
             isAttack = true;
-
-            if (keyH.upPressed) {
+            if (abs(mouseX) < abs(mouseY) && mouseY < 0) {
                 atkDirection = "attackUp";
                 collisionCheck = "up";
                 uD = "U";
             }
-            else if (keyH.downPressed) {
+            if (abs(mouseX) < abs(mouseY) && mouseY > 0) {
                 atkDirection = "attackDown";
                 collisionCheck = "down";
                 uD = "D";
             }
-            else if (keyH.leftPressed) {
+            if (abs(mouseX) > abs(mouseY) && mouseX < 0) {
                 atkDirection = "attackL";
                 collisionCheck = "left";
                 lR = "L";
             }
-            else if (keyH.rightPressed) {
-                atkDirection = "attackR";
-                collisionCheck = "right";
-                lR = "R";
-            }
-            else if (abs(mouseX) < abs(mouseY) && mouseY < 0) {
-                atkDirection = "attackUp";
-                collisionCheck = "up";
-                uD = "U";
-            }
-            else if (abs(mouseX) < abs(mouseY) && mouseY > 0) {
-                atkDirection = "attackDown";
-                collisionCheck = "down";
-                uD = "D";
-            }
-            else if (abs(mouseX) > abs(mouseY) && mouseX < 0) {
-                atkDirection = "attackL";
-                collisionCheck = "left";
-                lR = "L";
-            }
-            else if (abs(mouseX) > abs(mouseY) && mouseX > 0) {
+            if (abs(mouseX) > abs(mouseY) && mouseX > 0) {
                 atkDirection = "attackR";
                 collisionCheck = "right";
                 lR = "R";

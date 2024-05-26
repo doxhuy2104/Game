@@ -7,7 +7,7 @@ import projectile.Projectile;
 
 public class CollisionChecker {
     GamePanel gp;
-    public static int tileNum1, tileNum2, tileNum3;
+    public int tileNum1, tileNum2, tileNum3;
 
     public CollisionChecker(GamePanel gp) {
 
@@ -536,6 +536,74 @@ public class CollisionChecker {
                 }
             }
         }
+        for (int i = 0; i < gp.caSau.length; i++) {
+            if (gp.caSau[i] != null) {
+                enemieTop[i] = gp.caSau[i].bodyAreaA.y;
+                enemieBot[i] = enemieTop[i] + gp.caSau[i].bodyAreaA.height;
+                enemieLeft[i] = gp.caSau[i].bodyAreaA.x;
+                enemieRight[i] = enemieLeft[i] + gp.caSau[i].bodyAreaA.width;
+                if (gp.caSau[i].alive) {
+                    boolean up=playerTop <= enemieBot[i] && playerTop >= enemieBot[i] && playerLeft <= enemieRight[i] && playerRight >= enemieLeft[i];
+                    boolean down=playerBot >= enemieTop[i] && playerBot <= enemieBot[i] & playerLeft <= enemieRight[i] && playerRight >= enemieLeft[i];
+                    boolean left= playerLeft <= enemieRight[i] && playerLeft >= enemieLeft[i] && playerBot >= enemieTop[i] && playerTop <= enemieBot[i];
+                    boolean right = playerRight >= enemieLeft[i] && playerRight <= enemieRight[i] && playerBot >= enemieTop[i] && playerTop <= enemieBot[i];
+                    switch (entity.collisionCheck) {
+                        case "up":
+                            if (up) {
+                                entity.pToECU = true;
+                            }
+                            break;
+                        case "down":
+                            if (down) {
+                                entity.pToECD = true;
+                            }
+                            break;
+                        case "left":
+                            if (left) {
+                                entity.pToECL = true;
+                            }
+                            break;
+                        case "right":
+                            if (right) {
+                                entity.pToECR = true;
+                            }
+                            break;
+                        case "upr":
+                            if (up) {
+                                entity.pToECU = true;
+                            }
+                            if (right) {
+                                entity.pToECR = true;
+                            }
+                            break;
+                        case "upl":
+                            if (left) {
+                                entity.pToECL = true;
+                            }
+                            if (up) {
+                                entity.pToECU = true;
+                            }
+                            break;
+                        case "downr":
+                            if (right) {
+                                entity.pToECR = true;
+                            }
+                            if (down) {
+                                entity.pToECD = true;
+                            }
+                            break;
+                        case "downl":
+                            if (down) {
+                                entity.pToECD = true;
+                            }
+                            if (left) {
+                                entity.pToECL = true;
+                            }
+                            break;
+                    }
+                }
+            }
+        }
     }
 
     public void eToPCo(Entity enemies) {
@@ -603,7 +671,6 @@ public class CollisionChecker {
                 if (enemieBot >= playerTop && enemieBot <= playerTop && enemieLeft <= playerRight && enemieRight >= playerLeft) {
                     enemies.eToPCD = true;
                 }
-
                 break;
         }
     }

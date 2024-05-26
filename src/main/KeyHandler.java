@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed = true, sprint, attack=false, rolling=false,escape, flameKey = false;
+    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed = false, sprint, attack=false, rolling=false,escape, flameKey = false;
     public GamePanel gp;
     public KeyHandler(GamePanel gp){
         this.gp = gp;
