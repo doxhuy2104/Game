@@ -38,7 +38,7 @@ public class Player extends Entity {
     }
     public static int aliveBoss;
 
-    public static boolean OpenDoorWin = false;
+    public boolean OpenDoorWin = false;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -245,24 +245,9 @@ public class Player extends Entity {
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
 
-        boolean intoMapOX = true;
-        if(intoMapOX) {
-            if ((GamePanel.col == 50) && (GamePanel.row == 23)){
-                intoMapOX = false;
-                TileManager.mapTileNum[50][23] = 0;
-                gp.obj[36] = new objectCuaDoc();
-                gp.obj[36].worldX = 50 * gp.tileSize;
-                gp.obj[36].worldY = 23 * gp.tileSize;
-                TileManager.mapTileNum[50][23] = 1;
-                TileManager.mapTileNum[50][24] = 1;
-            }
-            if ((GamePanel.col == 50) && (GamePanel.row == 24)){
-                intoMapOX = false;
-                TileManager.mapTileNum[50][23] = 0;
-                gp.obj[36] = new objectCuaDoc();
-                TileManager.mapTileNum[50][23] = 1;
-                TileManager.mapTileNum[50][24] = 1;
-            }
+        if (LightingManager.opacity > 0.0f){
+            if((GamePanel.col == 19) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
+            if((GamePanel.col == 19) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
         }
 
         if(aliveBoss == 0){
@@ -606,7 +591,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
