@@ -38,7 +38,7 @@ public class Player extends Entity {
     }
     public static int aliveBoss;
 
-    public static boolean OpenDoorWin = false;
+    public boolean OpenDoorWin = false;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -244,7 +244,11 @@ public class Player extends Entity {
             if((GamePanel.col == 60) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
         }
-//ư
+
+        if (LightingManager.opacity > 0.0f){
+            if((GamePanel.col == 19) && (GamePanel.row == 37)) LightingManager.opacity = 0.0f;
+            if((GamePanel.col == 19) && (GamePanel.row == 38)) LightingManager.opacity = 0.0f;
+        }
 
         if(aliveBoss == 0){
             TileManager.mapTileNum[59][40] = 0;
@@ -587,7 +591,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

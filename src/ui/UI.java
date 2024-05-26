@@ -1,6 +1,8 @@
 package ui;
 
 import main.GamePanel;
+import object.objectDoorWin;
+import tile.TileManager;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -42,7 +44,7 @@ public class UI {
     public static boolean gameO=false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
-    boolean gameT=false;
+    boolean gameT = false;
     public boolean chat = true;
     public String currentDialouge = "";
 
@@ -74,25 +76,24 @@ public class UI {
             //drawIventory();
             if(chat){
                 drawDialougeScreen();
-                if(gp.dialougeIndex == 4){
-                    chat = false;
-                    //gp.npc[0] = null;
-                    gameT = true;
-                    //gp.gameState = gp.playState;
-                }
-            }
-            if (gameT) {
+                chat = false;
                 ticTacToe = new TicTacToe();
-                gameT = false;
-                gp.npc[0] = null;
+            }
+            if(ticTacToe.gameOver) {
+                if (ticTacToe.Win) {
+                    gp.obj[21] = new objectDoorWin();
+                    gp.obj[21].worldX = 58 * gp.tileSize;
+                    gp.obj[21].worldY = 19 * gp.tileSize;
+                    gp.player.OpenDoorWin = true;
+                }
+                if (ticTacToe.Lose) {
+                    gp.obj[16] = null;
+                    TileManager.mapTileNum[58][29] = 0;
+                    TileManager.mapTileNum[59][29] = 0;
+                    TileManager.mapTileNum[60][29] = 0;
+                }
                 gp.gameState = gp.playState;
             }
-//            if (ticTacToe.gameOver) {
-//                gameT = true;
-//                gp.npc[0] = null;
-//                gp.gameState = gp.playState;
-//            }
-
         }
     }
     public void drawIventory(){
