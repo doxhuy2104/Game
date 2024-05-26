@@ -53,11 +53,11 @@ public class Player extends Entity {
         mana = 100;
 
 
-        solidArea = new Rectangle(8, 32, 48, 32);
+        solidArea = new Rectangle(8, 16, 32, 32);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
-        attackAreaU = new Rectangle(screenX - 17*gp.scale, screenY - 22 * gp.scale, 136, 90);
-        attackAreaL = new Rectangle(screenX - 22 * gp.scale, screenY - 17 * gp.scale, 90, 136);
+        attackAreaU = new Rectangle(screenX - 44, screenY - 66, 136, 130);
+        attackAreaL = new Rectangle(screenX - 42 , screenY - 44, 130, 136);
         attackAreaD = new Rectangle(screenX - 17 * gp.scale, screenY , 136, 90);
         attackAreaR = new Rectangle(screenX , screenY - 17 * gp.scale, 90, 136);
 
@@ -534,15 +534,15 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 6;//8
-            cspeed = 4;//6
+//            speed = 6;//8
+//            cspeed = 4;//6
 //          dev mode
-//            speed = 15;
-//            cspeed = 15;
-        }
-        if (boost) {
             speed = 8;
             cspeed = 6;
+        }
+        if (boost) {
+            speed = 12;
+            cspeed = 10;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
@@ -579,7 +579,6 @@ public class Player extends Entity {
         if (invisible) {
             if (invisibleTime == 0) {
                 currentHP--;
-                currentHP--;
             }
             invisibleTime++;
             if (invisibleTime % 10 == 0) {
@@ -592,7 +591,7 @@ public class Player extends Entity {
                 invisibleTime = 0;
             }
         }
-        if (currentHP <= 0) {
+        if (currentHP == 0) {
             gp.uiManager.gameO = true;
             pAlive = false;
         }//nhan vat chet

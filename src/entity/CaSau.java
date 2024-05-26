@@ -22,7 +22,7 @@ public class CaSau extends Entity {
         bodyAreaA = new Rectangle();
         bodyAreaC = new Rectangle();
         saw = false;
-        hp = 5;
+        hp = 10;
         eSpeed = 2;
         moved = false;
 
@@ -71,6 +71,8 @@ public class CaSau extends Entity {
             for (int i = 0; i < 2; i++) {
                 cWakeL[i] = casau.getSubimage(66 - i * 22, 88, 22, 22);
             }
+
+            shadow = ImageIO.read(getClass().getResourceAsStream("/enemies/enemySm.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -213,6 +215,8 @@ public class CaSau extends Entity {
                 break;
         }
         if (alive) {
+            g2.drawImage(shadow, drawX+20, drawY+77, shadow.getWidth() * gp.scale, shadow.getHeight() * gp.scale, null);
+
             if (!moved) {
                 if (!saw) g2.drawImage(cSleep, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
                 else g2.drawImage(Wake, drawX, drawY, 22 * gp.scale, 22 * gp.scale, null);
@@ -225,7 +229,7 @@ public class CaSau extends Entity {
     public void reset() {
         super.reset();
         mNum = 0;
-        hp = 5;
+        hp = 10;
         attack=false;
         atk=false;
         aNum=0;
