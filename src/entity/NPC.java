@@ -3,9 +3,13 @@ package entity;
 import main.GamePanel;
 import main.KeyHandler;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class NPC extends Entity{
+
+    BufferedImage npcSheet;
 
     public NPC(GamePanel gp) {
         super(gp);
@@ -16,10 +20,19 @@ public class NPC extends Entity{
         setDialouge();
     }
     public void  getNPCImage () {
+        try {
+            npcSheet = ImageIO.read(getClass().getResourceAsStream("/npc/teaGirl.png"));
+
+            down1 = npcSheet.getSubimage(24, 0, 24, 30);
+            down2 = npcSheet.getSubimage(48, 0, 24, 30);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
         up1 = setup("/npc/oldman_up_1.png", gp.tileSize, gp.tileSize);
         up2 = setup("/npc/oldman_up_2.png", gp.tileSize, gp.tileSize);
-        down1 = setup("/npc/oldman_down_1.png", gp.tileSize, gp.tileSize);
-        down2 = setup("/npc/oldman_down_2.png", gp.tileSize, gp.tileSize);
+//        down1 = setup("/npc/oldman_down_1.png", gp.tileSize, gp.tileSize);
+//        down2 = setup("/npc/oldman_down_2.png", gp.tileSize, gp.tileSize);
         left1 = setup("/npc/oldman_left_1.png", gp.tileSize, gp.tileSize);
         left2 = setup("/npc/oldman_left_2.png", gp.tileSize, gp.tileSize);
         right1 = setup("/npc/oldman_right_1.png", gp.tileSize, gp.tileSize);

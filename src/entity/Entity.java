@@ -401,7 +401,7 @@ public class Entity {
         }
 
         if (image != null) {
-            g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(image, x, y, 64, 80, null);
         }
         //}
     }
