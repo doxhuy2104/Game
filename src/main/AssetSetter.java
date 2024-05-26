@@ -48,13 +48,13 @@ public class AssetSetter {
         gp.obj[11].worldY = 55 * gp.tileSize;
 
         //Cua truoc phong Quai
-        gp.obj[12] = new objectCuaDoc();
-        gp.obj[12].worldX = 30 * gp.tileSize;
-        gp.obj[12].worldY = 37 * gp.tileSize;
+//        gp.obj[12] = new objectCuaDoc();
+//        gp.obj[12].worldX = 30 * gp.tileSize;
+//        gp.obj[12].worldY = 37 * gp.tileSize;
 
-        gp.obj[13] = new objectCuaDoc();
-        gp.obj[13].worldX = 39 * gp.tileSize;
-        gp.obj[13].worldY = 23 * gp.tileSize;
+//        gp.obj[13] = new objectCuaDoc();
+//        gp.obj[13].worldX = 39 * gp.tileSize;
+//        gp.obj[13].worldY = 23 * gp.tileSize;
 
         gp.obj[14] = new objectKeyDoor();
         gp.obj[14].worldX = 38 * gp.tileSize;
@@ -63,7 +63,7 @@ public class AssetSetter {
         //Cua truoc Me Cung
         gp.obj[15] = new objectCuaNgang();
         gp.obj[15].worldX = 3 * gp.tileSize;
-        gp.obj[15].worldY = 20 * gp.tileSize;
+        gp.obj[15].worldY = 20 * gp.tileSize-4;
 
         gp.obj[16] = new objectDoorBoss();
         gp.obj[16].worldX = 58 * gp.tileSize;
@@ -105,6 +105,15 @@ public class AssetSetter {
 //        gp.obj[] = new objectChestClose();
 //        gp.obj[].worldX = 59 * gp.tileSize;
 //        gp.obj[].worldY = 49 * gp.tileSize;
+        // BlockCheck
+        gp.obj[30] =new objectBlockCheck();
+        gp.obj[30].worldX = 31 * gp.tileSize;
+        gp.obj[30].worldY = 37 * gp.tileSize;
+
+        gp.obj[31] =new objectBlockCheck();
+        gp.obj[31].worldX = 31 * gp.tileSize;
+        gp.obj[31].worldY = 38 * gp.tileSize;
+
 
     }
     public void setEnemies(){

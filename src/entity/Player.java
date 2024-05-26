@@ -4,9 +4,7 @@ import environment.LightingManager;
 import main.GamePanel;
 import main.KeyHandler;
 import main.MouseClickListener;
-import object.objectChestOpen;
-import object.objectDoorWin;
-import object.objectSwitchOn;
+import object.*;
 import projectile.FlameAttack;
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -25,7 +23,7 @@ public class Player extends Entity {
     private boolean rM = false, aM = false, sM = false;
     int sMC = 0, aMC = 0, rMC = 0, mC = 0;
     public boolean canSprint;
-    int hasKey = 0,hasKeyDoor=3;
+    int hasKey = 0,hasKeyDoor=0;
     int appearBoss = 0;
     public boolean boost;
     public boolean isHurt;
@@ -293,16 +291,44 @@ public class Player extends Entity {
                     break;
 
                 case "BlockCheck":
-                    if(hasKeyDoor>0){
-                        if(i==20||i==21){
-                            gp.obj[20]=null;
-                            gp.obj[21]=null;
-                            gp.obj[19]=null;
-                        }
-                        else {
-                            gp.obj[i + 1] = null;
-                            gp.obj[i] = null;
-                        }
+                    {
+                        gp.obj[12] = new objectCuaDoc();
+                        gp.obj[12].worldX = 30 * gp.tileSize;
+                        gp.obj[12].worldY = 37 * gp.tileSize;
+
+                        TileManager.mapTileNum[30][37] = 1;
+                        TileManager.mapTileNum[30][38] = 1;
+                        gp.obj[30]=null;
+                        gp.obj[31]=null;
+
+                        gp.obj[13] = new objectCuaDoc();
+                        gp.obj[13].worldX = 39 * gp.tileSize;
+                        gp.obj[13].worldY = 23 * gp.tileSize;
+
+                        TileManager.mapTileNum[39][23] = 1;
+                        TileManager.mapTileNum[39][24] = 1;
+
+                        gp.slime[4] = new Slime(gp);
+                        gp.slime[4].sx = 35 * gp.tileSize;
+                        gp.slime[4].sy = 27 * gp.tileSize;
+
+                        gp.slime[5] = new Slime(gp);
+                        gp.slime[5].sx = 33* gp.tileSize;
+                        gp.slime[5].sy = 27 * gp.tileSize;
+
+                        gp.slime[6] = new Slime(gp);
+                        gp.slime[6].sx = 35* gp.tileSize;
+                        gp.slime[6].sy = 31 * gp.tileSize;
+
+                        gp.slime[7] = new Slime(gp);
+                        gp.slime[7].sx = 33* gp.tileSize;
+                        gp.slime[7].sy = 31 * gp.tileSize;
+
+                    }
+                    break;
+                case "DoorNgang":
+                    if(hasKeyDoor>0) {
+                        gp.obj[i] = null;
                         hasKeyDoor--;
                         break;
                     }
@@ -428,11 +454,11 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-            speed = 6;//8
-            cspeed = 4;//6
+//            speed = 6;//8
+//            cspeed = 4;//6
 //          dev mode
-//            speed = 15;
-//            cspeed = 15;
+            speed = 15;
+            cspeed = 15;
         }
         if (boost) {
             speed = 8;
