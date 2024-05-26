@@ -33,7 +33,7 @@ public class Player extends Entity {
     public boolean isShootingFlame = false;
     public boolean isUsingFlame = false;
     public boolean usingFlame = false;
-    public static int abs(int x) {
+    public int abs(int x) {
         return x >= 0 ? x : -x;
     }
     public static int aliveBoss;

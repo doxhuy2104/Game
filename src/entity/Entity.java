@@ -59,7 +59,7 @@ public class Entity {
     public boolean pToECU, pToECD, pToECR, pToECL;
     public int maxHP, currentHP;
 
-    public static int healTime = 0;
+    public int healTime = 0;
     public int invisibleTime = 0, iT = 0;
     public boolean invisible, canAttack;
     //player
