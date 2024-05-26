@@ -245,7 +245,7 @@ public class Player extends Entity {
             if((GamePanel.col == 58) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 59) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
             if((GamePanel.col == 60) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
-            if((GamePanel.col == 61) && (GamePanel.row == 20)) gp.uiManager.gameO = true;
+            if((GamePanel.col == 61) && (GamePasnel.row == 20)) gp.uiManager.gameO = true;
         }
 
         if (i != 999) {
