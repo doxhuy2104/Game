@@ -31,6 +31,7 @@ public class UI {
     public int changeSoundC=0,cc=0;
     public String difficult,currentD;
     public boolean firstTime=true;
+    boolean truHp = true;
 
     //pause
     public boolean play=true,pause=false,cP=true;
@@ -91,7 +92,6 @@ public class UI {
                     TileManager.mapTileNum[58][29] = 0;
                     TileManager.mapTileNum[59][29] = 0;
                     TileManager.mapTileNum[60][29] = 0;
-                    boolean truHp = true;
                     if(truHp) {
                         gp.player.currentHP = 1;
                         truHp = false;
