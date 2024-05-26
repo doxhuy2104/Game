@@ -166,8 +166,8 @@ public class Slime extends Entity {
                 eNum = 0;
                 eCounter = 0;
                 jump = true;
-                dx = (centerScreenX - centerX) / distance;
-                dy = (centerScreenY - centerY) / distance;
+                if(distance!=0)dx = (centerScreenX - centerX) / distance;
+                if(distance!=0)dy = (centerScreenY - centerY) / distance;
             }
         }
         if (jump) jump();
