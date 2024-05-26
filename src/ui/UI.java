@@ -93,14 +93,7 @@ public class UI {
                     TileManager.mapTileNum[60][29] = 0;
                     boolean truHp = true;
                     if(truHp) {
-                        gp.player.currentHP--;
-                        gp.player.currentHP--;
-
-                        gp.player.currentHP--;
-                        gp.player.currentHP--;
-
-                        gp.player.currentHP--;
-                        gp.player.currentHP--;
+                        gp.player.currentHP = 1;
                         truHp = false;
                     }
                 }
