@@ -6,9 +6,10 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import java.net.URL;
 
+@SuppressWarnings("ALL")
 public class Music {
     Clip clip;
-    URL soundURL[] = new URL[30];
+    URL[] soundURL = new URL[30];
     public float volume;
     public int volumeScale = 0;
 

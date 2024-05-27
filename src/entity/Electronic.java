@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Electronic extends Entity {
     GamePanel gp;
     public ShockBall shockBall;
@@ -50,7 +51,7 @@ public class Electronic extends Entity {
             for(int i=0;i<6;i++){
                 elecAttackL[i] = elec.getSubimage(130-i*26,160,26,32);
             }
-            shadow = ImageIO.read(getClass().getResourceAsStream("/enemies/enemyMed.png"));
+            shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/enemyMed.png")));
 
         }   catch (Exception e) {
             e.printStackTrace();

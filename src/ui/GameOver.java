@@ -8,7 +8,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class GameOver extends UI{
     GamePanel gp;
     MouseClickListener mC;
@@ -27,18 +29,19 @@ public class GameOver extends UI{
 
     public void getVoidImage(){
         try{
-            voidI= ImageIO.read(getClass().getResourceAsStream("/UI/void.png"));
+            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/void.png")));
 
-            BufferedImage full=ImageIO.read(getClass().getResourceAsStream("/entity/full2.png"));
+            BufferedImage full=ImageIO.read(
+                    Objects.requireNonNull(getClass().getResourceAsStream("/entity/full2.png")));
             dieI= new BufferedImage[5];
             dieI[0]=full.getSubimage(0,234,16,16);
             dieI[1]=full.getSubimage(90,255,16,16);
             dieI[2]=full.getSubimage(72,255,16,16);
             dieI[3]=full.getSubimage(54,255,16,16);
             dieI[4]=full.getSubimage(36,255,16,16);
-            shadow = ImageIO.read(getClass().getResourceAsStream("/entity/playerShadow.png"));
-            sideCursorL = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorL.png"));
-            sideCursorR = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorR.png"));
+            shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
+            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
+            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -51,9 +54,13 @@ public class GameOver extends UI{
             InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
             InputStream is3 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
 
+            assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
+            assert is1 != null;
             Font1 = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(72f);
+            assert is3 != null;
             Font3 = Font.createFont(Font.TRUETYPE_FONT, is3).deriveFont(108f);
+            assert is2 != null;
             Font2 = Font.createFont(Font.TRUETYPE_FONT, is2).deriveFont(48f);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();

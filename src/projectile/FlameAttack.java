@@ -4,14 +4,17 @@ import main.GamePanel;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class FlameAttack extends Projectile{
     GamePanel gp;
 
     BufferedImage flameSheet;
     public BufferedImage[] flameSprite;
-    BufferedImage[] hitI;
-    public int flameCounter = 0, flameSpeed = 4, flameNum = 0, spaceCounter = 0;
+    public int flameCounter = 0;
+    public int flameNum = 0;
+    public int spaceCounter = 0;
     public boolean active;
     public double angle;
     public boolean isHitEnemy = false,canHit;
@@ -31,7 +34,7 @@ public class FlameAttack extends Projectile{
 
     public void GetImage() {
         try {
-            flameSheet = ImageIO.read(getClass().getResource("/projectile/projSlashGreen.png"));
+            flameSheet = ImageIO.read(Objects.requireNonNull(getClass().getResource("/projectile/projSlashGreen.png")));
 
             flameSprite = new BufferedImage[6];
             for (int i = 0; i < 6; i++) {
@@ -48,8 +51,8 @@ public class FlameAttack extends Projectile{
             drawY = y - gp.player.y + gp.player.screenY;
             xMove = dx * pjSpeed *2;
             yMove = dy * pjSpeed *2;
-            x += xMove;
-            y += yMove;
+            x += (int) xMove;
+            y += (int) yMove;
             xMove -= (int) xMove;
             yMove -= (int) yMove;
             flameCounter++;

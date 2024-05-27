@@ -5,7 +5,14 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean upPressed, downPressed, leftPressed, rightPressed, spacePressed = false, sprint, attack=false, rolling=false,escape, flameKey = false;
+    public boolean upPressed;
+    public boolean downPressed;
+    public boolean leftPressed;
+    public boolean rightPressed;
+    public boolean spacePressed = false;
+    public boolean sprint;
+    public boolean attack=false;
+    public boolean rolling=false;
     public GamePanel gp;
     public KeyHandler(GamePanel gp){
         this.gp = gp;
@@ -40,8 +47,7 @@ public class KeyHandler implements KeyListener {
                 rolling = true;
             }
             if (code == KeyEvent.VK_E) {
-                if(gp.player.usingFlame) gp.player.usingFlame = false;
-                else gp.player.usingFlame = true;
+                gp.player.usingFlame = !gp.player.usingFlame;
             }
             if (code == KeyEvent.VK_ESCAPE) {
                 if (gp.uiManager.play && canChange) {
@@ -63,29 +69,7 @@ public class KeyHandler implements KeyListener {
             }
         }
     }
-    public void Character(int code){
 
-        if(code==KeyEvent.VK_W){
-            if(gp.ui.slotRow!=0) {
-                gp.ui.slotRow--;
-            }
-        }
-        if(code==KeyEvent.VK_A){
-            if(gp.ui.slotCol!=0) {
-                gp.ui.slotCol--;
-            }
-        }
-        if(code==KeyEvent.VK_S){
-            if(gp.ui.slotRow!=3) {
-                gp.ui.slotRow++;
-            }
-        }
-        if(code==KeyEvent.VK_D){
-            if(gp.ui.slotCol!=4) {
-                gp.ui.slotCol++;
-            }
-        }
-    }
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();

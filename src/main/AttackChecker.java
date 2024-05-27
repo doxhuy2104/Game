@@ -1,11 +1,10 @@
 package main;
 
 import entity.Entity;
-import entity.Player;
 
+@SuppressWarnings("ALL")
 public class AttackChecker {
     GamePanel gp;
-    Entity entity;
     public AttackChecker(GamePanel gp) {
         this.gp = gp;
     }

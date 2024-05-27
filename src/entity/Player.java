@@ -12,8 +12,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
 import tile.TileManager;
 
+@SuppressWarnings("ALL")
 public class Player extends Entity {
     KeyHandler keyH;
     MouseClickListener mouseClick;
@@ -28,8 +31,6 @@ public class Player extends Entity {
     public boolean boost;
     public boolean isHurt;
     public List<FlameAttack> flames = new ArrayList<>();
-    public int spriteWidth = 48;
-    public int spriteHeight = 48;
     public boolean isShootingFlame = false;
     public boolean isUsingFlame = false;
     public boolean usingFlame = false;
@@ -78,13 +79,13 @@ public class Player extends Entity {
 
     public void getPlayerImage() {
         try {
-            BufferedImage spriteSheet = ImageIO.read(getClass().getResourceAsStream("/entity/full.png"));
+            BufferedImage spriteSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/full.png")));
             up = new BufferedImage[6];
             upl = new BufferedImage[6];
             left = new BufferedImage[6];
             right = new BufferedImage[6];
 
-            BufferedImage full2 = ImageIO.read(getClass().getResourceAsStream("/entity/full2.png"));
+            BufferedImage full2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/full2.png")));
             standUR = full2.getSubimage(90, 129, 16, 16);
             standUL = full2.getSubimage(73, 171, 16, 16);
             thinkR = new BufferedImage[8];
@@ -118,9 +119,9 @@ public class Player extends Entity {
             standl = thinkL[0];
             for (int i = 1; i < 8; i++) thinkR[i] = full2.getSubimage(18 * i, 150, 16, 16);
 
-            shadow = ImageIO.read(getClass().getResourceAsStream("/entity/playerShadow.png"));
+            shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
 
-            BufferedImage attackSheet = ImageIO.read(getClass().getResourceAsStream("/attack/full.png"));
+            BufferedImage attackSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/full.png")));
             attackR = new BufferedImage[3];
             attackR[0] = attackSheet.getSubimage(0, 45, 16, 16);
             attackR[1] = attackSheet.getSubimage(18, 45, 16, 16);
@@ -141,31 +142,31 @@ public class Player extends Entity {
             attackL[1] = attackSheet.getSubimage(126, 3, 16, 16);
             attackL[0] = attackSheet.getSubimage(144, 3, 16, 16);
 
-            BufferedImage sliceDSheet = ImageIO.read(getClass().getResourceAsStream("/attack/sliceD.png"));
+            BufferedImage sliceDSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/sliceD.png")));
             sliceD = new BufferedImage[5];
             sliceD[4] = sliceD[3] = sliceD[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
             sliceD[1] = sliceDSheet.getSubimage(3, 2, 34, 19);
             sliceD[2] = sliceDSheet.getSubimage(3, 25, 34, 19);
 
-            BufferedImage sliceRSheet = ImageIO.read(getClass().getResourceAsStream("/attack/sliceR.png"));
+            BufferedImage sliceRSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/sliceR.png")));
             sliceR = new BufferedImage[5];
             sliceR[4] = sliceR[3] = sliceR[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
             sliceR[1] = sliceRSheet.getSubimage(2, 2, 19, 34);
             sliceR[2] = sliceRSheet.getSubimage(25, 2, 19, 34);
 
-            BufferedImage sliceUSheet = ImageIO.read(getClass().getResourceAsStream("/attack/sliceU.png"));
+            BufferedImage sliceUSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/sliceU.png")));
             sliceU = new BufferedImage[5];
             sliceU[4] = sliceU[3] = sliceU[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
             sliceU[1] = sliceUSheet.getSubimage(2, 25, 34, 19);
             sliceU[2] = sliceUSheet.getSubimage(2, 2, 34, 19);
 
-            BufferedImage sliceULSheet = ImageIO.read(getClass().getResourceAsStream("/attack/sliceUL.png"));
+            BufferedImage sliceULSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/sliceUL.png")));
             sliceUL = new BufferedImage[5];
             sliceUL[4] = sliceUL[3] = sliceUL[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
             sliceUL[1] = sliceULSheet.getSubimage(2, 25, 34, 19);
             sliceUL[2] = sliceULSheet.getSubimage(2, 2, 34, 19);
 
-            BufferedImage sliceLSheet = ImageIO.read(getClass().getResourceAsStream("/attack/sliceL.png"));
+            BufferedImage sliceLSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/sliceL.png")));
             sliceL = new BufferedImage[5];
             sliceL[4] = sliceL[3] = sliceL[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
             sliceL[1] = sliceLSheet.getSubimage(25, 3, 19, 34);
@@ -173,35 +174,35 @@ public class Player extends Entity {
 
             swordD = new BufferedImage[4];
             swordD[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
-            swordD[1] = ImageIO.read(getClass().getResourceAsStream("/attack/swordD.png"));
-            swordD[2] = ImageIO.read(getClass().getResourceAsStream("/attack/swordD.png"));
-            swordD[3] = ImageIO.read(getClass().getResourceAsStream("/attack/swordD.png"));
+            swordD[1] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordD.png")));
+            swordD[2] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordD.png")));
+            swordD[3] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordD.png")));
 
 
             swordU = new BufferedImage[4];
             swordU[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
-            swordU[1] = ImageIO.read(getClass().getResourceAsStream("/attack/swordU.png"));
-            swordU[2] = ImageIO.read(getClass().getResourceAsStream("/attack/swordU.png"));
-            swordU[3] = ImageIO.read(getClass().getResourceAsStream("/attack/swordU.png"));
+            swordU[1] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordU.png")));
+            swordU[2] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordU.png")));
+            swordU[3] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordU.png")));
 
             swordUL = new BufferedImage[4];
             swordUL[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
-            swordUL[1] = ImageIO.read(getClass().getResourceAsStream("/attack/swordUL.png"));
-            swordUL[2] = ImageIO.read(getClass().getResourceAsStream("/attack/swordUL.png"));
-            swordUL[3] = ImageIO.read(getClass().getResourceAsStream("/attack/swordUL.png"));
+            swordUL[1] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordUL.png")));
+            swordUL[2] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordUL.png")));
+            swordUL[3] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordUL.png")));
 
             swordR = new BufferedImage[4];
             swordR[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
-            swordR[1] = ImageIO.read(getClass().getResourceAsStream("/attack/swordR.png"));
-            swordR[2] = ImageIO.read(getClass().getResourceAsStream("/attack/swordR.png"));
-            swordR[3] = ImageIO.read(getClass().getResourceAsStream("/attack/swordR.png"));
+            swordR[1] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordR.png")));
+            swordR[2] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordR.png")));
+            swordR[3] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordR.png")));
 
 
             swordL = new BufferedImage[4];
             swordL[0] = sliceDSheet.getSubimage(21, 21, 16, 16);
-            swordL[1] = ImageIO.read(getClass().getResourceAsStream("/attack/swordL.png"));
-            swordL[2] = ImageIO.read(getClass().getResourceAsStream("/attack/swordL.png"));
-            swordL[3] = ImageIO.read(getClass().getResourceAsStream("/attack/swordL.png"));
+            swordL[1] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordL.png")));
+            swordL[2] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordL.png")));
+            swordL[3] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/swordL.png")));
 
 
             for (int i = 0; i < 6; i++) {
@@ -221,9 +222,9 @@ public class Player extends Entity {
                 right[i] = spriteSheet.getSubimage(x, 0, 16, 16);
             }
 
-            heart = ImageIO.read(getClass().getResourceAsStream("/UI/heart.png"));
-            heartE = ImageIO.read(getClass().getResourceAsStream("/UI/heart-empty.png"));
-            heartH = ImageIO.read(getClass().getResourceAsStream("/UI/heart-half.png"));
+            heart = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart.png")));
+            heartE = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart-empty.png")));
+            heartH = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart-half.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -551,7 +552,6 @@ public class Player extends Entity {
         mouseX = mouseClick.getMouseX() - gp.screenWidth / 2;
         mouseY = mouseClick.getMouseY() - gp.getHeight() / 2;
         //isShootingFlame = true;
-        //keyH.flameKey = false; // Đặt lại giá trị để không bắn liên tục
         if (!isAttack) {
             setKeyH();
         }

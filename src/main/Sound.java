@@ -1,13 +1,13 @@
 package main;
 
 import javax.sound.sampled.*;
-import java.io.IOException;
 import java.net.URL;
 
 
+@SuppressWarnings("ALL")
 public class Sound {
     Clip clip;
-    URL soundURL[] = new URL[30];
+    URL[] soundURL = new URL[30];
     public float volume;
     public int volumeScale = 5;
 
@@ -38,10 +38,6 @@ public class Sound {
 
     public void setFile(int i) {
         loadSound(soundURL[i]);
-    }
-
-    public void loop() {
-        clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
 
     public void play() {

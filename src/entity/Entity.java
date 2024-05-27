@@ -6,7 +6,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Entity {
     //player
     public int drawX, drawY;
@@ -15,8 +17,8 @@ public class Entity {
     public String atkDirection;//hướng tấn công
     public int x, y;//toạ độ nhân vật
     public boolean pAlive = true;//trạng thái sống
-    public int speed, cspeed, currentSpeed;
-    public double acceleration;
+    public int speed;
+    public int cspeed;
     public String uD, lR;//huong de xac dinh anh trc khi dung
     public int mana;
     public String collisionCheck;//kiểm tra va chạm
@@ -67,7 +69,6 @@ public class Entity {
     //ênmies
     //public final int screenX, screenY;
     private float transparency = 1.0f;
-    private final float TRANSPARENCY_STEP = 0.5f;
     public double xMove = 0, yMove = 0, distance, dx, dy;
     public double eSpeed;
     //public BufferedImage shadow;
@@ -101,10 +102,9 @@ public class Entity {
 
     public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
     public int worldX, worldY;
-    public int defaultX = worldX, defaultY = worldY;
     public int acTionCounter = 0;
     GamePanel gp;
-    String dialouge[] = new String[20];
+    String[] dialouge = new String[20];
 
     public Entity(GamePanel gp) {
         this.gp = gp;
@@ -118,7 +118,7 @@ public class Entity {
     public BufferedImage setup(String imagePath, int width, int height) {
         BufferedImage image = null;
         try {
-            image = ImageIO.read(getClass().getResourceAsStream(imagePath));
+            image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(imagePath)));
             Image scaledImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
             image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = image.createGraphics();
@@ -288,6 +288,7 @@ public class Entity {
     }
 
     public void attacked() {
+        float TRANSPARENCY_STEP = 0.5f;
         if (attacking && hp != 0) {
             hurt = true;
             if (atkCounter == 0) {

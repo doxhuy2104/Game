@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+@SuppressWarnings("ALL")
 public class UI {
     GamePanel gp;
     //Font Font1;
@@ -28,15 +29,22 @@ public class UI {
     public boolean exitUI=false,menu=true,side,inGame=false;
     public String mouseLocation;
     public int xL,yL,xR,yR,bX,bY;
-    public Boolean CONTINUE=false,NEWGAME=false,SETTINGS=false,CREDITS=false,cB=false,mB=false,mF=false,sF=false,sB=false,cS=false;
+    public Boolean CONTINUE=false;
+    public Boolean NEWGAME=false;
+    public Boolean SETTINGS=false;
+    public Boolean CREDITS=false;
+    public Boolean cB=false;
+    public Boolean mB=false;
+    public Boolean mF=false;
+    public Boolean sF=false;
     public int changeSoundC=0,cc=0;
     public String difficult,currentD;
     public boolean firstTime=true;
     boolean truHp = true;
 
     //pause
-    public boolean play=true,pause=false,cP=true;
-    public int pC=0,pc=0;
+    public boolean play=true;
+    public boolean pause=false;
     public int slotCol = 0, slotRow=0;
 
     //GAme over
@@ -46,7 +54,6 @@ public class UI {
     public boolean gameO=false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
-    boolean gameT = false;
     public boolean chat = true;
     public String currentDialouge = "";
 
@@ -55,8 +62,11 @@ public class UI {
             InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
             InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
             InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
+            assert is1 != null;
             Font1 = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(30f);
+            assert is2 != null;
             Font2 = Font.createFont(Font.TRUETYPE_FONT, is2).deriveFont(36f);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -68,9 +78,6 @@ public class UI {
         this.g2 = g2;
         g2.setFont(Font1);
         g2.setColor(Color.white);
-        if(gp.gameState == gp.playState){
-
-        }
         if(gp.gameState == gp.CharacterState){
             drawIventory();
         }
@@ -98,10 +105,10 @@ public class UI {
                         TileManager.mapTileNum[59][29] = 0;
                         TileManager.mapTileNum[60][29] = 0;
 
-                        //Dong cua vao map NPC
-                        gp.obj[39] = new objectCuaDoc();
-                        gp.obj[39].worldX = 50 * gp.tileSize;
-                        gp.obj[39].worldY = 23 * gp.tileSize;
+                        //Dong cua va map NPC
+                        gp.obj[40] = new objectCuaDoc();
+                        gp.obj[40].worldX = 50 * gp.tileSize;
+                        gp.obj[40].worldY = 23 * gp.tileSize;
                         TileManager.mapTileNum[50][23] = 1;
                         TileManager.mapTileNum[50][24] = 1;
 
@@ -125,8 +132,6 @@ public class UI {
         //slot
         final int slotStartX = x + 33;
         final int slotStartY = y + 30;
-        int slotx = slotStartX;
-        int slotY = slotStartY;
         //cursor
         int cursorX = slotStartX + (gp.tileSize * slotCol);
         int cursorY = slotStartY + (gp.tileSize * slotRow);

@@ -1,7 +1,6 @@
 package main;
 
 import entity.Entity;
-import entity.Player;
 import projectile.FlameAttack;
 import projectile.Projectile;
 

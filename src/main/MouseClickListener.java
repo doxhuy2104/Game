@@ -1,17 +1,14 @@
 package main;
 
-import entity.Player;
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import javax.swing.*;
 
 public class MouseClickListener implements MouseListener, MouseMotionListener {
     private int mouseX, mouseY;
     public boolean leftClick = false;
-    private Component component;
+    private final Component component;
     GamePanel gp;
 
     public MouseClickListener(Component component,GamePanel gp) {
@@ -89,8 +86,6 @@ public class MouseClickListener implements MouseListener, MouseMotionListener {
                 double dy = mouseY - gp.player.screenY;
                 double length = Math.sqrt(dx * dx + dy * dy);
                 if (length != 0) {
-                    dx /= length;
-                    dy /= length;
                 }
                 gp.player.isUsingFlame = !gp.player.isUsingFlame; // Đảo trạng thái
                 gp.player.isShootingFlame = false;

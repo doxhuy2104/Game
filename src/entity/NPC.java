@@ -1,7 +1,6 @@
 package entity;
 
 import main.GamePanel;
-import main.KeyHandler;
 
 import java.util.Random;
 
