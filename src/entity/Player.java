@@ -598,7 +598,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
@@ -641,7 +641,7 @@ public class Player extends Entity {
         //va chạm vối đối tượng
         int objIndex = gp.collisionChecker.checkObject(this, true);
         pickUpObj(objIndex);
-        int npcIndex = gp.collisionChecker.checkNpc(this, gp.npc);
+        int npcIndex = gp.collisionChecker.checkNpc(this);
         interRactNpc(npcIndex);
 
         //cap nhat tao do khi nhan vat di chuyen
