@@ -20,7 +20,7 @@ public class TicTacToe {
         }
     };
     Random rand = new Random();
-    JFrame frame = new JFrame("Tic-Tac-Toe");
+    JFrame frame = new JFrame("Mini Game");
     JLabel textLabel = new JLabel();
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
