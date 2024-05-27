@@ -57,8 +57,8 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public AttackChecker attackChecker = new AttackChecker(this);
 
-    public superObject[] obj = new superObject[40];
-    public Entity[] npc = new Entity[40];
+    public superObject[] obj = new superObject[50];
+    public Entity[] npc = new Entity[50];
     public int FPS = 60;
 
     //Game State

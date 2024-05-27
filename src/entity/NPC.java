@@ -4,8 +4,10 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 import java.util.Random;
 
+@SuppressWarnings("ALL")
 public class NPC extends Entity{
 
     BufferedImage npcSheet;
@@ -20,7 +22,7 @@ public class NPC extends Entity{
     }
     public void  getNPCImage () {
         try {
-            npcSheet = ImageIO.read(getClass().getResourceAsStream("/npc/teaGirl.png"));
+            npcSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/npc/teaGirl.png")));
 
             down1 = npcSheet.getSubimage(24, 0, 24, 30);
             down2 = npcSheet.getSubimage(48, 0, 24, 30);
