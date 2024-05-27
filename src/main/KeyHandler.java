@@ -61,11 +61,9 @@ public class KeyHandler implements KeyListener {
                 }
             }
         }else if(gp.gameState==gp.npcState){
-            if (code == KeyEvent.VK_SPACE) {
+            if (code == KeyEvent.VK_SPACE || code == KeyEvent.VK_ENTER) {
                 gp.dialougeIndex++;
                 spacePressed = true;
-                System.out.println(gp.dialougeIndex);
-                System.out.println(spacePressed);
             }
         }
     }

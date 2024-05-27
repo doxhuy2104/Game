@@ -30,7 +30,7 @@ public class TicTacToe {
     String aiO = "O";
 
     public boolean Lose = false;
-    public boolean Win = false;
+    public boolean Win, Continue;
     public boolean gameOver = false;
     int turns = 0;
 
@@ -76,117 +76,102 @@ public class TicTacToe {
         }
     }
 
-    public void checkWinner() {
-        //horizontal
-        for (int r = 0; r < 3; r++) {
-            if (Objects.equals(board[r][0].getText(), "")) continue;
-
-            if (Objects.equals(board[r][0].getText(), "X") &&
-                    Objects.equals(board[r][1].getText(), "X") &&
-                        Objects.equals(board[r][2].getText(), "X")) {
-                for (int i = 0; i < 3; i++) {
-                    setWinner(board[r][i]);
-                }
-                Win = true;
-                gameOver = true;
-                return;
-            }
-
-            if (Objects.equals(board[r][0].getText(), "O") &&
-                    Objects.equals(board[r][1].getText(), "O") &&
-                    Objects.equals(board[r][2].getText(), "O")) {
-                for (int i = 0; i < 3; i++) {
-                    setWinner(board[r][i]);
-                }
-                Lose = true;
-                gameOver = true;
-                return;
-            }
-        }
-
-        //vertical
-        for (int c = 0; c < 3; c++) {
-            if (Objects.equals(board[0][c].getText(), "")) continue;
-
-            if (Objects.equals(board[0][c].getText(), "X") &&
-                    Objects.equals(board[1][c].getText(), "X") &&
-                        Objects.equals(board[2][c].getText(), "X")) {
-                for (int i = 0; i < 3; i++) {
-                    setWinner(board[i][c]);
-                }
-                Win = true;
-                gameOver = true;
-                return;
-            }
-
-            if (Objects.equals(board[0][c].getText(), "O") &&
-                    Objects.equals(board[1][c].getText(), "O") &&
-                    Objects.equals(board[2][c].getText(), "O")) {
-                for (int i = 0; i < 3; i++) {
-                    setWinner(board[i][c]);
-                }
-                Lose = true;
-                gameOver = true;
-                return;
-            }
-        }
-
-        //diagonally
-        if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
-                Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
-                    Objects.equals(board[0][0].getText(), "X")) {
-            for (int i = 0; i < 3; i++) {
-                setWinner(board[i][i]);
-            }
-            Win = true;
-            gameOver = true;
-            return;
-        }
-
-        if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
-                Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
-                Objects.equals(board[0][0].getText(), "O")) {
-            for (int i = 0; i < 3; i++) {
-                setWinner(board[i][i]);
-            }
-            Lose = true;
-            gameOver = true;
-            return;
-        }
-
-        //anti-diagonally
-        if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
-                Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
-                    Objects.equals(board[0][2].getText(), "X")) {
-            setWinner(board[0][2]);
-            setWinner(board[1][1]);
-            setWinner(board[2][0]);
-            Win = true;
-            gameOver = true;
-            return;
-        }
-
-        if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
-                Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
-                Objects.equals(board[0][2].getText(), "O")) {
-            setWinner(board[0][2]);
-            setWinner(board[1][1]);
-            setWinner(board[2][0]);
-            Lose = true;
-            gameOver = true;
-            return;
-        }
-
-        if (turns == 9) {
+        public boolean checkWinner() {
+            //horizontal
             for (int r = 0; r < 3; r++) {
-                for (int c = 0; c < 3; c++) {
-                    setTie(board[r][c]);
+                if (Objects.equals(board[r][0].getText(), "")) continue;
+
+                if (Objects.equals(board[r][0].getText(), "X") &&
+                        Objects.equals(board[r][1].getText(), "X") &&
+                        Objects.equals(board[r][2].getText(), "X")) {
+                    for (int i = 0; i < 3; i++) {
+                        setWinner(board[r][i]);
+                    }
+                    return true; // Người chơi thắng
+                }
+
+                if (Objects.equals(board[r][0].getText(), "O") &&
+                        Objects.equals(board[r][1].getText(), "O") &&
+                        Objects.equals(board[r][2].getText(), "O")) {
+                    for (int i = 0; i < 3; i++) {
+                        setWinner(board[r][i]);
+                    }
+                    return false; // Máy tính thắng (người chơi thua)
                 }
             }
-            Lose = true;
-            gameOver = true;
+
+            //vertical
+            for (int c = 0; c < 3; c++) {
+                if (Objects.equals(board[0][c].getText(), "")) continue;
+
+                if (Objects.equals(board[0][c].getText(), "X") &&
+                        Objects.equals(board[1][c].getText(), "X") &&
+                        Objects.equals(board[2][c].getText(), "X")) {
+                    for (int i = 0; i < 3; i++) {
+                        setWinner(board[i][c]);
+                    }
+                    return true; // Người chơi thắng
+                }
+
+                if (Objects.equals(board[0][c].getText(), "O") &&
+                        Objects.equals(board[1][c].getText(), "O") &&
+                        Objects.equals(board[2][c].getText(), "O")) {
+                    for (int i = 0; i < 3; i++) {
+                        setWinner(board[i][c]);
+                    }
+                    return false; // Máy tính thắng (người chơi thua)
+                }
+            }
+
+            //diagonally
+            if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
+                    Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
+                    Objects.equals(board[0][0].getText(), "X")) {
+                for (int i = 0; i < 3; i++) {
+                    setWinner(board[i][i]);
+                }
+                return true; // Người chơi thắng
+            }
+
+            if (Objects.equals(board[0][0].getText(), board[1][1].getText()) &&
+                    Objects.equals(board[1][1].getText(), board[2][2].getText()) &&
+                    Objects.equals(board[0][0].getText(), "O")) {
+                for (int i = 0; i < 3; i++) {
+                    setWinner(board[i][i]);
+                }
+                return false; // Máy tính thắng (người chơi thua)
+            }
+
+            //anti-diagonally
+            if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
+                    Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
+                    Objects.equals(board[0][2].getText(), "X")) {
+                setWinner(board[0][2]);
+                setWinner(board[1][1]);
+                setWinner(board[2][0]);
+                return true; // Người chơi thắng
+            }
+
+            if (Objects.equals(board[0][2].getText(), board[1][1].getText()) &&
+                    Objects.equals(board[1][1].getText(), board[2][0].getText()) &&
+                    Objects.equals(board[0][2].getText(), "O")) {
+                setWinner(board[0][2]);
+                setWinner(board[1][1]);
+                setWinner(board[2][0]);
+                return false; // Máy tính thắng (người chơi thua)
+            }
+
+            if (turns == 9) {
+                for (int r = 0; r < 3; r++) {
+                    for (int c = 0; c < 3; c++) {
+                        setTie(board[r][c]);
+                    }
+                }
+                return false; // Hòa
+            }
+
+            return false; // Chưa có kết quả, tiếp tục chơi
         }
-    }
 
     public void setWinner(JButton tile) {
         tile.setForeground(Color.green);
@@ -301,14 +286,15 @@ public class TicTacToe {
         if (Objects.equals(tile1.getText(), "")) {
             tile1.setText(humanX);
             turns++;
-            checkWinner();
-            if (!gameOver) {
+            Continue = checkWinner();
+            if (!Continue) {
                 JButton tile2 = bestMove();
                 tile2.setText(aiO);
                 turns++;
-                checkWinner();
+                Continue = checkWinner();
             }
-            if (gameOver) timer.schedule(task, 1000);
+            if (checkWinner()) timer.schedule(task, 1000);
         }
     }
+
 }

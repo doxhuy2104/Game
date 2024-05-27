@@ -59,7 +59,7 @@ public class NPC extends Entity{
     }
     public void speak(){
         if(dialouge[gp.dialougeIndex] != null) {
-            gp.ui.currentDialouge = dialouge[gp.dialougeIndex];
+                gp.ui.currentDialouge = dialouge[gp.dialougeIndex];
         }
     }
 }

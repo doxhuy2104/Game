@@ -795,7 +795,7 @@ public class CollisionChecker {
                     flame.isHitEnemy = true;
                     if(flame.canHit){
                         gp.playSoundEffect(10);
-                        enemy.hp -= 3;
+                        enemy.hp -= 2;
                         flame.canHit=false;
                     }
                     if(enemy.hp <= 0){

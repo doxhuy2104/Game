@@ -57,7 +57,7 @@ public class FlameAttack extends Projectile{
             yMove -= (int) yMove;
             flameCounter++;
             spaceCounter++;
-            if (spaceCounter >= 30) {
+            if (spaceCounter >= 20) {
                 active = false;
             }
             if (flameCounter >= 10) {
