@@ -5,7 +5,9 @@ import main.GamePanel;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class CaSau extends Entity {
     GamePanel gp;
     BufferedImage[] cMove, cAttack, cWake, cMoveL, cAttackL, cWakeL;
@@ -39,7 +41,7 @@ public class CaSau extends Entity {
 
     public void getCaSauImage() {
         try {
-            BufferedImage casau = ImageIO.read(getClass().getResourceAsStream("/enemies/carnivorock.png"));
+            BufferedImage casau = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/carnivorock.png")));
 
             cMove = new BufferedImage[4];
             for (int i = 0; i < 4; i++) {
@@ -72,7 +74,7 @@ public class CaSau extends Entity {
                 cWakeL[i] = casau.getSubimage(66 - i * 22, 88, 22, 22);
             }
 
-            shadow = ImageIO.read(getClass().getResourceAsStream("/enemies/enemySm.png"));
+            shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/enemySm.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }

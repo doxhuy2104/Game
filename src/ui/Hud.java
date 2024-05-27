@@ -4,7 +4,9 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Hud extends UI {
     GamePanel gp;
     private double fillRegion = 144;
@@ -17,16 +19,16 @@ public class Hud extends UI {
 
     public void getHudImage() {
         try {
-            manaFull = ImageIO.read(getClass().getResourceAsStream("/UI/full.png"));
-            manaFill = ImageIO.read(getClass().getResourceAsStream("/UI/fill.png"));
-            manaEmpty = ImageIO.read(getClass().getResourceAsStream("/UI/empty.png"));
+            manaFull = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/full.png")));
+            manaFill = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/fill.png")));
+            manaEmpty = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/empty.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void update() {
-        fillRegion = gp.player.mana * 144 / 100;
+        fillRegion = (double) (gp.player.mana * 144) / 100;
     }
 
     public void draw(Graphics2D g2) {

@@ -14,7 +14,10 @@ public class Projectile {
     //public boolean attacking = false;
     public int drawX, drawY;
     public String direction;
-    public boolean hitWall,hitPlayer,exist,hit;
+    public boolean hitWall;
+    public boolean hitPlayer;
+    public boolean exist;
+
     public Projectile(GamePanel gp) {
         this.gp=gp;
         pjSpeed = 6;
@@ -34,8 +37,8 @@ public class Projectile {
         area = new Rectangle(drawX+24, drawY+20, 64, 64);
         xMove = dx * pjSpeed;
         yMove = dy * pjSpeed;
-        x += xMove;
-        y += yMove;
+        x += (int) xMove;
+        y += (int) yMove;
         xMove-=(int)xMove;
         yMove-=(int)yMove;
         direc();

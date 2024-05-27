@@ -7,7 +7,9 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Pause extends UI{
     GamePanel gp;
     MouseClickListener mC;
@@ -26,8 +28,11 @@ public class Pause extends UI{
             InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
             InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
             InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
+            assert is1 != null;
             Font1 = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(72f);
+            assert is2 != null;
             Font2 = Font.createFont(Font.TRUETYPE_FONT, is2).deriveFont(36f);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -36,8 +41,8 @@ public class Pause extends UI{
 
     public void pImage(){
         try{
-            sideCursorL = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorL.png"));
-            sideCursorR = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorR.png"));
+            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
+            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
         } catch (Exception e){
             e.printStackTrace();
         }

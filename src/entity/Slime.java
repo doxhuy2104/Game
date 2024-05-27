@@ -6,11 +6,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Slime extends Entity {
     GamePanel gp;
     public final int screenX, screenY;
-    private float transparency = 1.0f;
     BufferedImage[] sMoveR, sJumpR, sMoveL, sJumpL, sHurtR, sHurtL, breakingR, breakingL;
     boolean jump = false, breaking = false;
     int hurtCounter = 0, hurtNum = 0, brCounter = 0, brNum = 0;
@@ -42,25 +43,25 @@ public class Slime extends Entity {
 
     public void getSlimeImage() {
         try {
-            exclamation = ImageIO.read(getClass().getResourceAsStream("/enemies/exclamation.png"));
+            exclamation = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/exclamation.png")));
             slimeL = new BufferedImage[4];
             slimeR = new BufferedImage[4];
-            BufferedImage slimeSheet = ImageIO.read(getClass().getResourceAsStream("/enemies/slimeRed.png"));
+            BufferedImage slimeSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/slimeRed.png")));
             for (int i = 0; i < 4; i++) {
                 slimeR[i] = slimeSheet.getSubimage(i * 16, 16, 16, 16);
                 slimeL[i] = slimeSheet.getSubimage(48 - i * 16, 32, 16, 16);
             }
 
 
-            shadow = ImageIO.read(getClass().getResourceAsStream("/enemies/enemySm.png"));
+            shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/enemySm.png")));
 
             spark = new BufferedImage[3];
-            BufferedImage sparkSheet = ImageIO.read(getClass().getResourceAsStream("/attack/spark.png"));
+            BufferedImage sparkSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/attack/spark.png")));
             for (int i = 0; i < 3; i++) {
                 spark[i] = sparkSheet.getSubimage(28 * i, 0, 28, 34);
             }
 
-            BufferedImage slimeSheet2 = ImageIO.read(getClass().getResourceAsStream("/enemies/blueSlime copy.png"));
+            BufferedImage slimeSheet2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/enemies/blueSlime copy.png")));
             sMoveR = new BufferedImage[6];
             for (int i = 0; i < 6; i++) {
                 sMoveR[i] = slimeSheet2.getSubimage(i * 16, 8, 16, 24);
@@ -241,6 +242,7 @@ public class Slime extends Entity {
         g2.setColor(Color.WHITE);
         if (alive) {
             g2.drawImage(shadow, drawX + 8, drawY + 30, gp.scale * shadow.getWidth(), gp.scale * shadow.getHeight(), null);
+            float transparency = 1.0f;
             g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transparency));
             if (move) {
                 switch (eD) {

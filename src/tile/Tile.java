@@ -10,5 +10,4 @@ public class Tile {
     public BufferedImage[] campFire;
     public BufferedImage glass;
     public boolean collision=false;
-    public int campFireCounter=0;
 }

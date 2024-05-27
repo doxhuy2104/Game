@@ -27,7 +27,7 @@ public class superObject {
         }
         g2.drawImage(imageDD, screenX, screenY, gp.tileSize, gp.tileSize*2, null);
         g2.drawImage(imageDN, screenX, screenY, gp.tileSize*2, gp.tileSize, null);
-        g2.drawImage(imageDB, screenX, screenY, gp.tileSize*3, gp.tileSize*1, null);
+        g2.drawImage(imageDB, screenX, screenY, gp.tileSize*3, gp.tileSize, null);
         g2.drawImage(imageDHP, screenX, screenY, gp.tileSize, gp.tileSize, null);
         g2.drawImage(imageDW, screenX, screenY, gp.tileSize*4, gp.tileSize*2, null);
         g2.drawImage(imageSOF, screenX, screenY, gp.tileSize, gp.tileSize, null);

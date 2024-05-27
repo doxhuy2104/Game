@@ -75,7 +75,7 @@ public class AssetSetter {
         //Switch vao me cung
         gp.obj[18] = new objectSwitchOff();
         gp.obj[18].worldX = 6 * gp.tileSize;
-        gp.obj[18].worldY = 1 * gp.tileSize;
+        gp.obj[18].worldY = gp.tileSize;
 
         //Switch out me cung
         gp.obj[20] = new objectSwitchOff();
@@ -131,7 +131,6 @@ public class AssetSetter {
         gp.obj[39].worldX = 34 * gp.tileSize;
         gp.obj[39].worldY = 20 * gp.tileSize;
 
-
     }
     public void setEnemies(){
         gp.slime[0] = new Slime(gp);
@@ -144,7 +143,7 @@ public class AssetSetter {
 
         gp.slime[2] = new Slime(gp);
         gp.slime[2].sx = 32* gp.tileSize;
-        gp.slime[2].sy = 06 * gp.tileSize;
+        gp.slime[2].sy = 6 * gp.tileSize;
 
         gp.slime[3] = new Slime(gp);
         gp.slime[3].sx = 57* gp.tileSize;
@@ -165,6 +164,7 @@ public class AssetSetter {
         gp.caSau[3] = new CaSau(gp);
         gp.caSau[3].sx = 2 * gp.tileSize;
         gp.caSau[3].sy = 34 * gp.tileSize;
+
     }
     public void setNpc(){
         gp.npc[0] = new NPC(gp);

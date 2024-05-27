@@ -9,7 +9,9 @@ import java.awt.*;
 import java.awt.FontFormatException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class Menu extends UI {
     MouseClickListener mouseClick;
     KeyHandler keyH;
@@ -32,8 +34,11 @@ public class Menu extends UI {
             InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
             InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
             InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
+            assert is1 != null;
             Font1 = Font.createFont(Font.TRUETYPE_FONT, is1).deriveFont(72f);
+            assert is2 != null;
             Font2 = Font.createFont(Font.TRUETYPE_FONT, is2).deriveFont(36f);
         } catch (IOException | FontFormatException e) {
             e.printStackTrace();
@@ -42,25 +47,25 @@ public class Menu extends UI {
 
     public void getUIImage() {
         try {
-            castle = ImageIO.read(getClass().getResourceAsStream("/UI/castle.png"));
-            moon = ImageIO.read(getClass().getResourceAsStream("/UI/moon.png"));
-            layer1 = ImageIO.read(getClass().getResourceAsStream("/UI/layer1.png"));
-            layer2 = ImageIO.read(getClass().getResourceAsStream("/UI/layer2.png"));
-            layer3 = ImageIO.read(getClass().getResourceAsStream("/UI/layer3.png"));
-            layer4 = ImageIO.read(getClass().getResourceAsStream("/UI/layer4.png"));
-            layer5 = ImageIO.read(getClass().getResourceAsStream("/UI/layer6.png"));
-            layer6 = ImageIO.read(getClass().getResourceAsStream("/UI/layer8.png"));
-            logo = ImageIO.read(getClass().getResourceAsStream("/UI/logo.png"));
-            checkBox = ImageIO.read(getClass().getResourceAsStream("/UI/checkbox.png"));
-            checkedBox = ImageIO.read(getClass().getResourceAsStream("/UI/checkedbox.png"));
-            cursorBox = ImageIO.read(getClass().getResourceAsStream("/UI/cursorBox.png"));
-            mSetting = ImageIO.read(getClass().getResourceAsStream("/UI/mSetting.png"));
-            mSettingC = ImageIO.read(getClass().getResourceAsStream("/UI/mSettingC.png"));
-            mFill = ImageIO.read(getClass().getResourceAsStream("/UI/mFill.png"));
-            menuBox = ImageIO.read(getClass().getResourceAsStream("/UI/Box.png"));
+            castle = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/castle.png")));
+            moon = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/moon.png")));
+            layer1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer1.png")));
+            layer2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer2.png")));
+            layer3 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer3.png")));
+            layer4 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer4.png")));
+            layer5 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer6.png")));
+            layer6 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/layer8.png")));
+            logo = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/logo.png")));
+            checkBox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/checkbox.png")));
+            checkedBox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/checkedbox.png")));
+            cursorBox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/cursorBox.png")));
+            mSetting = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/mSetting.png")));
+            mSettingC = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/mSettingC.png")));
+            mFill = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/mFill.png")));
+            menuBox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/Box.png")));
 
-            sideCursorL = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorL.png"));
-            sideCursorR = ImageIO.read(getClass().getResourceAsStream("/UI/sideCursorR.png"));
+            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
+            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }

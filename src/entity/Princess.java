@@ -5,12 +5,15 @@ import main.GamePanel;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Objects;
+
+@SuppressWarnings("CallToPrintStackTrace")
 public class Princess extends Entity {
     private static final int FRAME_WIDTH = 64;
     private static final int FRAME_HEIGHT = 128;
     private static final int FRAME_DELAY = 6; // Độ trễ giữa các khung hình, có thể điều chỉnh
 
-    private GamePanel gp;
+    private final GamePanel gp;
     private BufferedImage[] move;
     private int currentFrameIndex = 0;
     private int frameDelayCount = 0;
@@ -23,7 +26,7 @@ public class Princess extends Entity {
 
     private void getPrincessImage() {
         try {
-            BufferedImage princess = ImageIO.read(getClass().getResourceAsStream("/npc/princess.png"));
+            BufferedImage princess = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/npc/princess.png")));
 
             move = new BufferedImage[8];
             for (int i = 0; i < 8; i++) {
