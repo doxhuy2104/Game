@@ -165,6 +165,13 @@ public class AssetSetter {
         gp.caSau[3].sx = 2 * gp.tileSize;
         gp.caSau[3].sy = 34 * gp.tileSize;
 
+        gp.electronic[15]=new Electronic(gp);
+        gp.electronic[15].sx= 3 * gp.tileSize;
+        gp.electronic[15].sy= 3 * gp.tileSize;
+
+        gp.electronic[16]=new Electronic(gp);
+        gp.electronic[16].sx= 5 * gp.tileSize;
+        gp.electronic[16].sy= 5 * gp.tileSize;
     }
     public void setNpc(){
         gp.npc[0] = new NPC(gp);

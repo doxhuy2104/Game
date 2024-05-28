@@ -59,9 +59,9 @@ public class UI {
 
     private void loadFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
-            InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
-            InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            InputStream is = getClass().getResourceAsStream("/ui/inexpugnableExtended.ttf");
+            InputStream is1 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
+            InputStream is2 = getClass().getResourceAsStream("/ui/SVN-Determination Sans.otf");
             assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(24f);
             assert is1 != null;
