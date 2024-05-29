@@ -43,7 +43,7 @@ public class Projectile {
         yMove-=(int)yMove;
         direc();
         gp.collisionChecker.pjCheck(this);
-        gp.collisionChecker.pjCo(this);
+        //gp.collisionChecker.pjCo(this);
         if(hitPlayer||hitWall){
             exist=false;
         }
@@ -67,6 +67,7 @@ public class Projectile {
         } else if(dy<0){
             direction="U";
         }
+        else direction = "D";
     }
 
     public void hitWallU(){

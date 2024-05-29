@@ -94,13 +94,15 @@ public class Menu extends UI {
             if (layer6X == -1024) layer6X = 0;
         }
         if (menu) {
-            if (!firstTime && mouseClick.getMouseX() >= 648 && mouseClick.getMouseX() <= 865 && mouseClick.getMouseY() <= 250 && mouseClick.getMouseY() >= 218) {
-                {
-                    mouseLocation = "CONTINUE";
-                    if (changeSoundC < 2) changeSoundC++;
-                }
-            }else if (mouseClick.getMouseX() >= 634 && mouseClick.getMouseX() <= 879 && mouseClick.getMouseY() <= 300 && mouseClick.getMouseY() >= 268) {
-                mouseLocation = "NEW GAME";
+//            if (!firstTime && mouseClick.getMouseX() >= 648 && mouseClick.getMouseX() <= 865 && mouseClick.getMouseY() <= 250 && mouseClick.getMouseY() >= 218) {
+//                {
+//                    mouseLocation = "CONTINUE";
+//                    if (changeSoundC < 2) changeSoundC++;
+//                }
+           // }
+             if (mouseClick.getMouseX() >= 634 && mouseClick.getMouseX() <= 879 && mouseClick.getMouseY() <= 300 && mouseClick.getMouseY() >= 268) {
+                if(firstTime)mouseLocation = "NEW GAME";
+                else mouseLocation="CONTINUE";
                 if (changeSoundC < 2) changeSoundC++;
             } else if (mouseClick.getMouseX() >= 652 && mouseClick.getMouseX() <= 861 && mouseClick.getMouseY() <= 350 && mouseClick.getMouseY() >= 318) {
                 mouseLocation = "SETTINGS";
@@ -124,9 +126,9 @@ public class Menu extends UI {
             case "CONTINUE":
                 side = true;
                 xL = 628;
-                yL = 218;
+                yL = 268;
                 xR = 865;
-                yR = 218;
+                yR = 268;
                 break;
             case "NEW GAME":
                 side = true;
@@ -192,19 +194,7 @@ public class Menu extends UI {
             }
         }
         if (NEWGAME) {
-            firstTime=false;
-            gp.player.reset();
-            play=true;
-            pause=false;
-            exitUI = true;
-            NEWGAME = false;
-            for(int i=0;i<gp.slime.length;i++){
-                if(gp.slime[i]!=null){
-                    gp.slime[i].reset();
-                }
-            }
-            gp.player.x=4*gp.tileSize;
-            gp.player.y=4*gp.tileSize;
+            reset();
 
             //trạng thái
             switch (difficult)
@@ -450,8 +440,8 @@ public class Menu extends UI {
 //                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80f));
 //            }
             g2.setColor(new Color(255, 255, 255));
-            if(!firstTime)g2.drawString("CONTINUE", 658, 250);
-            g2.drawString("NEW GAME", 644, 300);
+            if(!firstTime)g2.drawString("CONTINUE", 658, 300);
+            else g2.drawString("NEW GAME", 644, 300);
             g2.drawString("SETTINGS", 662, 350);
             g2.drawString("CREDITS", 675, 400);
             g2.drawString("EXIT", 716, 450);
@@ -509,5 +499,31 @@ public class Menu extends UI {
                 g2.drawImage(sideCursorR, xR, yR, 20, 32, null);
             }
         }
+    }
+
+    public void reset(){
+        firstTime=false;
+        gp.player.reset();
+        play=true;
+        pause=false;
+        exitUI = true;
+        NEWGAME = false;
+        for(int i=0;i<gp.slime.length;i++){
+            if(gp.slime[i]!=null){
+                gp.slime[i].reset();
+            }
+        }
+        for(int i=0;i<gp.caSau.length;i++){
+            if(gp.caSau[i]!=null){
+                gp.caSau[i].reset();
+            }
+        }
+        for(int i=0;i<gp.electronic.length;i++){
+            if(gp.electronic[i]!=null){
+                gp.electronic[i].reset();
+            }
+        }
+        gp.player.x=4*gp.tileSize;
+        gp.player.y=4*gp.tileSize;
     }
 }

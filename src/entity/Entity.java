@@ -221,16 +221,16 @@ public class Entity {
         dlNum++;
         switch (gp.player.atkDirection) {
             case "attackUp":
-                if (!eCollision) eSY--;
+                if (!eCollision&&!eToECU) eSY--;
                 break;
             case "attackDown":
-                if (!eCollision) eSY++;
+                if (!eCollision&&!eToECD) eSY++;
                 break;
             case "attackR":
-                if (!eCollision) eSX++;
+                if (!eCollision&&!eToECR) eSX++;
                 break;
             case "attackL":
-                if (!eCollision) eSX--;
+                if (!eCollision&&!eToECL) eSX--;
                 break;
         }
         if (dlNum % 5 == 0) {
@@ -277,7 +277,7 @@ public class Entity {
         eCollisionD = false;
         gp.collisionChecker.checkTileEnemies(this);
 
-         if (!eToECR&&!eToECL)
+        if (!eToECR&&!eToECL)
         eSX += (int) xMove;
         if (!eToECU&&!eToECD)
         eSY += (int) yMove;

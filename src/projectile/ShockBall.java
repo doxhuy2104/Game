@@ -13,12 +13,14 @@ public class ShockBall extends Projectile {
 
     BufferedImage shockBallSheet;
     BufferedImage[] shockBall,hitI;
+    boolean active;
+    int counter;
 
     public ShockBall(GamePanel gp,int x,int y, double dx, double dy,boolean p,boolean co,boolean exist) {
         super(gp);
         this.gp = gp;
         GetImage();
-
+        this.active = true;
         this.x = x;
         this.y = y;
         this.dx = dx;
@@ -51,13 +53,19 @@ public class ShockBall extends Projectile {
         if(exist)super.update();
         else if(hitWall) hitWallU();
         else if(hitPlayer) hitPlayerU();
+        counter++;
+        if(counter>120) active = false;
     }
 
     public void draw(Graphics2D g2, int i) {
-        if(exist) g2.drawImage(shockBall[i], drawX, drawY, 64, 64, null);
+        if(exist) {if(active) g2.drawImage(shockBall[i], drawX, drawY, 64, 64, null);}
         else {
             if(hitPlayer)gp.player.isHurt=true;
             g2.drawImage(hitI[i],drawX,drawY,72,72,null);
         }
     }
+    public boolean isActive(){
+        return active;
+    }
 }
+
