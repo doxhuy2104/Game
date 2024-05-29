@@ -284,8 +284,8 @@ public class Player extends Entity {
                 TileManager.mapTileNum[30][38] = 1;
 
                 gp.obj[13] = new objectCuaDoc();
-                gp.obj[13].worldX = 33 * gp.tileSize;
-                gp.obj[13].worldY = 37 * gp.tileSize;
+                gp.obj[13].worldX = 39 * gp.tileSize;
+                gp.obj[13].worldY = 23 * gp.tileSize;
 
                 gp.slime[4] = new Slime(gp);
                 gp.slime[4].sx = 37 * gp.tileSize;
