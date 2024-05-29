@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
+import java.util.Random;
 
 @SuppressWarnings("ALL")
 public class Electronic extends Entity {
@@ -15,7 +16,8 @@ public class Electronic extends Entity {
     BufferedImage[] elecMoveR, elecAttackR, elecMoveL, elecAttackL;
     BufferedImage Move, Attack;
     boolean isAttack =false,breaking = false;
-    int mCounter,mNum,aCounter,aNum,coolDown=0;
+    int mCounter,mNum,aCounter,aNum,coolDown=0,randCD;
+    Random rand=new Random();
     int hurtCounter = 0,hurtNum = 0,brNum = 0,brCounter = 0;
     public Electronic(GamePanel gp) {
         super(gp);
@@ -128,8 +130,9 @@ public class Electronic extends Entity {
                 mNum++;
                 if (mNum >= 3) mNum = 0;
             }
+            if(coolDown==0) randCD=rand.nextInt(241)+60;
             coolDown++;
-            if (coolDown >= 150) {
+            if (coolDown >= randCD) {
                 coolDown = 0;
                 isAttack = true;
             }
