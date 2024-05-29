@@ -97,11 +97,14 @@ public class UI {
                         gp.obj[21] = new objectDoorWin();
                         gp.obj[21].worldX = 58 * gp.tileSize;
                         gp.obj[21].worldY = 19 * gp.tileSize;
+                        gp.obj[16] = null;
+                        TileManager.mapTileNum[58][29] = 0;
+                        TileManager.mapTileNum[59][29] = 0;
+                        TileManager.mapTileNum[60][29] = 0;
                         gp.player.OpenDoorWin = true;
                     }
                     if (ticTacToe.Lose) {
                         //Mo cua vao phong boss
-                        gp.obj[16] = null;
                         TileManager.mapTileNum[58][29] = 0;
                         TileManager.mapTileNum[59][29] = 0;
                         TileManager.mapTileNum[60][29] = 0;
