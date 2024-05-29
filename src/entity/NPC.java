@@ -25,7 +25,8 @@ public class NPC extends Entity{
             npcSheet = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/npc/teaGirl.png")));
 
             down1 = npcSheet.getSubimage(24, 0, 24, 30);
-            down2 = npcSheet.getSubimage(48, 0, 24, 30);
+            down2= npcSheet.getSubimage(48, 0, 24, 30);
+            shadow=ImageIO.read(getClass().getResourceAsStream("/enemies/enemySm.png"));
         }
         catch (Exception e) {
             e.printStackTrace();

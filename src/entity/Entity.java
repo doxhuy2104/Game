@@ -407,7 +407,9 @@ public class Entity {
         }
 
         if (image != null) {
-            g2.drawImage(image, x, y, 64, 80, null);
+            g2.drawImage(shadow,x+10,y+83,shadow.getWidth()*5,shadow.getHeight()*5,null);
+            g2.drawImage(image, x, y, 80, 100, null);
+
         }
         //}
     }
