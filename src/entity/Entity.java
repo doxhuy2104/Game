@@ -200,7 +200,7 @@ public class Entity {
         eToECD = false;
         eToECL = false;
         eToECR = false;
-        if(drawX>(-300)&&drawX<300&&drawY<700&&drawY>(-700))gp.collisionChecker.eToECo(this);
+        if(drawX>(-700)&&drawX<700&&drawY<300&&drawY>(-300))gp.collisionChecker.eToECo(this);
     }
 
     public void Hurt() {
