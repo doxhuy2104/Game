@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Objects;
 
 import tile.TileManager;
-import ui.GameWin;
 
 @SuppressWarnings("ALL")
 public class Player extends Entity {
