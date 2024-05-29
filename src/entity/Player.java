@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Objects;
 
 import tile.TileManager;
-import ui.GameWin;
 
 @SuppressWarnings("ALL")
 public class Player extends Entity {
@@ -236,7 +235,7 @@ public class Player extends Entity {
     public boolean pickUpObj(int i) {
 
         healTime++;
-        if ((currentHP <= maxHP) && (healTime%120 == 0)){
+        if ((currentHP <= maxHP) && (healTime % 80 == 0)){
             if((GamePanel.col == 34) && (GamePanel.row == 4)) {
                 if (currentHP < maxHP) currentHP++;
                 keyE = true;
@@ -404,7 +403,7 @@ public class Player extends Entity {
                         gp.uiManager.gameW = true;
                     }
 
-                    if(healTime % 120 == 0) oneOfTime = true;
+                    if(healTime % 81 == 80) oneOfTime = true;
 
                     break;
                 case "SwitchOff":
