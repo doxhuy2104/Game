@@ -238,19 +238,19 @@ public class Player extends Entity {
         healTime++;
         if ((currentHP <= maxHP) && (healTime%120 == 0)){
             if((GamePanel.col == 34) && (GamePanel.row == 4)) {
-                currentHP++;
+                if (currentHP < maxHP) currentHP++;
                 keyE = true;
             };
             if((GamePanel.col == 35) && (GamePanel.row == 4)) {
-                currentHP++;
+                if (currentHP < maxHP) currentHP++;
                 keyE = true;
             };
             if((GamePanel.col == 34) && (GamePanel.row == 5)) {
-                currentHP++;
+                if (currentHP < maxHP) currentHP++;
                 keyE = true;
             };
             if((GamePanel.col == 35) && (GamePanel.row == 5)) {
-                currentHP++;
+                if (currentHP < maxHP) currentHP++;
                 keyE = true;
             };
             healTime = 0;
