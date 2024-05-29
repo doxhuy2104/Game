@@ -67,6 +67,7 @@ public class Projectile {
         } else if(dy<0){
             direction="U";
         }
+        else direction = "D";
     }
 
     public void hitWallU(){
