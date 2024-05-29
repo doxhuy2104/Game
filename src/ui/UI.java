@@ -105,6 +105,7 @@ public class UI {
                     }
                     if (ticTacToe.Lose) {
                         //Mo cua vao phong boss
+                        gp.obj[16] = null;
                         TileManager.mapTileNum[58][29] = 0;
                         TileManager.mapTileNum[59][29] = 0;
                         TileManager.mapTileNum[60][29] = 0;
