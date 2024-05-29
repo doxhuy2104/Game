@@ -284,24 +284,37 @@ public class Player extends Entity {
                 TileManager.mapTileNum[30][38] = 1;
 
                 gp.obj[13] = new objectCuaDoc();
-                gp.obj[13].worldX = 39 * gp.tileSize;
-                gp.obj[13].worldY = 23 * gp.tileSize;
+                gp.obj[13].worldX = 33 * gp.tileSize;
+                gp.obj[13].worldY = 37 * gp.tileSize;
 
                 gp.slime[4] = new Slime(gp);
-                gp.slime[4].sx = 35 * gp.tileSize;
-                gp.slime[4].sy = 27 * gp.tileSize;
+                gp.slime[4].sx = 37 * gp.tileSize;
+                gp.slime[4].sy = 34 * gp.tileSize;
 
                 gp.slime[5] = new Slime(gp);
-                gp.slime[5].sx = 33 * gp.tileSize;
-                gp.slime[5].sy = 27 * gp.tileSize;
+                gp.slime[5].sx = 32 * gp.tileSize;
+                gp.slime[5].sy = 32 * gp.tileSize;
 
                 gp.slime[6] = new Slime(gp);
-                gp.slime[6].sx = 35 * gp.tileSize;
-                gp.slime[6].sy = 31 * gp.tileSize;
+                gp.slime[6].sx = 37 * gp.tileSize;
+                gp.slime[6].sy = 30 * gp.tileSize;
 
                 gp.slime[7] = new Slime(gp);
-                gp.slime[7].sx = 33 * gp.tileSize;
-                gp.slime[7].sy = 31 * gp.tileSize;
+                gp.slime[7].sx = 31 * gp.tileSize;
+                gp.slime[7].sy = 28 * gp.tileSize;
+
+                gp.slime[8] = new Slime(gp);
+                gp.slime[8].sx = 35 * gp.tileSize;
+                gp.slime[8].sy = 27 * gp.tileSize;
+
+                gp.slime[9] = new Slime(gp);
+                gp.slime[9].sx = 37 * gp.tileSize;
+                gp.slime[9].sy = 25 * gp.tileSize;
+
+                gp.slime[10] = new Slime(gp);
+                gp.slime[10].sx = 32 * gp.tileSize;
+                gp.slime[10].sy = 23 * gp.tileSize;
+
             }
         }
 
@@ -310,22 +323,42 @@ public class Player extends Entity {
                     gp.slime[5].hp <= 0 &&
                     gp.slime[6].hp <= 0 &&
                     gp.slime[7].hp <= 0 &&
+                    gp.slime[8].hp <= 0 &&
+                    gp.slime[9].hp <= 0 &&
+                    gp.slime[10].hp <= 0 &&
                     gp.caSau[4] == null) {
+
                 gp.caSau[4] = new CaSau(gp);
-                gp.caSau[4].sx = 35 * gp.tileSize;
-                gp.caSau[4].sy = 27 * gp.tileSize;
+                gp.caSau[4].sx = 37 * gp.tileSize;
+                gp.caSau[4].sy = 37 * gp.tileSize;
 
                 gp.caSau[5] = new CaSau(gp);
-                gp.caSau[5].sx = 33 * gp.tileSize;
-                gp.caSau[5].sy = 27 * gp.tileSize;
+                gp.caSau[5].sx = 32 * gp.tileSize;
+                gp.caSau[5].sy = 35 * gp.tileSize;
 
                 gp.caSau[6] = new CaSau(gp);
-                gp.caSau[6].sx = 35 * gp.tileSize;
-                gp.caSau[6].sy = 31 * gp.tileSize;
+                gp.caSau[6].sx = 37 * gp.tileSize;
+                gp.caSau[6].sy = 32 * gp.tileSize;
 
                 gp.caSau[7] = new CaSau(gp);
-                gp.caSau[7].sx = 33 * gp.tileSize;
-                gp.caSau[7].sy = 31 * gp.tileSize;
+                gp.caSau[7].sx = 31 * gp.tileSize;
+                gp.caSau[7].sy = 32 * gp.tileSize;
+
+                gp.caSau[8] = new CaSau(gp);
+                gp.caSau[8].sx = 35 * gp.tileSize;
+                gp.caSau[8].sy = 30 * gp.tileSize;
+
+                gp.caSau[9] = new CaSau(gp);
+                gp.caSau[9].sx = 33 * gp.tileSize;
+                gp.caSau[9].sy = 28 * gp.tileSize;
+
+                gp.caSau[10] = new CaSau(gp);
+                gp.caSau[10].sx = 32 * gp.tileSize;
+                gp.caSau[10].sy = 25 * gp.tileSize;
+
+                gp.caSau[11] = new CaSau(gp);
+                gp.caSau[11].sx = 36 * gp.tileSize;
+                gp.caSau[11].sy = 32 * gp.tileSize;
             }
         }
 
@@ -333,7 +366,11 @@ public class Player extends Entity {
             if (gp.caSau[4].hp <= 0 &&
                     gp.caSau[5].hp <= 0 &&
                     gp.caSau[6].hp <= 0 &&
-                    gp.caSau[7].hp <= 0) {
+                    gp.caSau[7].hp <= 0 &&
+                    gp.caSau[8].hp <= 0 &&
+                    gp.caSau[9].hp <= 0 &&
+                    gp.caSau[10].hp <= 0 &&
+                    gp.caSau[11].hp <= 0) {
 
                 gp.obj[12] = null;
                 TileManager.mapTileNum[30][37] = 0;
@@ -445,36 +482,36 @@ public class Player extends Entity {
             if (appearBoss == 4){
                 //Quái phòng Boss
                 gp.electronic[0] = new Electronic(gp);
-                gp.electronic[0].sx = 65 * gp.tileSize;
-                gp.electronic[0].sy = 49 * gp.tileSize;
+                gp.electronic[0].sx = 51 * gp.tileSize;
+                gp.electronic[0].sy = 41 * gp.tileSize;
 
                 gp.electronic[1] = new Electronic(gp);
-                gp.electronic[1].sx = 59 * gp.tileSize;
-                gp.electronic[1].sy = 49 * gp.tileSize;
+                gp.electronic[1].sx = 68 * gp.tileSize;
+                gp.electronic[1].sy = 41 * gp.tileSize;
 
                 gp.electronic[2] = new Electronic(gp);
-                gp.electronic[2].sx = 54 * gp.tileSize;
-                gp.electronic[2].sy = 49 * gp.tileSize;
+                gp.electronic[2].sx = 51 * gp.tileSize;
+                gp.electronic[2].sy = 58 * gp.tileSize;
 
                 gp.electronic[3] = new Electronic(gp);
-                gp.electronic[3].sx = 59 * gp.tileSize;
+                gp.electronic[3].sx = 68 * gp.tileSize;
                 gp.electronic[3].sy = 55 * gp.tileSize;
 
                 gp.electronic[4] = new Electronic(gp);
-                gp.electronic[4].sx = 59 * gp.tileSize;
-                gp.electronic[4].sy = 44 * gp.tileSize;
+                gp.electronic[4].sx = 57 * gp.tileSize;
+                gp.electronic[4].sy = 47 * gp.tileSize;
 
                 gp.electronic[5] = new Electronic(gp);
-                gp.electronic[5].sx = 54 * gp.tileSize;
-                gp.electronic[5].sy = 44 * gp.tileSize;
+                gp.electronic[5].sx = 62 * gp.tileSize;
+                gp.electronic[5].sy = 47 * gp.tileSize;
 
                 gp.electronic[6] = new Electronic(gp);
-                gp.electronic[6].sx = 65 * gp.tileSize;
-                gp.electronic[6].sy = 44 * gp.tileSize;
+                gp.electronic[6].sx = 57 * gp.tileSize;
+                gp.electronic[6].sy = 52 * gp.tileSize;
 
                 gp.electronic[7] = new Electronic(gp);
-                gp.electronic[7].sx = 59 * gp.tileSize;
-                gp.electronic[7].sy = 42 * gp.tileSize;
+                gp.electronic[7].sx = 62 * gp.tileSize;
+                gp.electronic[7].sy = 52 * gp.tileSize;
 
                 gp.obj[0] = null;
                 gp.obj[1] = null;
