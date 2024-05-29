@@ -475,7 +475,9 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     boost = true;
                     startTime = System.currentTimeMillis();
-                    LightingManager.opacity = LightingManager.opacity - 0.05f;
+                    if(LightingManager.opacity >= 0.5f) {
+                        LightingManager.opacity = LightingManager.opacity - 0.05f;
+                    }
                     break;
             }
 
