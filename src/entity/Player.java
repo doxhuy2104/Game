@@ -398,7 +398,6 @@ public class Player extends Entity {
                         gp.playSoundEffect(11);
                         currentHP--;
                         oneOfTime = false;
-                        currentHP--;
                     }
 
                     if(checkWin){

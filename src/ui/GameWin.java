@@ -29,7 +29,7 @@ public class GameWin extends UI{
 
     public void getVoidImage(){
         try{
-            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/Void2.png")));
+            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/void3.png")));
             shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
         }catch (Exception e){
             e.printStackTrace();
