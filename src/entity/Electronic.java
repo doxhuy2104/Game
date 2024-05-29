@@ -129,7 +129,7 @@ public class Electronic extends Entity {
                 if (mNum >= 3) mNum = 0;
             }
             coolDown++;
-            if (coolDown >= 30) {
+            if (coolDown >= 150) {
                 coolDown = 0;
                 isAttack = true;
             }
@@ -200,7 +200,7 @@ public class Electronic extends Entity {
             }
             if (shockBall != null) {
                 if (shockBall.exist) shockBall.draw(g2, shockBall.pjNum);
-                else shockBall.draw(g2, shockBall.hitNum);
+                else if(shockBall.hitPlayer||shockBall.hitWall)shockBall.draw(g2, shockBall.hitNum);
                 //
             }
         }
