@@ -208,4 +208,16 @@ public class Electronic extends Entity {
             }
         }
     }
+
+    public void reset(){
+        super.reset();
+        mNum=0;
+        aNum=0;
+        aCounter=0;
+        coolDown=0;
+        isAttack=false;
+        breaking=false;
+        brNum=0;
+        brCounter=0;
+    }
 }

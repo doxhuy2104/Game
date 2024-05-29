@@ -43,7 +43,7 @@ public class Projectile {
         yMove-=(int)yMove;
         direc();
         gp.collisionChecker.pjCheck(this);
-        gp.collisionChecker.pjCo(this);
+        //gp.collisionChecker.pjCo(this);
         if(hitPlayer||hitWall){
             exist=false;
         }

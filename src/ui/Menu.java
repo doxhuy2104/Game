@@ -192,19 +192,7 @@ public class Menu extends UI {
             }
         }
         if (NEWGAME) {
-            firstTime=false;
-            gp.player.reset();
-            play=true;
-            pause=false;
-            exitUI = true;
-            NEWGAME = false;
-            for(int i=0;i<gp.slime.length;i++){
-                if(gp.slime[i]!=null){
-                    gp.slime[i].reset();
-                }
-            }
-            gp.player.x=4*gp.tileSize;
-            gp.player.y=4*gp.tileSize;
+            reset();
 
             //trạng thái
             switch (difficult)
@@ -509,5 +497,31 @@ public class Menu extends UI {
                 g2.drawImage(sideCursorR, xR, yR, 20, 32, null);
             }
         }
+    }
+
+    public void reset(){
+        firstTime=false;
+        gp.player.reset();
+        play=true;
+        pause=false;
+        exitUI = true;
+        NEWGAME = false;
+        for(int i=0;i<gp.slime.length;i++){
+            if(gp.slime[i]!=null){
+                gp.slime[i].reset();
+            }
+        }
+        for(int i=0;i<gp.caSau.length;i++){
+            if(gp.caSau[i]!=null){
+                gp.caSau[i].reset();
+            }
+        }
+        for(int i=0;i<gp.electronic.length;i++){
+            if(gp.electronic[i]!=null){
+                gp.electronic[i].reset();
+            }
+        }
+        gp.player.x=4*gp.tileSize;
+        gp.player.y=4*gp.tileSize;
     }
 }
