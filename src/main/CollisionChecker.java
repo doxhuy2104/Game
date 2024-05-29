@@ -11,7 +11,6 @@ public class CollisionChecker {
     public int tileNum1, tileNum2, tileNum3;
 
     public CollisionChecker(GamePanel gp) {
-
         this.gp = gp;
     }
 
@@ -367,7 +366,6 @@ public class CollisionChecker {
                         entity.eCollisionL = true;
                         left=(enemieLeftCol+1)*gp.tileSize-enemieLeft;
                         entity.xMove=left;
-                        System.out.println(enemieLeft+" "+(enemieLeftCol+1)*gp.tileSize);
                     }
                 }
                 if (gp.tileManager.tile[tileNum1].collision || gp.tileManager.tile[tileNum3].collision) {
@@ -687,7 +685,6 @@ public class CollisionChecker {
         int left = pj.drawX;
         int right=left+pj.area.width;
         pj.hitPlayer=gp.player.isHurt= top < playerBot && bot > playerTop && left < playerRight && right > playerLeft;
-
     }
 
     public void pjCo(Projectile pj) {

@@ -626,7 +626,6 @@ public class Player extends Entity {
                 collisionCheck = "right";
                 lR = "R";
             }
-            System.out.println("left click");
             double dx = mouseX;
             double dy = mouseY;
             double distance = Math.sqrt(dx * dx + dy * dy);

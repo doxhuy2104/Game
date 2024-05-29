@@ -55,6 +55,9 @@ public class ShockBall extends Projectile {
 
     public void draw(Graphics2D g2, int i) {
         if(exist) g2.drawImage(shockBall[i], drawX, drawY, 64, 64, null);
-        else g2.drawImage(hitI[i],drawX,drawY,72,72,null);
+        else {
+            if(hitPlayer)gp.player.isHurt=true;
+            g2.drawImage(hitI[i],drawX,drawY,72,72,null);
+        }
     }
 }
