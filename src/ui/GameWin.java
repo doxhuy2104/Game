@@ -5,7 +5,6 @@ import main.MouseClickListener;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
@@ -30,19 +29,8 @@ public class GameWin extends UI{
 
     public void getVoidImage(){
         try{
-            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/void.png")));
-
-            BufferedImage full=ImageIO.read(
-                    Objects.requireNonNull(getClass().getResourceAsStream("/entity/full2.png")));
-            dieI= new BufferedImage[5];
-            dieI[0]=full.getSubimage(0,234,16,16);
-            dieI[1]=full.getSubimage(90,255,16,16);
-            dieI[2]=full.getSubimage(72,255,16,16);
-            dieI[3]=full.getSubimage(54,255,16,16);
-            dieI[4]=full.getSubimage(36,255,16,16);
+            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/Void2.png")));
             shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
-            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
-            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -54,7 +42,6 @@ public class GameWin extends UI{
             InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
             InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
             InputStream is3 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
-
             assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
             assert is1 != null;
@@ -76,65 +63,18 @@ public class GameWin extends UI{
             if(dieNum<4)
                 dieNum++;
         }
-        if(dieNum==4) {gp.uiManager.play=false;gp.uiManager.inGame=false;gp.uiManager.gameO=true;}
-        if(mC.getMouseX()>=485&&mC.getMouseX()<=539&&mC.getMouseY()>=418&&mC.getMouseY()<=450){
-            mouseLocation="NO";if (changeSoundC < 2) changeSoundC++;
+        if(dieNum==4) {
+            gp.uiManager.play=false;
+            gp.uiManager.inGame=false;
         }
-        else if(mC.getMouseX()>=440&&mC.getMouseX()<=584&&mC.getMouseY()>=468&&mC.getMouseY()<=500){
-            mouseLocation="YESNT";if (changeSoundC < 2) changeSoundC++;
+
+        if(mC.getMouseX()>=600 && mC.getMouseX()<=1000 && mC.getMouseY()>=400 && mC.getMouseY()<=500){
+            mouseLocation="DONATE FOR TEAM";if (changeSoundC < 2) changeSoundC++;
         } else {mouseLocation = "NONE";changeSoundC=0;}
-        switch (mouseLocation){
-            case "NO":
-                side=true;
-                xL=455;
-                yL=418;
-                xR=549;
-                yR=418;
-                break;
-            case"YESNT":
-                xL=410;
-                yL=468;
-                xR=594;
-                yR=468;
-                side=true;
-                break;
-            case "NONE":
-                side=false;
-                break;
-        }
+
         if(mC.leftClick){
             switch (mouseLocation){
-                case "NO":
-                    dieNum=0;
-                    TRANSPARENCY=0;
-                    gp.uiManager.inGame=false;
-                    gp.uiManager.menu=true;
-                    gp.uiManager.gameO=false;
-                    gp.uiManager.firstTime=true;
-                    gp.player.pAlive=true;
-                    gp.player.reset();
-                    for(int i=0;i<gp.slime.length;i++){
-                        if(gp.slime[i]!=null){
-                            gp.slime[i].reset();
-                        }
-                    }
-                    if(cc<2) cc++;
-                    System.exit(0);
-                    break;
-                case"YESNT":
-                    dieNum=0;
-                    TRANSPARENCY=0;
-                    gp.uiManager.inGame=false;
-                    gp.uiManager.menu=true;
-                    gp.uiManager.gameO=false;
-                    gp.uiManager.firstTime=true;
-                    gp.player.pAlive=true;
-                    for(int i=0;i<gp.slime.length;i++){
-                        if(gp.slime[i]!=null){
-                            gp.slime[i].reset();
-                        }
-                    }
-                    if(cc<2) cc++;
+                case"DONATE FOR TEAM":
                     System.exit(0);
                     break;
                 case "NONE":
@@ -148,7 +88,7 @@ public class GameWin extends UI{
             gp.playSoundEffect(3);
         }
         count++;
-        if(count < 10) gp.playSoundEffect(12);
+        if(count < 10) gp.playSoundEffect(13);
     }
 
     public void draw(Graphics2D g2){
@@ -158,17 +98,13 @@ public class GameWin extends UI{
         g2.drawImage(voidI,voidX,0,2048,576,null);
         g2.setColor(Color.WHITE);
         g2.setFont(Font2);
-        g2.drawString("BẠN MUỐN HỒI SINH KHÔNG?",(gp.screenWidth-556)/2,400);
+        g2.drawString("HAVE A GOOD TIME WITH PRINCESS",(gp.screenWidth-695)/2,400);
         g2.setFont(Font3);
-        g2.drawString("GAME OVER",(gp.screenWidth-352)/2,200);
+        g2.drawString("YOU WIN",(gp.screenWidth-273)/2,200);
         g2.setFont(Font1);
-        g2.drawString("NO",(gp.screenWidth-54)/2,450);
-        g2.drawString("YESN'T",(gp.screenWidth-144)/2,500);
+
+        g2.drawString("DONATE FOR TEAM",(gp.screenWidth-360)/2,500);
         g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        g2.drawImage(dieI[dieNum],screenX,screenY,dieI[dieNum].getWidth()*gp.scale,dieI[dieNum].getHeight()*gp.scale,null);
-        if(side){
-            g2.drawImage(sideCursorL, xL, yL, 20, 32, null);
-            g2.drawImage(sideCursorR, xR, yR, 20, 32, null);
-        }
+
     }
 }

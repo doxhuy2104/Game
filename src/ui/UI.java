@@ -12,6 +12,7 @@ import java.io.InputStream;
 
 @SuppressWarnings("ALL")
 public class UI {
+    public boolean gameW = false;
     GamePanel gp;
     //Font Font1;
     TicTacToe ticTacToe;
@@ -51,7 +52,7 @@ public class UI {
     BufferedImage voidI,shadow;
     BufferedImage[] dieI;
     public int voidX=0,screenX,screenY,dieCounter=0,dieNum=0;
-    public boolean gameO=false;
+    public boolean gameO = false;
 
     BufferedImage manaFull, manaFill, manaEmpty;
     public boolean chat = true;

@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Electronic[] electronic = new Electronic[20];
     Pause pauseS = new Pause(this, mouseClick);
     GameOver gameOver = new GameOver(this, mouseClick);
+    GameWin gameWin = new GameWin(this, mouseClick);
     Hud hud = new Hud(this);
     ArrayList<Entity> entities = new ArrayList<>();
 
@@ -113,6 +114,10 @@ public class GamePanel extends JPanel implements Runnable {
         if (uiManager.gameO) {
             FPS = 60;
             gameOver.update();
+        }
+        if(uiManager.gameW){
+            FPS = 60;
+            gameWin.update();
         }
         if (uiManager.inGame) {
             FPS = 60;
@@ -218,6 +223,11 @@ public class GamePanel extends JPanel implements Runnable {
         if (uiManager.gameO) {
             gameOver.draw(g2);//Game Over
         }
+
+        if (uiManager.gameW) {
+            gameWin.draw(g2);//Game Win
+        }
+
         g2.setColor(Color.WHITE);
         //g2.drawString("Draw Time: "+passed,10,400);
         //System.out.println("Draw Time: "+passed);
