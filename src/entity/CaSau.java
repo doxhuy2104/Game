@@ -231,7 +231,7 @@ public class CaSau extends Entity {
     public void reset() {
         super.reset();
         mNum = 0;
-        hp = 10;
+        hp = 5;
         attack=false;
         atk=false;
         aNum=0;
