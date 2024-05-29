@@ -236,7 +236,7 @@ public class Player extends Entity {
     public boolean pickUpObj(int i) {
 
         healTime++;
-        if ((currentHP < maxHP) && (healTime%120 == 0)){
+        if ((currentHP <= maxHP) && (healTime%120 == 0)){
             if((GamePanel.col == 34) && (GamePanel.row == 4)) {
                 currentHP++;
                 keyE = true;
