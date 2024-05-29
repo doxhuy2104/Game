@@ -243,13 +243,13 @@ public class Menu extends UI {
                 yL = 468;
                 xR = 834;
                 yR = 468;
-            } else if (mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 252 && mouseClick.getMouseY() >= 220) {
+            } else if (firstTime&&mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 252 && mouseClick.getMouseY() >= 220) {
                 mouseLocation = "1";if (changeSoundC < 2) changeSoundC++;
-            } else if (mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 302 && mouseClick.getMouseY() >= 270) {
+            } else if (firstTime&&mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 302 && mouseClick.getMouseY() >= 270) {
                 mouseLocation = "2";if (changeSoundC < 2) changeSoundC++;
-            } else if (mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 352 && mouseClick.getMouseY() >= 320) {
+            } else if (firstTime&&mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 352 && mouseClick.getMouseY() >= 320) {
                 mouseLocation = "3";if (changeSoundC < 2) changeSoundC++;
-            } else if (mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 402 && mouseClick.getMouseY() >= 370) {
+            } else if (firstTime&&mouseClick.getMouseX() >= 600 && mouseClick.getMouseX() <= 632 && mouseClick.getMouseY() <= 402 && mouseClick.getMouseY() >= 370) {
                 mouseLocation = "4";if (changeSoundC < 2) changeSoundC++;
             } else if (mouseClick.getMouseX() >= 717 && mouseClick.getMouseX() <= 933 && mouseClick.getMouseY() <= 103 && mouseClick.getMouseY() >= 71) {
                 mouseLocation = "M";if (changeSoundC < 2) changeSoundC++;
@@ -260,21 +260,18 @@ public class Menu extends UI {
             }
             switch (mouseLocation) {
                 case "1":
-
                     cB = true;
                     mB = false;
                     xCB = 592;
                     yCB = 212;
                     break;
                 case "2":
-
                     cB = true;
                     mB = false;
                     xCB = 592;
                     yCB = 262;
                     break;
                 case "3":
-
                     cB = true;
                     mB = false;
                     xCB = 592;
@@ -307,32 +304,38 @@ public class Menu extends UI {
             if (mouseClick.leftClick) {
                 switch (mouseLocation) {
                     case "1":
-                        if(!difficult.equals("EASY")) firstTime=true;
-                        difficult="EASY";
-                        gp.player.maxHP=100;
-                        gp.player.currentHP=100;
+                        //if(!difficult.equals("EASY")) firstTime=true;
+                    if(firstTime){
+                        difficult = "EASY";
+                        gp.player.maxHP = 100;
+                        gp.player.currentHP = 100;
                         xCedB = 600;
                         yCedB = 220;
-                        if(cc<2) cc++;
+                        if (cc < 2) cc++;
+                    }
                         break;
                     case "2":
-                        if(!difficult.equals("NORMAL")) firstTime=true;
+                        //if(!difficult.equals("NORMAL")) firstTime=true;
+                        if(firstTime){
                         difficult="NORMAL";
                         gp.player.maxHP=10;
                         gp.player.currentHP=10;
                         xCedB = 600;
-                        yCedB = 270;if(cc<2) cc++;
+                        yCedB = 270;if(cc<2) cc++;}
                         break;
-                    case "3":if(!difficult.equals("HARD")) firstTime=true;
-                        difficult="HARD";
-                        gp.player.maxHP=2;
-                        gp.player.currentHP=2;
+                    case "3"://if(!difficult.equals("HARD")) firstTime=true;
+                    if(firstTime){
+                        difficult = "HARD";
+                        gp.player.maxHP = 2;
+                        gp.player.currentHP = 2;
                         xCedB = 600;
-                        yCedB = 320;if(cc<2) cc++;
+                        yCedB = 320;
+                        if (cc < 2) cc++;
+                    }
                         break;
                     case "4":
                         if(cc<2) cc++;
-                        System.exit(0);
+                        if(firstTime)System.exit(0);
                     case "M":
                         if (!sF) mF = true;if(cc<2) cc++;
                         break;
@@ -484,14 +487,13 @@ public class Menu extends UI {
             g2.drawString("HARD", 650, 350);
             g2.drawImage(checkBox, 600, 370, 32, 32, null);
             g2.drawString("END GAME", 650, 400);
-            if (cB) {
+            if (cB&&firstTime){
                 g2.drawImage(cursorBox, xCB, yCB, cursorBox.getWidth() * 4, cursorBox.getHeight() * 4, null);
             }
             if (mB || mF || sF) {
                 g2.drawImage(mSettingC, xMB, yMB, mSettingC.getWidth() * 4, mSettingC.getHeight() * 4, null);
             }
             g2.drawImage(checkedBox, xCedB, yCedB, 32, 32, null);
-
             g2.setFont(Font1);
             g2.drawString("BACK", bX, bY);
             if (side) {
