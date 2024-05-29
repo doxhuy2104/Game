@@ -531,11 +531,11 @@ public class Player extends Entity {
 
         } else {
             sM = false;
-//            speed = 6;//8
-//            cspeed = 4;//6
+            speed = 6;//8
+            cspeed = 4;//6
 //          dev mode
-            speed = 10;
-            cspeed = 10;
+//            speed = 10;
+//            cspeed = 10;
         }
         if (boost) {
             speed = 12;
@@ -598,7 +598,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+        //ddddddddgp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
@@ -626,6 +626,7 @@ public class Player extends Entity {
                 collisionCheck = "right";
                 lR = "R";
             }
+            System.out.println("left click");
             double dx = mouseX;
             double dy = mouseY;
             double distance = Math.sqrt(dx * dx + dy * dy);
@@ -873,7 +874,7 @@ public class Player extends Entity {
         }
         if (aM) {
             aMC++;
-            if (aMC <= 10) mana--;
+            if (aMC <= 10) mana -= 0;
             else {
                 aMC = 0;
                 aM = false;
@@ -889,10 +890,10 @@ public class Player extends Entity {
         }
     }
     public void shootFlame(double dx, double dy) {
-        if (mana >= 80) {
+        if (mana >= 40) {
             FlameAttack flame = new FlameAttack(gp, x, y, dx, dy);
             flames.add(flame);
-            mana -= 80;
+            mana -= 40;
         }
     }
     public void setKeyH(){

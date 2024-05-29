@@ -16,6 +16,7 @@ public class GameOver extends UI{
     MouseClickListener mC;
     Font myFont, Font1, Font2,Font3;
     private float TRANSPARENCY = 0f;
+    int count = 0;
     public GameOver(GamePanel gp, MouseClickListener mouseClickListener){
         super(gp);
         this.gp=gp;
@@ -144,6 +145,8 @@ public class GameOver extends UI{
         if(cc==1){
             gp.playSoundEffect(3);
         }
+        count++;
+        if(count < 10) gp.playSoundEffect(12);
     }
 
     public void draw(Graphics2D g2){

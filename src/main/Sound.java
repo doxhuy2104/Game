@@ -24,6 +24,7 @@ public class Sound {
         soundURL[9] = getClass().getResource("/sound/bigSlash.wav");
         soundURL[10] = getClass().getResource("/sound/zapDash.wav");
         soundURL[11] = getClass().getResource("/sound/Yamete-Kudasai.wav");
+        soundURL[12] = getClass().getResource("/sound/game-over.wav");
     }
     private void loadSound(URL url) {
         try {
@@ -37,6 +38,7 @@ public class Sound {
     }
 
     public void setFile(int i) {
+
         loadSound(soundURL[i]);
     }
 
