@@ -39,6 +39,7 @@ public class Player extends Entity {
         return x >= 0 ? x : -x;
     }
     public static int aliveBoss;
+    public boolean checkWin = false;
 
     public boolean OpenDoorWin = false;
     public boolean oneOfTime = true;
@@ -233,9 +234,6 @@ public class Player extends Entity {
     }
 
     public boolean pickUpObj(int i) {
-        if((GamePanel.col == 1) && (GamePanel.row == 8)){
-            gp.uiManager.gameW = true;
-        }
 
         healTime++;
         if ((currentHP < maxHP) && (healTime%120 == 0)){
@@ -396,9 +394,14 @@ public class Player extends Entity {
             String objName = gp.obj[i].name;
             switch (objName) {
                 case "DoorHelpPrincess":
-                    if(oneOfTime) {
+                    if(oneOfTime && !checkWin) {
                         gp.playSoundEffect(11);
                         oneOfTime = false;
+                        currentHP--;
+                    }
+
+                    if(checkWin){
+                        gp.uiManager.gameW = true;
                     }
 
                     if(healTime % 120 == 0) oneOfTime = true;
@@ -557,6 +560,7 @@ public class Player extends Entity {
                     TileManager.mapTileNum[58][40] = 0;
                     TileManager.mapTileNum[59][40] = 0;
                     TileManager.mapTileNum[60][40] = 0;
+                    checkWin = true;
                     gp.obj[26] = null;
                 }
             }
