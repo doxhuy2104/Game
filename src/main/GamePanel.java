@@ -159,11 +159,8 @@ public class GamePanel extends JPanel implements Runnable {
 
             tileManager.drawMap(g2);
 
-            // Vẽ lọc tối/sáng
-            lightingManager.paintComponent(g);
-
-            if (player.pAlive) player.draw(g2);
             entities.add(player);
+
             for (int i = 0; i < slime.length; i++) {
                 if (slime[i] != null) {
                     entities.add(slime[i]);
@@ -185,18 +182,25 @@ public class GamePanel extends JPanel implements Runnable {
                     superObject.draw(g2, this);
                 }
             }
+
             if (player.pAlive) for (Entity entity : entities) {
                 entity.draw(g2);
             }
 
             entities.clear();
 
+
             hud.draw(g2);
             if (uiManager.pause) {
                 pauseS.draw(g2);
             }
 
+
             ui.draw(g2);
+
+            // Vẽ lọc tối/sáng
+            lightingManager.paintComponent(g);
+            if (player.pAlive) player.draw(g2);
             hud.draw(g2);
 
             //toa do nhan vat
