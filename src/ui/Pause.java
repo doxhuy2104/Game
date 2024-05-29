@@ -25,9 +25,9 @@ public class Pause extends UI{
 
     private void loadFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
-            InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
-            InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
+            InputStream is = getClass().getResourceAsStream("/ui/inexpugnableExtended.ttf");
+            InputStream is1 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
+            InputStream is2 = getClass().getResourceAsStream("/ui/SVN-Determination Sans.otf");
             assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
             assert is1 != null;
@@ -41,8 +41,8 @@ public class Pause extends UI{
 
     public void pImage(){
         try{
-            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
-            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
+            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/sideCursorL.png")));
+            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/sideCursorR.png")));
         } catch (Exception e){
             e.printStackTrace();
         }

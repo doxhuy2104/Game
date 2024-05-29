@@ -29,7 +29,7 @@ public class GameWin extends UI{
 
     public void getVoidImage(){
         try{
-            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/winBG.png")));
+            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/winBG.png")));
             shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
         }catch (Exception e){
             e.printStackTrace();
@@ -38,10 +38,10 @@ public class GameWin extends UI{
 
     public void loadFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
-            InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
-            InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
-            InputStream is3 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
+            InputStream is = getClass().getResourceAsStream("/ui/inexpugnableExtended.ttf");
+            InputStream is1 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
+            InputStream is2 = getClass().getResourceAsStream("/ui/SVN-Determination Sans.otf");
+            InputStream is3 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
             assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);
             assert is1 != null;

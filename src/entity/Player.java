@@ -225,9 +225,9 @@ public class Player extends Entity {
                 right[i] = spriteSheet.getSubimage(x, 0, 16, 16);
             }
 
-            heart = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart.png")));
-            heartE = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart-empty.png")));
-            heartH = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/heart-half.png")));
+            heart = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/heart.png")));
+            heartE = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/heart-empty.png")));
+            heartH = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/heart-half.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -659,7 +659,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        //gp.collisionChecker.checkTile(this);
+        gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai

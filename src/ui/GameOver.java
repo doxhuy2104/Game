@@ -30,7 +30,7 @@ public class GameOver extends UI{
 
     public void getVoidImage(){
         try{
-            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/void.png")));
+            voidI= ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/void.png")));
 
             BufferedImage full=ImageIO.read(
                     Objects.requireNonNull(getClass().getResourceAsStream("/entity/full2.png")));
@@ -41,8 +41,8 @@ public class GameOver extends UI{
             dieI[3]=full.getSubimage(54,255,16,16);
             dieI[4]=full.getSubimage(36,255,16,16);
             shadow = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/entity/playerShadow.png")));
-            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorL.png")));
-            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/sideCursorR.png")));
+            sideCursorL = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/sideCursorL.png")));
+            sideCursorR = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/sideCursorR.png")));
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -50,10 +50,10 @@ public class GameOver extends UI{
 
     public void loadFont() {
         try {
-            InputStream is = getClass().getResourceAsStream("/UI/inexpugnableExtended.ttf");
-            InputStream is1 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
-            InputStream is2 = getClass().getResourceAsStream("/UI/SVN-Determination Sans.otf");
-            InputStream is3 = getClass().getResourceAsStream("/UI/1980v23P01.ttf");
+            InputStream is = getClass().getResourceAsStream("/ui/inexpugnableExtended.ttf");
+            InputStream is1 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
+            InputStream is2 = getClass().getResourceAsStream("/ui/SVN-Determination Sans.otf");
+            InputStream is3 = getClass().getResourceAsStream("/ui/1980v23P01.ttf");
 
             assert is != null;
             myFont = Font.createFont(Font.TRUETYPE_FONT, is).deriveFont(36f);

@@ -19,9 +19,9 @@ public class Hud extends UI {
 
     public void getHudImage() {
         try {
-            manaFull = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/full.png")));
-            manaFill = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/fill.png")));
-            manaEmpty = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/UI/empty.png")));
+            manaFull = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/full.png")));
+            manaFill = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/fill.png")));
+            manaEmpty = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/ui/empty.png")));
         } catch (Exception e) {
             e.printStackTrace();
         }

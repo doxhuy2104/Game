@@ -42,7 +42,7 @@ public class MouseClickListener implements MouseListener, MouseMotionListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage(getClass().getResource("/UI/normal.png"));
+        Image image = toolkit.getImage(getClass().getResource("/ui/normal.png"));
         Point hotspot = new Point(0, 0);
         Cursor cursor = toolkit.createCustomCursor(image, hotspot, "Custom Cursor");
         if (component != null) {
