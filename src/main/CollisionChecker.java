@@ -456,6 +456,98 @@ public class CollisionChecker {
         }
     }
 
+    public void eToECo(Entity entity) {
+        int[] enemieTop = new int[60];
+        int[] enemieBot = new int[60];
+        int[] enemieRight = new int[60];
+        int[] enemieLeft = new int[60];
+
+        int eTop= entity.bodyAreaA.y;
+        int eBot=eTop+entity.bodyAreaA.height;
+        int eLeft = entity.bodyAreaA.x;
+        int eRight = eLeft + entity.bodyAreaA.width;
+        for(int i=0;i<20;i++){
+            if(gp.slime[i]!=null){
+                enemieTop[i] = gp.slime[i].bodyAreaA.y;
+                enemieBot[i] = enemieTop[i] + gp.slime[i].bodyAreaA.height;
+                enemieLeft[i] = gp.slime[i].bodyAreaA.x;
+                enemieRight[i] = enemieLeft[i] + gp.slime[i].bodyAreaA.width;
+            }
+        }
+        for (int i=20;i<40;i++){
+            if(gp.caSau[i-20]!=null){
+                enemieTop[i] = gp.caSau[i-20].bodyAreaA.y;
+                enemieBot[i] = enemieTop[i] + gp.caSau[i-20].bodyAreaA.height;
+                enemieLeft[i] = gp.caSau[i-20].bodyAreaA.x;
+                enemieRight[i] = enemieLeft[i] + gp.caSau[i-20].bodyAreaA.width;
+            }
+        }
+        for (int i=40;i<60;i++){
+            if(gp.electronic[i-40]!=null){
+                enemieTop[i] = gp.electronic[i-40].bodyAreaA.y;
+                enemieBot[i] = enemieTop[i] + gp.electronic[i-40].bodyAreaA.height;
+                enemieLeft[i] = gp.electronic[i-40].bodyAreaA.x;
+                enemieRight[i] = enemieLeft[i] + gp.electronic[i-40].bodyAreaA.width;
+            }
+        }
+        for(int i=0;i<60;i++){
+            switch (entity.mD) {
+                case "U":
+                    if (eTop < enemieBot[i] && eTop > enemieTop[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECU = true;
+                    }
+                    break;
+                case "D":
+                    if (eBot > enemieTop[i] && eBot < enemieBot[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECD = true;
+                    }
+                    break;
+                case "L":
+                    if (eLeft < enemieRight[i] && eLeft > enemieLeft[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECL = true;
+                    }
+                    break;
+                case "R":
+                    if (eRight > enemieLeft[i] && eRight < enemieRight[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECR = true;
+                    }
+                    break;
+                case "LU":
+                    if (eLeft < enemieRight[i] && eLeft > enemieLeft[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECL = true;
+                    }
+                    if (eTop < enemieBot[i] && eTop > enemieTop[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECU = true;
+                    }
+                    break;
+                case "LD":
+                    if (eLeft < enemieRight[i] && eLeft > enemieLeft[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECL = true;
+                    }
+                    if (eBot > enemieTop[i] && eBot < enemieBot[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECD = true;
+                    }
+                    break;
+                case "RU":
+                    if (eTop < enemieBot[i] && eTop > enemieTop[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECU = true;
+                    }
+                    if (eRight > enemieLeft[i] && eRight < enemieRight[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECR = true;
+                    }
+                    break;
+                case "RD":
+                    if (eRight > enemieLeft[i] && eRight < enemieRight[i] && eBot > enemieTop[i] && eTop < enemieBot[i]) {
+                        entity.eToECR = true;
+                    }
+                    if (eBot > enemieTop[i] && eBot < enemieBot[i] && eLeft < enemieRight[i] && eRight > enemieLeft[i]) {
+                        entity.eToECD = true;
+                    }
+                    break;
+            }
+        }
+    }
+
     public void pToECo(Entity entity) {
         int playerTop = entity.screenY + 32;
         int playerBot = playerTop + entity.solidArea.height;

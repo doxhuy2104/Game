@@ -87,7 +87,7 @@ public class Entity {
     public boolean sp = false;
     public boolean eCollision = false, eCollisionR = false, eCollisionL = false, eCollisionU = false, eCollisionD = false;
     public boolean saw, move = false, chamThan = false;
-    public boolean eToPCU, eToPCD, eToPCL, eToPCR;
+    public boolean eToPCU, eToPCD, eToPCL, eToPCR,eToECU, eToECD, eToECL, eToECR;
     public BufferedImage[] slimeR, slimeL, sL, sR;
     //public Rectangle attackAreaU, attackAreaD, attackAreaR, attackAreaL;
     //public int  nMNum = 0;//no move
@@ -196,6 +196,11 @@ public class Entity {
         eToPCL = false;
         eToPCR = false;
         if (!gp.player.invisible) gp.collisionChecker.eToPCo(this);
+        eToECU = false;
+        eToECD = false;
+        eToECL = false;
+        eToECR = false;
+        if(drawX>(-300)&&drawX<300&&drawY<700&&drawY>(-700))gp.collisionChecker.eToECo(this);
     }
 
     public void Hurt() {
@@ -272,9 +277,9 @@ public class Entity {
         eCollisionD = false;
         gp.collisionChecker.checkTileEnemies(this);
 
-        // if (!eCollision && !eCollisionL && !eCollisionR)
+         if (!eToECR&&!eToECL)
         eSX += (int) xMove;
-        //if (!eCollision && !eCollisionD && !eCollisionU)
+        if (!eToECU&&!eToECD)
         eSY += (int) yMove;
 
         xMove -= (int) xMove;
