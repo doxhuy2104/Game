@@ -491,11 +491,11 @@ public class Player extends Entity {
 
                 gp.electronic[2] = new Electronic(gp);
                 gp.electronic[2].sx = 51 * gp.tileSize;
-                gp.electronic[2].sy = 58 * gp.tileSize;
+                gp.electronic[2].sy = 57 * gp.tileSize;
 
                 gp.electronic[3] = new Electronic(gp);
                 gp.electronic[3].sx = 68 * gp.tileSize;
-                gp.electronic[3].sy = 55 * gp.tileSize;
+                gp.electronic[3].sy = 57 * gp.tileSize;
 
                 gp.electronic[4] = new Electronic(gp);
                 gp.electronic[4].sx = 57 * gp.tileSize;
@@ -588,8 +588,8 @@ public class Player extends Entity {
 //            cspeed = 10;
         }
         if (boost) {
-            speed = 12;
-            cspeed = 10;
+            speed = 8;
+            cspeed = 6;
             long nextTime = System.currentTimeMillis() - startTime;
             if (nextTime >= 3000) {
                 boost = false;
