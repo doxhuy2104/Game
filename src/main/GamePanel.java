@@ -51,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Electronic[] electronic = new Electronic[20];
     Pause pauseS = new Pause(this, mouseClick);
     GameOver gameOver = new GameOver(this, mouseClick);
+    GameWin gameWin = new GameWin(this, mouseClick);
     Hud hud = new Hud(this);
     ArrayList<Entity> entities = new ArrayList<>();
 
@@ -114,6 +115,10 @@ public class GamePanel extends JPanel implements Runnable {
             FPS = 60;
             gameOver.update();
         }
+        if(uiManager.gameW){
+            FPS = 60;
+            gameWin.update();
+        }
         if (uiManager.inGame) {
             FPS = 60;
             if (uiManager.play) {
@@ -154,12 +159,13 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+
         if (uiManager.inGame) {
 
             tileManager.drawMap(g2);
 
-            if (player.pAlive) player.draw(g2);
             entities.add(player);
+
             for (int i = 0; i < slime.length; i++) {
                 if (slime[i] != null) {
                     entities.add(slime[i]);
@@ -181,21 +187,27 @@ public class GamePanel extends JPanel implements Runnable {
                     superObject.draw(g2, this);
                 }
             }
+
             if (player.pAlive) for (Entity entity : entities) {
                 entity.draw(g2);
             }
 
             entities.clear();
-            // Vẽ lọc tối/sáng
-            lightingManager.paintComponent(g);
+
 
             hud.draw(g2);
             if (uiManager.pause) {
                 pauseS.draw(g2);
             }
 
+
             ui.draw(g2);
+
+            // Vẽ lọc tối/sáng
+            lightingManager.paintComponent(g);
+            if (player.pAlive) player.draw(g2);
             hud.draw(g2);
+
             //toa do nhan vat
             col = (player.x + player.solidArea.x) / tileSize;
             row = (player.y + player.solidArea.y) / tileSize;
@@ -211,6 +223,11 @@ public class GamePanel extends JPanel implements Runnable {
         if (uiManager.gameO) {
             gameOver.draw(g2);//Game Over
         }
+
+        if (uiManager.gameW) {
+            gameWin.draw(g2);//Game Win
+        }
+
         g2.setColor(Color.WHITE);
         //g2.drawString("Draw Time: "+passed,10,400);
         //System.out.println("Draw Time: "+passed);

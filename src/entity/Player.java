@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 import tile.TileManager;
+import ui.GameWin;
 
 @SuppressWarnings("ALL")
 public class Player extends Entity {
@@ -232,6 +233,10 @@ public class Player extends Entity {
     }
 
     public boolean pickUpObj(int i) {
+        if((GamePanel.col == 1) && (GamePanel.row == 8)){
+            gp.uiManager.gameW = true;
+        }
+
         healTime++;
         if ((currentHP < maxHP) && (healTime%120 == 0)){
             if((GamePanel.col == 34) && (GamePanel.row == 4)) {
@@ -476,7 +481,9 @@ public class Player extends Entity {
                     gp.obj[i] = null;
                     boost = true;
                     startTime = System.currentTimeMillis();
-                    LightingManager.opacity = LightingManager.opacity - 0.05f;
+                    if(LightingManager.opacity >= 0.5f) {
+                        LightingManager.opacity = LightingManager.opacity - 0.05f;
+                    }
                     break;
             }
 

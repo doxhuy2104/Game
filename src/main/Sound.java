@@ -25,6 +25,7 @@ public class Sound {
         soundURL[10] = getClass().getResource("/sound/zapDash.wav");
         soundURL[11] = getClass().getResource("/sound/AraAra.wav");
         soundURL[12] = getClass().getResource("/sound/game-over.wav");
+        soundURL[13] = getClass().getResource("/sound/winner.wav");
     }
     private void loadSound(URL url) {
         try {
