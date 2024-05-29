@@ -130,7 +130,7 @@ public class Electronic extends Entity {
                 mNum++;
                 if (mNum >= 3) mNum = 0;
             }
-            if(coolDown==0) randCD=rand.nextInt(241)+60;
+            if(coolDown==0) randCD=rand.nextInt(91)+60;
             coolDown++;
             if (coolDown >= randCD) {
                 coolDown = 0;
@@ -157,7 +157,7 @@ public class Electronic extends Entity {
             }
         }
         if(isAttack) attack();
-        if(shockBall!=null) shockBall.update();
+        if(shockBall!=null && shockBall.isActive()) shockBall.update();
     }
 
     public void attack(){
