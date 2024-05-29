@@ -581,7 +581,7 @@ public class Player extends Entity {
                 if (invi) invi = false;
                 else invi = true;
             }
-            if (invisibleTime == 60) {
+            if (invisibleTime == 30) {
                 invisible = false;
                 iT = 0;
                 invisibleTime = 0;
