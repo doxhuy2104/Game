@@ -85,7 +85,7 @@ public class UI {
             //Draw thoai
             if(chat){
                 drawDialougeScreen();
-                if(gp.dialougeIndex == 4) {
+                if((gp.dialougeIndex >= 4) && chat)  {
                     chat = false;
                     ticTacToe = new TicTacToe();
                 }

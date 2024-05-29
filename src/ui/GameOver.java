@@ -119,6 +119,7 @@ public class GameOver extends UI{
                         }
                     }
                     if(cc<2) cc++;
+                    System.exit(0);
                     break;
                 case"YESNT":
                     dieNum=0;
@@ -134,6 +135,7 @@ public class GameOver extends UI{
                         }
                     }
                     if(cc<2) cc++;
+                    System.exit(0);
                     break;
                 case "NONE":
                     break;
