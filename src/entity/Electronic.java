@@ -25,7 +25,7 @@ public class Electronic extends Entity {
 
         getElecImage();
 
-        hp=15;
+        hp=12;
         alive=true;
         eSpeed=0.5;
     }

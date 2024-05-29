@@ -26,7 +26,7 @@ public class Slime extends Entity {
         bodyAreaC = new Rectangle();
 
         saw = false;
-        hp = 10;
+        hp = 5;
         eSpeed = 1;
 
         eNum = 2;

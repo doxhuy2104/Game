@@ -24,7 +24,7 @@ public class CaSau extends Entity {
         bodyAreaA = new Rectangle();
         bodyAreaC = new Rectangle();
         saw = false;
-        hp = 10;
+        hp = 5;
         eSpeed = 2;
         moved = false;
 
