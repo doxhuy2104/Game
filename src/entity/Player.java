@@ -396,6 +396,7 @@ public class Player extends Entity {
                 case "DoorHelpPrincess":
                     if(oneOfTime && !checkWin) {
                         gp.playSoundEffect(11);
+                        currentHP--;
                         oneOfTime = false;
                         currentHP--;
                     }
@@ -659,7 +660,7 @@ public class Player extends Entity {
         collisionL = false;
         collisionR = false;
         collisionU = false;
-        gp.collisionChecker.checkTile(this);
+        //gp.collisionChecker.checkTile(this);
 
 
         //huong tan cong khi nhan chuot trai
