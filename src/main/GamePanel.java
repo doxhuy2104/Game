@@ -197,8 +197,8 @@ public class GamePanel extends JPanel implements Runnable {
             ui.draw(g2);
             hud.draw(g2);
             //toa do nhan vat
-            col = (player.x + player.solidArea.x) / tileSize;
-            row = (player.y + player.solidArea.y) / tileSize;
+//            col = (player.x + player.solidArea.x) / tileSize;
+//            row = (player.y + player.solidArea.y) / tileSize;
             //Toa do trung tam
             g2.drawString("Col: " + col, 10, 300);
             g2.drawString("Row: " + row, 10, 310);
