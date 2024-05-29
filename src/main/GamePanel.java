@@ -154,9 +154,13 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+
         if (uiManager.inGame) {
 
             tileManager.drawMap(g2);
+
+            // Vẽ lọc tối/sáng
+            lightingManager.paintComponent(g);
 
             if (player.pAlive) player.draw(g2);
             entities.add(player);
@@ -186,8 +190,6 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             entities.clear();
-            // Vẽ lọc tối/sáng
-            lightingManager.paintComponent(g);
 
             hud.draw(g2);
             if (uiManager.pause) {
@@ -196,6 +198,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             ui.draw(g2);
             hud.draw(g2);
+
             //toa do nhan vat
             col = (player.x + player.solidArea.x) / tileSize;
             row = (player.y + player.solidArea.y) / tileSize;
