@@ -41,6 +41,7 @@ public class Player extends Entity {
 
     public boolean OpenDoorWin = false;
     public boolean oneOfTime = true;
+    public boolean keyE = false;
 
     public Player(GamePanel gp, KeyHandler keyH, MouseClickListener mouseC) {
         super(gp);
@@ -233,10 +234,22 @@ public class Player extends Entity {
     public boolean pickUpObj(int i) {
         healTime++;
         if ((currentHP < maxHP) && (healTime%120 == 0)){
-            if((GamePanel.col == 34) && (GamePanel.row == 4)) currentHP++;
-            if((GamePanel.col == 35) && (GamePanel.row == 4)) currentHP++;
-            if((GamePanel.col == 34) && (GamePanel.row == 5)) currentHP++;
-            if((GamePanel.col == 35) && (GamePanel.row == 5)) currentHP++;
+            if((GamePanel.col == 34) && (GamePanel.row == 4)) {
+                currentHP++;
+                keyE = true;
+            };
+            if((GamePanel.col == 35) && (GamePanel.row == 4)) {
+                currentHP++;
+                keyE = true;
+            };
+            if((GamePanel.col == 34) && (GamePanel.row == 5)) {
+                currentHP++;
+                keyE = true;
+            };
+            if((GamePanel.col == 35) && (GamePanel.row == 5)) {
+                currentHP++;
+                keyE = true;
+            };
             healTime = 0;
         }
 

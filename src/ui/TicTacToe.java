@@ -20,7 +20,7 @@ public class TicTacToe {
         }
     };
     Random rand = new Random();
-    JFrame frame = new JFrame("Tic-Tac-Toe");
+    JFrame frame = new JFrame("Mini Game");
     JLabel textLabel = new JLabel();
     JPanel textPanel = new JPanel();
     JPanel boardPanel = new JPanel();
@@ -48,7 +48,7 @@ public class TicTacToe {
         textLabel.setForeground(Color.white);
         textLabel.setFont(new Font("Arial", Font.BOLD,20));
         textLabel.setHorizontalAlignment(JLabel.CENTER);
-        textLabel.setText("Tic-Tac-Toe");
+        textLabel.setText("Mini Game");
         textLabel.setOpaque(true);
 
         textPanel.setLayout(new BorderLayout());

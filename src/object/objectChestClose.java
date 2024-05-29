@@ -14,6 +14,6 @@ public class objectChestClose extends superObject{
        } catch (IOException e) {
             e.printStackTrace();
         }
-        collision = true;
+        collision = false;
     }
 }

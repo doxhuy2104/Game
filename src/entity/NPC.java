@@ -30,14 +30,6 @@ public class NPC extends Entity{
         catch (Exception e) {
             e.printStackTrace();
         }
-        up1 = setup("/npc/oldman_up_1.png", gp.tileSize, gp.tileSize);
-        up2 = setup("/npc/oldman_up_2.png", gp.tileSize, gp.tileSize);
-//        down1 = setup("/npc/oldman_down_1.png", gp.tileSize, gp.tileSize);
-//        down2 = setup("/npc/oldman_down_2.png", gp.tileSize, gp.tileSize);
-        left1 = setup("/npc/oldman_left_1.png", gp.tileSize, gp.tileSize);
-        left2 = setup("/npc/oldman_left_2.png", gp.tileSize, gp.tileSize);
-        right1 = setup("/npc/oldman_right_1.png", gp.tileSize, gp.tileSize);
-        right2 = setup("/npc/oldman_right_2.png", gp.tileSize, gp.tileSize);
     }
     public void setDialouge(){
         dialouge[0] = "So you have made it here";

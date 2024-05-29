@@ -46,7 +46,7 @@ public class KeyHandler implements KeyListener {
             if (code == KeyEvent.VK_SPACE) {
                 rolling = true;
             }
-            if (code == KeyEvent.VK_E) {
+            if (code == KeyEvent.VK_E && gp.player.keyE) {
                 gp.player.usingFlame = !gp.player.usingFlame;
             }
             if (code == KeyEvent.VK_ESCAPE) {
