@@ -36,7 +36,6 @@ public class Entity {
 
 
     public int spriteCounter = 0, nMCounter = 0;
-    //public int sCounter;
     public int spriteNum = 0, nMNum = 0;
     public int attackCounter = 0;
     public int attackNum = 0;
@@ -67,11 +66,9 @@ public class Entity {
     //player
 
     //ênmies
-    //public final int screenX, screenY;
     private float transparency = 1.0f;
     public double xMove = 0, yMove = 0, distance, dx, dy;
     public double eSpeed;
-    //public BufferedImage shadow;
     public Rectangle bodyAreaA, bodyAreaC;
     public int sx, sy;
     public int eSX = 0, eSY = 0;
@@ -89,8 +86,7 @@ public class Entity {
     public boolean saw, move = false, chamThan = false;
     public boolean eToPCU, eToPCD, eToPCL, eToPCR,eToECU, eToECD, eToECL, eToECR;
     public BufferedImage[] slimeR, slimeL, sL, sR;
-    //public Rectangle attackAreaU, attackAreaD, attackAreaR, attackAreaL;
-    //public int  nMNum = 0;//no move
+
 
     public boolean moved;
     public int distanceX, distanceY;

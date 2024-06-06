@@ -892,5 +892,3 @@ public class CollisionChecker {
         }
     }
 }
-
-

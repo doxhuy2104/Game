@@ -30,14 +30,12 @@ public class TileManager extends Tile{
 
         tile= new Tile[100];
 
-        getTileImage();
+        getMapImage();
         loadMap("/maps/map.txt");
     }
 
-    public void getTileImage(){
+    public void getMapImage(){
         try{
-            BufferedImage terrainSheet=ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/tiles/terrain.png")));
-            glass=terrainSheet.getSubimage(127,15,98,34);
 
             map=ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/maps/mapnew.png")));
 
@@ -80,33 +78,7 @@ public class TileManager extends Tile{
         }
     }
 
-
-    public void draw(Graphics2D g2){
-
-
-        int col=0,row=0;
-
-
-        while (col<gp.maxWorldCol&&row< gp.maxWorldRow){
-            int tileNum=mapTileNum[col][row];
-
-            int worldX=col*gp.tileSize;
-            int worldY=row*gp.tileSize;
-            int screenX=worldX-gp.player.x +gp.player.screenX;
-            int screenY=worldY-gp.player.y +gp.player.screenY;
-           if(abs(screenX-gp.player.screenX)<700&&abs(screenY-gp.player.screenY)<400)
-               g2.drawImage(tile[tileNum].image,screenX,screenY,gp.tileSize,gp.tileSize,null);
-        col++;
-        if(col==gp.maxWorldCol){
-            col=0;
-            row++;
-        }
-        }
-
-    }
-
     public void drawMap(Graphics2D g2){
         g2.drawImage(map,-gp.player.x+gp.player.screenX,-gp.player.y+gp.player.screenY,map.getWidth()*gp.scale,map.getHeight()*gp.scale,null);
-
     }
 }

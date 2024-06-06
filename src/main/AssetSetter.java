@@ -127,9 +127,9 @@ public class AssetSetter {
         //obj tu 36 den 38 dang su dung
 
         //Cua vao den tho
-        gp.obj[39] = new objectCuaNgang();
-        gp.obj[39].worldX = 34 * gp.tileSize;
-        gp.obj[39].worldY = 20 * gp.tileSize;
+        //gp.obj[39] = new objectCuaNgang();
+        //gp.obj[39].worldX = 34 * gp.tileSize;
+        //gp.obj[39].worldY = 20 * gp.tileSize;
 
     }
     public void setEnemies(){

@@ -408,6 +408,7 @@ public class Player extends Entity {
                     break;
                 case "SwitchOff":
                     if(LightingManager.opacity == 0.0f){
+
                         gp.playSoundEffect(1);
                         gp.obj[15] = null;
                         gp.obj[18] = null;
@@ -434,14 +435,12 @@ public class Player extends Entity {
                     gp.playSoundEffect(5);
                     hasKey++;
                     gp.obj[i] = null;
-                    System.out.println("Key: "+hasKey);
                     break;
 
                 case "keydoor":
                     gp.playSoundEffect(5);
                     hasKeyDoor++;
                     gp.obj[i] = null;
-                    System.out.println("KeyDoor: "+hasKeyDoor);
                     break;
 
                 case "chest-close":
@@ -686,7 +685,6 @@ public class Player extends Entity {
                 collisionCheck = "right";
                 lR = "R";
             }
-            System.out.println("left click");
             double dx = mouseX;
             double dy = mouseY;
             double distance = Math.sqrt(dx * dx + dy * dy);
